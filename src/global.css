@@ -1407,10 +1407,6 @@ body {
   font-size: 1rem;
 }
 
-.jodi-record-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
 /* Jodi Footer Info Styles */
 .jodi-footer-info {
   margin-top: 20px;
@@ -1542,7 +1538,7 @@ body {
   font-size: 0.65rem;
   line-height: 1.1;
   font-weight: 800;
-  color: #000;
+  color: var(--black-color);
   width: 15px;
   text-align: center;
 }
@@ -1553,4 +1549,48 @@ body {
   margin: 0 10px;
   min-width: 30px;
   text-align: center;
+}
+
+.section-header {
+  text-transform: uppercase;
+  font-size: 1rem;
+  padding: 4px;
+}
+
+.keywords-container {
+  margin: 2px 0;
+}
+
+.info-title {
+  font-size: 0.75rem;
+  color: var(--blue-text);
+  margin-bottom: 2px;
+}
+
+.keywords-list {
+  font-size: 0.55rem;
+  text-align: center;
+  color: var(--black-color);
+  line-height: 1.2;
+}
+
+.result-item {
+  padding: 8px;
+  border: 1px solid var(--black-color);
+}
+
+.live-game-name {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.live-game-value {
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+
+.footer-small-btn {
+  font-style: normal;
+  padding: 3px 15px;
+  font-size: 0.7rem;
 }

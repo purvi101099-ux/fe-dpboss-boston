@@ -1,6 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./index.css";
-import "./App.css";
 import Home from "@/pages/Home";
 import JodiChartRecord from "@/pages/JodiChartRecord";
 import PanelChartRecord from "@/pages/PanelChartRecord";

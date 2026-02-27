@@ -1,11 +1,11 @@
+import { useNavigate } from "react-router-dom";
+import TopHeader from "./common/TopHeader";
+
 export default function Header() {
+  const navigate = useNavigate();
   return (
     <header>
-      <div className="header-top common-border">
-        <h5 className="logo">
-          Dp<span>BOSS.BOSTON</span>
-        </h5>
-      </div>
+      <TopHeader />
       <div className="welcome-line common-border">
         <img src="/ganesha_lakshmi_banner1.jpg" alt="Deity" />
         <p className="">

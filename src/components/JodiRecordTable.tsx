@@ -12,7 +12,7 @@ export default function JodiRecordTable() {
 
   const scrollToBottom = () => {
     window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-  };
+  };                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
 
   return (
     <div className="jodi-record-container ">

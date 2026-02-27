@@ -1,16 +1,11 @@
+import TopHeader from "@/components/common/TopHeader";
 import PanelRecordTable from "@/components/PanelRecordTable";
+import { useNavigate } from "react-router-dom";
 
 export default function PanelChartRecord() {
   return (
     <div className="container">
-      <div
-        className="header-top common-border"
-        style={{ backgroundColor: "var(--bg-primary)" }}
-      >
-        <h1 className="logo">
-          Dp<span>BOSS.BOSTON</span>
-        </h1>
-      </div>
+      <TopHeader />
 
       <PanelRecordTable />
 
