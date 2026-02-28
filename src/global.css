@@ -38,6 +38,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  width: 100%;
+  overflow-x: hidden;
 }
 .common-border {
   border: 1px solid var(--red-text);
@@ -1354,8 +1356,10 @@ body {
 }
 
 /* Jodi Record Table Styles */
-.jodi-record-container {
+.jodi-record-container,
+.panel-record-container {
   margin: 10px 0;
+  padding: 0 4px;
 }
 
 .go-bottom-btn {
@@ -1370,8 +1374,18 @@ body {
 }
 
 .jodi-table-wrapper {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100vw;
   border: 1px solid #000;
-  overflow: hidden;
+  overflow-x: auto;
+  display: block;
+}
+
+@media (min-width: 769px) {
+  .jodi-table-wrapper {
+    max-width: 900px;
+  }
 }
 
 .jodi-table-header {
@@ -1388,6 +1402,7 @@ body {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
+  white-space: nowrap;
 }
 
 .jodi-record-table th {
@@ -1400,11 +1415,28 @@ body {
 }
 
 .jodi-record-table td {
-  padding: 6px 4px;
+  padding: 8px 4px;
   border: 1px solid #ccc;
   text-align: center;
   font-weight: 900;
-  font-size: 1rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .jodi-record-container {
+    padding: 0 2px;
+  }
+  .jodi-record-table td {
+    font-size: 0.8rem;
+    padding: 6px 2px;
+  }
+  .jodi-record-table th {
+    font-size: 0.7rem;
+    padding: 2px 1px;
+  }
+  .jodi-record-table {
+    min-width: 400px;
+  }
 }
 
 /* Jodi Footer Info Styles */
@@ -1498,6 +1530,7 @@ body {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
+  white-space: nowrap;
 }
 
 .panel-record-table th {
@@ -1541,6 +1574,7 @@ body {
   color: var(--black-color);
   width: 15px;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .panel-jodi {
@@ -1549,6 +1583,35 @@ body {
   margin: 0 10px;
   min-width: 30px;
   text-align: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .panel-jodi {
+    font-size: 0.8rem;
+    margin: 0 4px;
+    min-width: 20px;
+  }
+  .panel-digits.side {
+    font-size: 0.5rem;
+    width: 10px;
+    line-height: 1;
+  }
+  .panel-record-table th {
+    font-size: 0.65rem;
+    padding: 2px 1px;
+  }
+  .date-cell {
+    font-size: 0.55rem;
+    width: 60px;
+    padding: 2px 1px;
+  }
+  .panel-record-table {
+    min-width: 580px;
+  }
+  .panel-inner {
+    min-height: 40px;
+  }
 }
 
 .section-header {

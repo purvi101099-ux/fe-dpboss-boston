@@ -36,15 +36,20 @@ export default function PanelRecordTable() {
   return (
     <div className="panel-record-container">
       <div
-        className="jodi-table-wrapper"
-        style={{ margin: "0 auto", maxWidth: "1200px" }}
+        className="jodi-table-header"
+        style={{
+          textTransform: "uppercase",
+          borderRadius: "8px 8px 0 0",
+          border: "1px solid #000",
+          borderBottom: "none",
+        }}
       >
-        <div
-          className="jodi-table-header"
-          style={{ textTransform: "uppercase" }}
-        >
-          DIAMOND PANEL CHART
-        </div>
+        DIAMOND PANEL CHART
+      </div>
+      <div
+        className="jodi-table-wrapper"
+        style={{ borderRadius: "0 0 8px 8px" }}
+      >
         <table className="panel-record-table">
           <thead>
             <tr>

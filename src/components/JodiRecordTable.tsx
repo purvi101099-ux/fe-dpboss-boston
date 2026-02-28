@@ -12,7 +12,7 @@ export default function JodiRecordTable() {
 
   const scrollToBottom = () => {
     window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-  };                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+  };
 
   return (
     <div className="jodi-record-container ">
@@ -22,10 +22,20 @@ export default function JodiRecordTable() {
         </button>
       </div>
 
-      <div className="jodi-table-wrapper" style={{ margin: "0 300px" }}>
-        <div className="jodi-table-header">
-          SRIDEVI MORNING MATKA JODI RECORD 2020 - 2026
-        </div>
+      <div
+        className="jodi-table-header"
+        style={{
+          borderRadius: "8px 8px 0 0",
+          border: "1px solid #000",
+          borderBottom: "none",
+        }}
+      >
+        SRIDEVI MORNING MATKA JODI RECORD 2020 - 2026
+      </div>
+      <div
+        className="jodi-table-wrapper"
+        style={{ borderRadius: "0 0 8px 8px" }}
+      >
         <table className="jodi-record-table">
           <thead>
             <tr>
