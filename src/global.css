@@ -1594,3 +1594,195 @@ body {
   padding: 3px 15px;
   font-size: 0.7rem;
 }
+
+/* ===============================
+   AUTH LAYOUT - PRIMARY BASED
+================================ */
+
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  background: var(--bg-primary);
+}
+
+/* ===============================
+   (Form Panel)
+================================ */
+
+.auth-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+}
+
+/* ===============================
+   FORM CARD
+================================ */
+
+/* Full screen center */
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+  padding: 20px;
+}
+
+/* Center container */
+.auth-right {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Form Card */
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--white-color);
+  padding: 35px 30px;
+  border-radius: 8px;
+
+  /* RED BORDER */
+  border: 2px solid var(--charry-red-color);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Logo */
+.auth-logo {
+  text-align: center;
+}
+
+.auth-logo img {
+  width: 90px;
+}
+
+/* Title */
+.auth-title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--blue-text);
+  margin-bottom: 5px;
+}
+
+.auth-subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+  color: var(--black-color);
+}
+
+/* ===============================
+   FORM STYLING
+================================ */
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--black-color);
+}
+
+.form-label span {
+  color: var(--red-text);
+}
+
+/* Remove double border issue */
+.ant-input-affix-wrapper .ant-input {
+  border: none !important;
+  height: 100%;
+  box-shadow: none !important;
+}
+
+/* Focus effect */
+.ant-input:focus,
+.ant-input-affix-wrapper-focused {
+  border-color: var(--blue-btn) !important;
+  box-shadow: 0 0 0 2px rgba(30, 64, 175, 0.2);
+}
+
+.ant-input:focus {
+  border-color: var(--blue-btn);
+  box-shadow: 0 0 0 2px rgba(30, 64, 175, 0.2);
+}
+
+/* ===============================
+   BUTTON
+================================ */
+
+.auth-btn {
+  height: 42px !important;
+  background: var(--blue-btn) !important;
+  border-color: var(--blue-btn) !important;
+  border-radius: 6px !important;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.auth-btn:hover {
+  background: var(--pink-primary) !important;
+  border-color: var(--pink-primary) !important;
+}
+
+/* ===============================
+   FOOTER LINK
+================================ */
+
+.auth-footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.auth-footer a {
+  color: var(--purple-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  color: var(--charry-red-color);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .auth-wrapper {
+    flex-direction: column;
+  }
+
+  .auth-left {
+    display: none;
+  }
+
+  .auth-right {
+    width: 100%;
+    padding: 40px 20px;
+  }
+}
+.common-input-wrapper {
+  margin-bottom: 15px;
+}
+
+.helper-text {
+  color: var(--red-text);
+  font-size: 12px;
+  margin-top: 4px;
+}
