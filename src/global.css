@@ -1424,18 +1424,20 @@ body {
 
 @media (max-width: 480px) {
   .jodi-record-container {
-    padding: 0 2px;
+    padding: 0;
   }
   .jodi-record-table td {
-    font-size: 0.8rem;
-    padding: 6px 2px;
-  }
-  .jodi-record-table th {
-    font-size: 0.7rem;
+    font-size: 0.5rem;
     padding: 2px 1px;
   }
+  .jodi-record-table th {
+    font-size: 0.45rem;
+    padding: 1px 0;
+  }
   .jodi-record-table {
-    min-width: 400px;
+    min-width: unset;
+    width: 100%;
+    table-layout: fixed;
   }
 }
 
@@ -1502,7 +1504,7 @@ body {
 .jodi-footer-logo {
   color: #007bff;
   font-family: "Helvetica", cursive; /* Reusing font from header */
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   font-weight: normal;
   margin-bottom: 5px;
 }
@@ -1548,11 +1550,19 @@ body {
 }
 
 .date-cell {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 900;
   text-align: center;
-  padding: 4px;
-  width: 100px;
+  padding: 4px 2px;
+  width: 90px;
+  background-color: #f9f9f9;
+}
+
+.date-to {
+  font-size: 0.65rem;
+  font-weight: normal;
+  color: #333;
+  margin: 2px 0;
 }
 
 .panel-cell {
@@ -1568,11 +1578,11 @@ body {
 }
 
 .panel-digits.side {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   line-height: 1.1;
   font-weight: 800;
-  color: var(--black-color);
-  width: 15px;
+  color: #000;
+  width: 14px;
   text-align: center;
   flex-shrink: 0;
 }
@@ -1588,29 +1598,40 @@ body {
 
 @media (max-width: 480px) {
   .panel-jodi {
-    font-size: 0.8rem;
-    margin: 0 4px;
-    min-width: 20px;
+    font-size: 0.6rem;
+    margin: 0;
+    min-width: 10px;
+    font-weight: 800;
   }
   .panel-digits.side {
-    font-size: 0.5rem;
-    width: 10px;
-    line-height: 1;
+    font-size: 0.35rem;
+    width: 7px;
+    line-height: 0.8;
   }
   .panel-record-table th {
-    font-size: 0.65rem;
-    padding: 2px 1px;
+    font-size: 0.45rem;
+    padding: 1px 0;
   }
   .date-cell {
-    font-size: 0.55rem;
-    width: 60px;
-    padding: 2px 1px;
+    font-size: 0.4rem;
+    width: 48px;
+    padding: 1px 0;
+  }
+  .date-to {
+    font-size: 0.35rem;
+    margin: 0;
   }
   .panel-record-table {
-    min-width: 580px;
+    min-width: unset;
+    width: 100%;
+    table-layout: fixed;
   }
   .panel-inner {
-    min-height: 40px;
+    min-height: 28px;
+    padding: 0;
+  }
+  .panel-cell {
+    padding: 0;
   }
 }
 

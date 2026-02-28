@@ -785,6 +785,7 @@ export const mockPanelData = [
     },
     fri: { left: ["2", "2", "3"], jodi: "70", right: ["2", "2", "6"] },
     sat: { left: ["2", "5", "9"], jodi: "60", right: ["1", "4", "5"] },
+    sun: { left: ["1", "4", "0"], jodi: "77", right: ["2", "3", "5"] },
   },
   {
     date: "07/08/17 to 12/08/17",
@@ -804,6 +805,7 @@ export const mockPanelData = [
       isRed: true,
     },
     sat: { left: ["1", "6", "6"], jodi: "36", right: ["7", "9", "0"] },
+    sun: { left: ["2", "4", "8"], jodi: "55", right: ["3", "5", "7"] },
   },
   {
     date: "14/08/17 to 19/08/17",
@@ -818,6 +820,7 @@ export const mockPanelData = [
     },
     fri: { left: ["3", "5", "7"], jodi: "51", right: ["7", "7", "7"] },
     sat: { left: ["3", "8", "9"], jodi: "08", right: ["4", "5", "9"] },
+    sun: { left: ["1", "2", "3"], jodi: "99", right: ["4", "5", "6"] },
   },
 
   // ✅ Newly Added Dummy Data
@@ -834,6 +837,7 @@ export const mockPanelData = [
     },
     fri: { left: ["4", "4", "2"], jodi: "88", right: ["5", "6", "1"] },
     sat: { left: ["6", "7", "0"], jodi: "12", right: ["9", "3", "4"] },
+    sun: { left: ["5", "5", "8"], jodi: "14", right: ["3", "3", "7"] },
   },
   {
     date: "28/08/17 to 02/09/17",
@@ -848,6 +852,7 @@ export const mockPanelData = [
     thu: { left: ["7", "6", "8"], jodi: "20", right: ["4", "9", "5"] },
     fri: { left: ["9", "1", "2"], jodi: "84", right: ["8", "0", "7"] },
     sat: { left: ["3", "5", "7"], jodi: "33", right: ["1", "2", "4"] },
+    sun: { left: ["1", "1", "2"], jodi: "66", right: ["8", "8", "9"] },
   },
   {
     date: "04/09/17 to 09/09/17",
@@ -862,6 +867,7 @@ export const mockPanelData = [
     },
     fri: { left: ["2", "6", "4"], jodi: "28", right: ["9", "1", "0"] },
     sat: { left: ["5", "0", "8"], jodi: "63", right: ["3", "7", "2"] },
+    sun: { left: ["4", "4", "9"], jodi: "20", right: ["1", "1", "5"] },
   },
 ];
 

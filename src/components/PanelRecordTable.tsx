@@ -60,18 +60,27 @@ export default function PanelRecordTable() {
               <th>Thu</th>
               <th>Fri</th>
               <th>Sat</th>
+              <th>Sun</th>
             </tr>
           </thead>
           <tbody>
             {mockPanelData.map((row, i) => (
               <tr key={i}>
-                <td className="date-cell">{row.date}</td>
+                <td className="date-cell">
+                  {row.date.split(" to ").map((part, index) => (
+                    <div key={index}>
+                      {index === 1 && <div className="date-to">To</div>}
+                      {part}
+                    </div>
+                  ))}
+                </td>
                 <RowCell data={row.mon} />
                 <RowCell data={row.tue} />
                 <RowCell data={row.wed} />
                 <RowCell data={row.thu} />
                 <RowCell data={row.fri} />
                 <RowCell data={row.sat} />
+                <RowCell data={(row as any).sun} />
               </tr>
             ))}
           </tbody>
