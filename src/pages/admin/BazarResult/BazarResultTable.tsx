@@ -55,6 +55,7 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
       title: "Date",
       dataIndex: "date",
       key: "date",
+      sorter: (a: any, b: any) => moment(a.date).unix() - moment(b.date).unix(),
       render: (date: any) => moment(date).format("DD MMM YYYY"),
     },
     {
@@ -62,6 +63,7 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
       dataIndex: "openNumber",
       key: "openNumber",
       align: "center",
+      sorter: (a: any, b: any) => Number(a.openNumber) - Number(b.openNumber),
       render: (text: string) => <Tag color="blue">{text}</Tag>,
     },
     {
@@ -69,6 +71,7 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
       dataIndex: "closeNumber",
       key: "closeNumber",
       align: "center",
+      sorter: (a: any, b: any) => Number(a.closeNumber) - Number(b.closeNumber),
       render: (text: string) => <Tag color="orange">{text}</Tag>,
     },
     {
@@ -76,6 +79,7 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
       dataIndex: "jodiNumber",
       key: "jodiNumber",
       align: "center",
+      sorter: (a: any, b: any) => Number(a.jodiNumber) - Number(b.jodiNumber),
       render: (text: string) => (
         <Tag color="purple" style={{ fontWeight: "bold" }}>
           {text}
@@ -87,6 +91,7 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
       dataIndex: "isLucky",
       key: "isLucky",
       align: "center",
+      sorter: (a: any, b: any) => a.isLucky.localeCompare(b.isLucky),
       render: (isLucky: string) => (
         <Space>
           {isLucky === "yes" ? (

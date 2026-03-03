@@ -54,6 +54,7 @@ const BazarTable: React.FC<BazarTableProps> = ({
       title: "Open Time",
       dataIndex: "openTime",
       key: "openTime",
+      sorter: (a: any, b: any) => a.openTime.localeCompare(b.openTime),
       render: (text: string, record: any) => (
         <span>
           {text} <Tag color="blue">{record.openFormat}</Tag>
@@ -64,6 +65,7 @@ const BazarTable: React.FC<BazarTableProps> = ({
       title: "Close Time",
       dataIndex: "closeTime",
       key: "closeTime",
+      sorter: (a: any, b: any) => a.closeTime.localeCompare(b.closeTime),
       render: (text: string, record: any) => (
         <span>
           {text} <Tag color="orange">{record.closeFormat}</Tag>
