@@ -38,6 +38,7 @@ const CommonInput: React.FC<CommonInputProps> = ({
               placeholder={placeholder}
               type={type || "text"}
               status={errorMessage ? "error" : ""}
+              style={{ width: "100%" }}
             />
           )
         }
