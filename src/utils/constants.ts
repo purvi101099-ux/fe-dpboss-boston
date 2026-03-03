@@ -1578,3 +1578,30 @@ export const navLinksBanner = [
   "DPBOSS MATKA 143",
   "MAIN MATKA",
 ];
+
+export const formatOptions = [
+  { label: "AM", value: "AM" },
+  { label: "PM", value: "PM" },
+];
+
+export const statusOptions = [
+  { label: "Active", value: "active" },
+  { label: "Inactive", value: "inactive" },
+];
+
+export const luckyOptions = [
+  { label: "Yes", value: "yes" },
+  { label: "No", value: "no" },
+];
+
+export const bazarNames = [
+  { label: "KALYAN", value: "KALYAN" },
+  { label: "MAIN BAZAR", value: "MAIN BAZAR" },
+  { label: "MILAN DAY", value: "MILAN DAY" },
+  { label: "MILAN NIGHT", value: "MILAN NIGHT" },
+  { label: "RAJDHANI DAY", value: "RAJDHANI DAY" },
+  { label: "RAJDHANI NIGHT", value: "RAJDHANI NIGHT" },
+  { label: "SRIDEVI", value: "SRIDEVI" },
+  { label: "TIME BAZAR", value: "TIME BAZAR" },
+  { label: "MADHUR NIGHT", value: "MADHUR NIGHT" },
+];

@@ -5,6 +5,10 @@ import PanelChartRecord from "@/pages/PanelChartRecord";
 import ScrollToTop from "@/components/common/ScrollToTop";
 import SignUp from "@/pages/SignUp";
 import SignIn from "@/pages/SignIn";
+import AdminLayout from "@/components/admin/AdminLayout";
+import Dashboard from "@/pages/admin/Dashboard";
+import Bazar from "@/pages/admin/Bazar";
+import BazarResult from "@/pages/admin/BazarResult";
 
 function App() {
   return (
@@ -16,6 +20,14 @@ function App() {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/jodi-chart-record" element={<JodiChartRecord />} />
         <Route path="/panel-chart-record" element={<PanelChartRecord />} />
+
+        {/* Admin Routes */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="bazar" element={<Bazar />} />
+          <Route path="bazar-result" element={<BazarResult />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
