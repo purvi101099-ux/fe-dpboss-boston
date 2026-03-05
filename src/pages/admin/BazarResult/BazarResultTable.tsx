@@ -46,40 +46,51 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
     },
     {
       title: "Bazar Name",
-      dataIndex: "name",
+      dataIndex: ["bazar", "bazarName"],
       key: "name",
-      sorter: (a: any, b: any) => a.name.localeCompare(b.name),
-      render: (text: string) => <span style={{ fontWeight: 600 }}>{text}</span>,
+      sorter: (a: any, b: any) => {
+        const nameA = a.bazar?.bazarName || a.game || "";
+        const nameB = b.bazar?.bazarName || b.game || "";
+        return nameA.localeCompare(nameB);
+      },
+      render: (text: string, record: any) => (
+        <span style={{ fontWeight: 600 }}>
+          {text || record.game || "Unknown"}
+        </span>
+      ),
     },
     {
       title: "Date",
-      dataIndex: "date",
+      dataIndex: "created_at",
       key: "date",
-      sorter: (a: any, b: any) => moment(a.date).unix() - moment(b.date).unix(),
+      sorter: (a: any, b: any) =>
+        moment(a.created_at).unix() - moment(b.created_at).unix(),
       render: (date: any) => moment(date).format("DD MMM YYYY"),
     },
     {
       title: "Open No",
-      dataIndex: "openNumber",
+      dataIndex: "first_number",
       key: "openNumber",
       align: "center",
-      sorter: (a: any, b: any) => Number(a.openNumber) - Number(b.openNumber),
+      sorter: (a: any, b: any) =>
+        Number(a.first_number) - Number(b.first_number),
       render: (text: string) => <Tag color="blue">{text}</Tag>,
     },
     {
       title: "Close No",
-      dataIndex: "closeNumber",
+      dataIndex: "second_number",
       key: "closeNumber",
       align: "center",
-      sorter: (a: any, b: any) => Number(a.closeNumber) - Number(b.closeNumber),
+      sorter: (a: any, b: any) =>
+        Number(a.second_number) - Number(b.second_number),
       render: (text: string) => <Tag color="orange">{text}</Tag>,
     },
     {
       title: "Jodi",
-      dataIndex: "jodiNumber",
+      dataIndex: "jodi_number",
       key: "jodiNumber",
       align: "center",
-      sorter: (a: any, b: any) => Number(a.jodiNumber) - Number(b.jodiNumber),
+      sorter: (a: any, b: any) => Number(a.jodi_number) - Number(b.jodi_number),
       render: (text: string) => (
         <Tag color="purple" style={{ fontWeight: "bold" }}>
           {text}
@@ -88,13 +99,13 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
     },
     {
       title: "Lucky",
-      dataIndex: "isLucky",
+      dataIndex: "jodi_luck",
       key: "isLucky",
       align: "center",
-      sorter: (a: any, b: any) => a.isLucky.localeCompare(b.isLucky),
-      render: (isLucky: string) => (
+      sorter: (a: any, b: any) => a.jodi_luck - b.jodi_luck,
+      render: (luck: number) => (
         <Space>
-          {isLucky === "yes" ? (
+          {luck === 1 ? (
             <Tag color="gold" icon={<StarFilled />}>
               Lucky
             </Tag>
@@ -110,11 +121,12 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
     <CommonTable
       columns={columns as any}
       dataSource={data}
+      rowKey="id"
       loading={loading}
       tableTitle="Bazar Result List"
       onRefresh={onRefresh}
       searchPlaceholder="Search by bazar name..."
-      globalSearchKey={["name"]}
+      globalSearchKey={["bazar.bazarName"]}
     />
   );
 };

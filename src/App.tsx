@@ -25,8 +25,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/jodi-chart-record" element={<JodiChartRecord />} />
-          <Route path="/panel-chart-record" element={<PanelChartRecord />} />
+          <Route path="/jodi-chart-record/:id" element={<JodiChartRecord />} />
+          <Route
+            path="/panel-chart-record/:id"
+            element={<PanelChartRecord />}
+          />
 
           {/* Protected Admin Routes */}
           <Route element={<PrivateRoute />}>

@@ -18,10 +18,11 @@ interface BazarResultFormProps {
   onSubmit: (values: any) => void;
   initialData?: any;
   loading?: boolean;
+  bazars: any[];
 }
 
 interface IDefaultValues {
-  name: string;
+  name: string; // This will store game_id
   openNumber: string;
   closeNumber: string;
   jodiNumber: string;
@@ -44,6 +45,7 @@ const BazarResultForm: React.FC<BazarResultFormProps> = ({
   onSubmit,
   initialData,
   loading,
+  bazars,
 }) => {
   const methods = useForm<IDefaultValues>({
     resolver: yupResolver(bazarResultSchema) as any,
@@ -56,8 +58,14 @@ const BazarResultForm: React.FC<BazarResultFormProps> = ({
     if (open) {
       if (initialData) {
         reset({
-          ...initialData,
-          date: initialData.date ? new Date(initialData.date) : null,
+          name: initialData.game_id?.toString() || "",
+          openNumber: initialData.first_number || "",
+          closeNumber: initialData.second_number || "",
+          jodiNumber: initialData.jodi_number || "",
+          date: initialData.created_at
+            ? new Date(initialData.created_at)
+            : null,
+          isLucky: initialData.jodi_luck === 1 ? "yes" : "no",
         });
       } else {
         reset(defaultValues);
@@ -68,6 +76,11 @@ const BazarResultForm: React.FC<BazarResultFormProps> = ({
   const onInternalSubmit = (data: any) => {
     onSubmit(data);
   };
+
+  const bazarOptions = bazars.map((b) => ({
+    label: b.bazarName,
+    value: b.id.toString(),
+  }));
 
   return (
     <Modal
@@ -103,7 +116,7 @@ const BazarResultForm: React.FC<BazarResultFormProps> = ({
             <CommonLabel label="Bazar Name" required />
             <CommonSelect
               name="name"
-              options={bazarNames}
+              options={bazarOptions}
               placeholder="Select Bazar"
             />
           </div>

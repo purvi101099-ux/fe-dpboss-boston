@@ -1,83 +1,115 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import { message } from "antd";
-import {
-  ShopOutlined,
-  PlusOutlined,
-  UnorderedListOutlined,
-} from "@ant-design/icons";
+import { UnorderedListOutlined, PlusOutlined } from "@ant-design/icons";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import CommonDeleteModal from "@/components/common/CommonDeleteModal";
 import useModal from "@/hooks/useModal";
 import CommonPageHeader from "@/components/common/CommonPageHeader";
 import { BAZAR_RESULT_MESSAGES } from "@/utils/message-const";
 import BazarResultTable from "./BazarResultTable";
 import BazarResultForm from "./BazarResultForm";
+import {
+  getGameNumbers,
+  addGameNumber,
+  updateGameNumber,
+} from "@/api/gameNumber";
+import { getBazar } from "@/api/game";
 import moment from "moment";
+import { AddGameNumberRequest, UpdateGameNumberRequest } from "@/api/types";
 
 const BazarResultManagement: React.FC = () => {
-  const [loading, setLoading] = useState(false);
+  const queryClient = useQueryClient();
   const editModal = useModal<any>();
   const deleteModal = useModal<any>();
 
-  const initialData = useMemo(() => {
-    return Array.from({ length: 20 }, (_, i) => ({
-      key: `${i + 1}`,
-      name: ["KALYAN", "MAIN BAZAR", "MILAN DAY", "SRIDEVI"][i % 4],
-      date: moment().subtract(i, "days").toDate(),
-      openNumber: Math.floor(100 + Math.random() * 900).toString(),
-      closeNumber: Math.floor(100 + Math.random() * 900).toString(),
-      jodiNumber: Math.floor(10 + Math.random() * 90).toString(),
-      isLucky: i % 5 === 0 ? "yes" : "no",
-    }));
-  }, []);
+  // Fetch results
+  const {
+    data: resultsResponse,
+    isLoading: isLoadingResults,
+    refetch,
+  } = useQuery({
+    queryKey: ["game-numbers", "all"],
+    queryFn: () => getGameNumbers({ type: "all", page: 1, limit: 100 }),
+  });
 
-  const [data, setData] = useState<any[]>(initialData);
+  // Fetch bazars (needed for the form dropdown)
+  const { data: bazarsResponse } = useQuery({
+    queryKey: ["games"],
+    queryFn: getBazar,
+  });
 
-  const handleRefresh = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      message.success(BAZAR_RESULT_MESSAGES.REFRESH_SUCCESS);
-    }, 1000);
-  };
+  // Process results data
+  const resultsData = useMemo(() => {
+    if (!resultsResponse) return [];
+    const rawData = (resultsResponse as any).data || resultsResponse;
+    return Array.isArray(rawData) ? rawData : [];
+  }, [resultsResponse]);
+
+  // Process bazars data for the form
+  const bazars = useMemo(() => {
+    if (!bazarsResponse) return [];
+    const rawData =
+      (bazarsResponse as any).games ||
+      (bazarsResponse as any).data ||
+      bazarsResponse;
+    return Array.isArray(rawData) ? rawData : [];
+  }, [bazarsResponse]);
+
+  // Create mutation
+  const createMutation = useMutation({
+    mutationFn: (values: AddGameNumberRequest) => addGameNumber(values),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["game-numbers"] });
+      message.success(BAZAR_RESULT_MESSAGES.CREATE_SUCCESS);
+      editModal.closeModal();
+    },
+    onError: (error: any) => {
+      message.error(error.response?.data?.message || "Failed to add result");
+    },
+  });
+
+  // Update mutation
+  const updateMutation = useMutation({
+    mutationFn: (values: UpdateGameNumberRequest) => updateGameNumber(values),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["game-numbers"] });
+      message.success(BAZAR_RESULT_MESSAGES.UPDATE_SUCCESS);
+      editModal.closeModal();
+    },
+    onError: (error: any) => {
+      message.error(error.response?.data?.message || "Failed to update result");
+    },
+  });
 
   const handleFormSubmit = (values: any) => {
-    setLoading(true);
-    setTimeout(() => {
-      if (editModal.data) {
-        // Edit mode
-        setData((prev) =>
-          prev.map((item) =>
-            item.key === editModal.data.key ? { ...item, ...values } : item,
-          ),
-        );
-        message.success(BAZAR_RESULT_MESSAGES.UPDATE_SUCCESS);
-      } else {
-        // Add mode
-        const newResult = {
-          key: Date.now().toString(),
-          ...values,
-        };
-        setData((prev) => [newResult, ...prev]);
-        message.success(BAZAR_RESULT_MESSAGES.CREATE_SUCCESS);
-      }
-      setLoading(false);
-      editModal.closeModal();
-    }, 800);
+    const payload = {
+      game_id: Number(values.name), // In the form 'name' will be market ID
+      first_number: values.openNumber,
+      second_number: values.closeNumber,
+      jodi_number: values.jodiNumber,
+      jodi_luck: values.isLucky === "yes" ? 1 : 0,
+      created_at: moment(values.date).format("YYYY-MM-DD"),
+    };
+
+    if (editModal.data?.id) {
+      updateMutation.mutate({
+        id: editModal.data.id,
+        ...payload,
+      });
+    } else {
+      createMutation.mutate(payload);
+    }
   };
 
   const confirmDelete = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setData((prev) =>
-        prev.filter((item) => item.key !== deleteModal.data.key),
-      );
-      setLoading(false);
-      deleteModal.closeModal();
-      message.success(
-        BAZAR_RESULT_MESSAGES.DELETE_SUCCESS(deleteModal.data.name),
-      );
-    }, 800);
+    // Note: User hasn't provided Delete API for results yet in the prompt,
+    // but we have deleteBazar. I'll stick to what we have or just mock it for now
+    // until the user provides the Delete Result endpoint.
+    message.warning("Delete API for results not yet implemented in backend");
+    deleteModal.closeModal();
   };
+
+  const isActionLoading = createMutation.isPending || updateMutation.isPending;
 
   return (
     <div>
@@ -90,11 +122,11 @@ const BazarResultManagement: React.FC = () => {
       />
 
       <BazarResultTable
-        data={data}
-        loading={loading}
+        data={resultsData}
+        loading={isLoadingResults}
         onEdit={editModal.openModal}
         onDelete={deleteModal.openModal}
-        onRefresh={handleRefresh}
+        onRefresh={() => refetch()}
       />
 
       <BazarResultForm
@@ -102,15 +134,16 @@ const BazarResultManagement: React.FC = () => {
         onCancel={editModal.closeModal}
         onSubmit={handleFormSubmit}
         initialData={editModal.data}
-        loading={loading}
+        loading={isActionLoading}
+        bazars={bazars}
       />
 
       <CommonDeleteModal
         open={deleteModal.isOpen}
         onConfirm={confirmDelete}
         onCancel={deleteModal.closeModal}
-        itemName={`result for ${deleteModal.data?.name}`}
-        loading={loading}
+        itemName={`result for ${deleteModal.data?.bazar?.bazarName || "Bazar"}`}
+        loading={false}
       />
     </div>
   );

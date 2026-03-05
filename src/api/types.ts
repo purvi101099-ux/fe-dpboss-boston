@@ -53,6 +53,49 @@ export interface DeleteBazarResponse {
   message: string;
 }
 
+// --- Game Number (Bazar Result) Types ---
+export interface GameNumber {
+  id: number;
+  game_id: number;
+  first_number: string;
+  second_number: string;
+  jodi_number: string;
+  jodi_luck: number;
+  created_at: string;
+  bazar?: Bazar;
+}
+
+export interface AddGameNumberRequest {
+  game_id: number;
+  first_number: string;
+  second_number: string;
+  jodi_number: string;
+  jodi_luck: number;
+  created_at: string;
+}
+
+export interface UpdateGameNumberRequest {
+  id: number;
+  game_id?: number;
+  first_number?: string;
+  second_number?: string;
+  jodi_number?: string;
+  jodi_luck?: number;
+  created_at?: string;
+}
+
+export interface GameNumberResponse {
+  success: boolean;
+  message: string;
+  data?: GameNumber | GameNumber[];
+}
+
+export interface GameNumberListParams {
+  type?: "all" | "live";
+  page?: number;
+  limit?: number;
+}
+
 // --- Auth Types (if reused) ---
 export interface LoginRequest {
   email: string;
