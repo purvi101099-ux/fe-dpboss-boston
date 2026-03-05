@@ -42,7 +42,7 @@ export default function JodiRecordTable({
   };
 
   const renderJodi = (dayData: DayData | undefined) => {
-    if (!dayData) return "-";
+    if (!dayData || dayData.jodi === "**") return "-";
     const jodi = dayData.jodi;
     const isRed = dayData.isRed;
 

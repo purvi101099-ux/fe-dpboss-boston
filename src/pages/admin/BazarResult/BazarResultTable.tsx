@@ -46,57 +46,78 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
     },
     {
       title: "Bazar Name",
-      dataIndex: ["bazar", "bazarName"],
+      dataIndex: "game",
       key: "name",
       sorter: (a: any, b: any) => {
-        const nameA = a.bazar?.bazarName || a.game || "";
-        const nameB = b.bazar?.bazarName || b.game || "";
+        const nameA = a.game || a.bazar?.bazarName || "";
+        const nameB = b.game || b.bazar?.bazarName || "";
         return nameA.localeCompare(nameB);
       },
       render: (text: string, record: any) => (
         <span style={{ fontWeight: 600 }}>
-          {text || record.game || "Unknown"}
+          {text || record.bazar?.bazarName || "Unknown"}
         </span>
       ),
     },
     {
-      title: "Date",
-      dataIndex: "created_at",
-      key: "date",
-      sorter: (a: any, b: any) =>
-        moment(a.created_at).unix() - moment(b.created_at).unix(),
-      render: (date: any) => moment(date).format("DD MMM YYYY"),
+      title: "Time",
+      key: "time",
+      render: (_: any, record: any) => (
+        <Space direction="vertical" size={0} style={{ fontSize: "12px" }}>
+          <span style={{ color: "#52c41a" }}>{record.timeOpen || "-"}</span>
+          <span style={{ color: "#f5222d" }}>{record.timeClose || "-"}</span>
+        </Space>
+      ),
     },
     {
       title: "Open No",
       dataIndex: "first_number",
       key: "openNumber",
       align: "center",
-      sorter: (a: any, b: any) =>
-        Number(a.first_number) - Number(b.first_number),
-      render: (text: string) => <Tag color="blue">{text}</Tag>,
+      render: (text: string, record: any) => {
+        let val = text;
+        if (!val && record.value) {
+          val = record.value.split("-")[0];
+        }
+        return <Tag color="blue">{val || "-"}</Tag>;
+      },
     },
     {
       title: "Close No",
       dataIndex: "second_number",
       key: "closeNumber",
       align: "center",
-      sorter: (a: any, b: any) =>
-        Number(a.second_number) - Number(b.second_number),
-      render: (text: string) => <Tag color="orange">{text}</Tag>,
+      render: (text: string, record: any) => {
+        let val = text;
+        if (!val && record.value) {
+          val = record.value.split("-")[2];
+        }
+        if (!val || val === "") return "-";
+        return <Tag color="orange">{val}</Tag>;
+      },
     },
     {
       title: "Jodi",
       dataIndex: "jodi_number",
       key: "jodiNumber",
       align: "center",
-      sorter: (a: any, b: any) => Number(a.jodi_number) - Number(b.jodi_number),
-      render: (text: string) => (
-        <Tag color="purple" style={{ fontWeight: "bold" }}>
-          {text}
-        </Tag>
-      ),
+      render: (text: string, record: any) => {
+        let val = text;
+        if (!val && record.value) {
+          val = record.value.split("-")[1];
+        }
+        if (!val || val === "") return "-";
+        if (val === "0" || val === "00") {
+          return <span style={{ fontWeight: "bold" }}>{val}</span>;
+        }
+        return (
+          <Tag color="purple" style={{ fontWeight: "bold" }}>
+            {val}
+          </Tag>
+        );
+      },
     },
+
     {
       title: "Lucky",
       dataIndex: "jodi_luck",

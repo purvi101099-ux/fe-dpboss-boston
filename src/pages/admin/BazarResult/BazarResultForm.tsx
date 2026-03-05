@@ -57,11 +57,13 @@ const BazarResultForm: React.FC<BazarResultFormProps> = ({
   useEffect(() => {
     if (open) {
       if (initialData) {
+        const parts = initialData.value ? initialData.value.split("-") : [];
+
         reset({
-          name: initialData.game_id?.toString() || "",
-          openNumber: initialData.first_number || "",
-          closeNumber: initialData.second_number || "",
-          jodiNumber: initialData.jodi_number || "",
+          name: (initialData.game_id || initialData.bazar?.id || "").toString(),
+          openNumber: initialData.first_number || parts[0] || "",
+          closeNumber: initialData.second_number || parts[2] || "",
+          jodiNumber: initialData.jodi_number || parts[1] || "",
           date: initialData.created_at
             ? new Date(initialData.created_at)
             : null,
@@ -76,10 +78,9 @@ const BazarResultForm: React.FC<BazarResultFormProps> = ({
   const onInternalSubmit = (data: any) => {
     onSubmit(data);
   };
-
   const bazarOptions = bazars.map((b) => ({
-    label: b.bazarName,
-    value: b.id.toString(),
+    label: b?.bazarName || "Unknown Bazar",
+    value: (b?.bazarId).toString(),
   }));
 
   return (
