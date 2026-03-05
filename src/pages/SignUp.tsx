@@ -2,16 +2,39 @@ import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import CommonButton from "@/components/common/commonButton";
 import CommonInput from "@/components/common/commonInput";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signUpSchema } from "@/utils/validation";
+import { useMutation } from "@tanstack/react-query";
+import { COMMON_MESSAGES } from "@/utils/message-const";
+import { message } from "antd";
+import { signupUser } from "@/api/auth";
 
 const SignUp: React.FC = () => {
+  const mutation = useMutation({
+    mutationFn: (credentials: any) => signupUser(credentials),
+    onSuccess: () => {
+      message.success(COMMON_MESSAGES.SIGNUP_SUCCESS);
+      navigate("/sign-in");
+    },
+    onError: (error: any) => {
+      message.error(
+        error.response.data.message || COMMON_MESSAGES.SIGNUP_ERROR,
+      );
+    },
+  });
+  const navigate = useNavigate();
   const methods = useForm({
     resolver: yupResolver(signUpSchema),
   });
+
   const onSubmit = (data: any) => {
-    console.log("Signup Data:", data);
+    const payload = {
+      name: data.username,
+      mobile: data.mobile,
+      password: data.password,
+    };
+    mutation.mutate(payload);
   };
 
   return (
@@ -39,10 +62,7 @@ const SignUp: React.FC = () => {
                 <label className="form-label">
                   Mobile Number <span>*</span>
                 </label>
-                <CommonInput
-                  name="mobileNo"
-                  placeholder="Enter mobile number"
-                />
+                <CommonInput name="mobile" placeholder="Enter mobile number" />
               </div>
 
               <div className="form-group">

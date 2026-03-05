@@ -27,4 +27,11 @@ export const BAZAR_RESULT_MESSAGES = {
 export const COMMON_MESSAGES = {
   REFRESH: "Data refreshed successfully",
   ERROR: "Something went wrong. Please try again.",
+  LOGIN_SUCCESS: "Login success",
+  LOGIN_ERROR: "Login failed",
+  SIGNUP_SUCCESS:'Sign up success',
+  SIGNUP_ERROR:'Sign up failed',
+  LOGOUT_SUCCESS:'Logout success',
 };
+
+

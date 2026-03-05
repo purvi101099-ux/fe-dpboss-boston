@@ -72,9 +72,21 @@ const BazarForm: React.FC<BazarFormProps> = ({
   return (
     <Modal
       title={
-        initialData
-          ? BAZAR_MESSAGES.FORM_TITLE_EDIT
-          : BAZAR_MESSAGES.FORM_TITLE_ADD
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <div
+            style={{
+              width: "4px",
+              height: "18px",
+              background: "var(--pink-logo)",
+              borderRadius: "2px",
+            }}
+          />
+          <span>
+            {initialData
+              ? BAZAR_MESSAGES.FORM_TITLE_EDIT
+              : BAZAR_MESSAGES.FORM_TITLE_ADD}
+          </span>
+        </div>
       }
       open={open}
       onCancel={onCancel}
