@@ -1587,8 +1587,8 @@ export const formatOptions = [
 ];
 
 export const statusOptions = [
-  { label: "Active", value: "active" },
-  { label: "Inactive", value: "inactive" },
+  { label: "Active", value: "1" },
+  { label: "Inactive", value: "0" },
 ];
 
 export const luckyOptions = [

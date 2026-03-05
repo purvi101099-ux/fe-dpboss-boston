@@ -22,19 +22,19 @@ interface BazarFormProps {
 
 interface IDefaultValues {
   name: string;
-  openFormat: string;
-  closeFormat: string;
-  status: string;
-  openTime: any;
-  closeTime: any;
+  format_open_time: string;
+  format_close_time: string;
+  is_active: string;
+  open_time: any;
+  close_time: any;
 }
 const defaultValues = {
   name: "",
-  openFormat: "AM",
-  closeFormat: "PM",
-  status: "active",
-  openTime: null,
-  closeTime: null,
+  format_open_time: "AM",
+  format_close_time: "PM",
+  is_active: "1",
+  open_time: null,
+  close_time: null,
 } as IDefaultValues;
 
 const BazarForm: React.FC<BazarFormProps> = ({
@@ -55,9 +55,16 @@ const BazarForm: React.FC<BazarFormProps> = ({
     if (open) {
       if (initialData) {
         reset({
-          ...initialData,
-          openTime: parseTime(initialData.openTime),
-          closeTime: parseTime(initialData.closeTime),
+          name: initialData.bazarName || "",
+          open_time: initialData.openTime
+            ? parseTime(initialData.openTime)
+            : null,
+          close_time: initialData.closeTime
+            ? parseTime(initialData.closeTime)
+            : null,
+          format_open_time: initialData.formatOpenTime || "AM",
+          format_close_time: initialData.formatCloseTime || "PM",
+          is_active: initialData.isActive?.toString() || "1",
         });
       } else {
         reset(defaultValues);
@@ -115,12 +122,12 @@ const BazarForm: React.FC<BazarFormProps> = ({
             <div style={{ flex: 1 }}>
               <div style={{ marginBottom: 16 }}>
                 <CommonLabel label="Open Time" required />
-                <CommonTimePicker name="openTime" />
+                <CommonTimePicker name="open_time" />
               </div>
               <div>
                 <CommonLabel label="Formatted Open" required />
                 <CommonRadioGroup
-                  name="openFormat"
+                  name="format_open_time"
                   options={formatOptions}
                   optionType="button"
                 />
@@ -130,12 +137,12 @@ const BazarForm: React.FC<BazarFormProps> = ({
             <div style={{ flex: 1 }}>
               <div style={{ marginBottom: 16 }}>
                 <CommonLabel label="Close Time" required />
-                <CommonTimePicker name="closeTime" />
+                <CommonTimePicker name="close_time" />
               </div>
               <div>
                 <CommonLabel label="Formatted Close" required />
                 <CommonRadioGroup
-                  name="closeFormat"
+                  name="format_close_time"
                   options={formatOptions}
                   optionType="button"
                 />
@@ -145,7 +152,7 @@ const BazarForm: React.FC<BazarFormProps> = ({
 
           <div style={{ marginBottom: 24 }}>
             <CommonLabel label="Is Active" required />
-            <CommonRadioGroup name="status" options={statusOptions} />
+            <CommonRadioGroup name="is_active" options={statusOptions} />
           </div>
 
           <div style={{ display: "flex", justifyContent: "flex-end" }}>

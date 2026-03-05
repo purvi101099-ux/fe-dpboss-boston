@@ -30,11 +30,11 @@ export const signUpSchema = yup.object({
 /* ------------------ Bazar Schema ------------------ */
 export const bazarSchema = yup.object().shape({
   name: yup.string().required("Bazar name is required"),
-  openTime: yup.mixed().required("Open time is required"),
-  closeTime: yup.mixed().required("Close time is required"),
-  openFormat: yup.string().required("Open format is required"),
-  closeFormat: yup.string().required("Close format is required"),
-  status: yup.string().required("Status is required"),
+  open_time: yup.string().required("Open time is required"),
+  close_time: yup.string().required("Close time is required"),
+  format_open_time: yup.string().required("Open format is required"),
+  format_close_time: yup.string().required("Close format is required"),
+  is_active: yup.string().required("Status is required"),
 });
 
 /* ------------------ Bazar Result Schema ------------------ */

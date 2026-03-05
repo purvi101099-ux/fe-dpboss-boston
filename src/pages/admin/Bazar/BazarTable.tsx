@@ -45,9 +45,9 @@ const BazarTable: React.FC<BazarTableProps> = ({
     },
     {
       title: "Bazar Name",
-      dataIndex: "name",
-      key: "name",
-      sorter: (a: any, b: any) => a.name.localeCompare(b.name),
+      dataIndex: "bazarName",
+      key: "bazarName",
+      sorter: (a: any, b: any) => a.bazarName.localeCompare(b.bazarName),
       render: (text: string) => <span style={{ fontWeight: 600 }}>{text}</span>,
     },
     {
@@ -57,7 +57,7 @@ const BazarTable: React.FC<BazarTableProps> = ({
       sorter: (a: any, b: any) => a.openTime.localeCompare(b.openTime),
       render: (text: string, record: any) => (
         <span>
-          {text} <Tag color="blue">{record.openFormat}</Tag>
+          {text} <Tag color="blue">{record.formatOpenTime}</Tag>
         </span>
       ),
     },
@@ -68,25 +68,25 @@ const BazarTable: React.FC<BazarTableProps> = ({
       sorter: (a: any, b: any) => a.closeTime.localeCompare(b.closeTime),
       render: (text: string, record: any) => (
         <span>
-          {text} <Tag color="orange">{record.closeFormat}</Tag>
+          {text} <Tag color="orange">{record.formatCloseTime}</Tag>
         </span>
       ),
     },
     {
       title: "Status",
-      dataIndex: "status",
-      key: "status",
+      dataIndex: "isActive",
+      key: "isActive",
       filters: [
-        { text: "Active", value: "active" },
-        { text: "Inactive", value: "inactive" },
+        { text: "Active", value: 1 },
+        { text: "Inactive", value: 0 },
       ],
-      onFilter: (value: any, record: any) => record.status === value,
-      render: (status: string) => (
+      onFilter: (value: any, record: any) => record.isActive === value,
+      render: (status: number) => (
         <Tag
-          color={status === "active" ? "green" : "red"}
+          color={status === 1 ? "green" : "red"}
           style={{ borderRadius: "4px", textTransform: "capitalize" }}
         >
-          {status}
+          {status === 1 ? "Active" : "Inactive"}
         </Tag>
       ),
     },
@@ -96,11 +96,12 @@ const BazarTable: React.FC<BazarTableProps> = ({
     <CommonTable
       columns={columns as any}
       dataSource={data}
+      rowKey="bazarId"
       loading={loading}
       tableTitle="Bazar List"
       onRefresh={onRefresh}
       searchPlaceholder="Search by bazar name..."
-      globalSearchKey={["name"]}
+      globalSearchKey={["bazarName"]}
     />
   );
 };
