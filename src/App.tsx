@@ -13,6 +13,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 
+import PrivateRoute from "@/components/common/PrivateRoute";
+import NotFoundRedirect from "@/components/common/NotFoundRedirect";
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
@@ -25,13 +28,18 @@ function App() {
           <Route path="/jodi-chart-record" element={<JodiChartRecord />} />
           <Route path="/panel-chart-record" element={<PanelChartRecord />} />
 
-          {/* Admin Routes */}
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="bazar" element={<Bazar />} />
-            <Route path="bazar-result" element={<BazarResult />} />
+          {/* Protected Admin Routes */}
+          <Route element={<PrivateRoute />}>
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="bazar" element={<Bazar />} />
+              <Route path="bazar-result" element={<BazarResult />} />
+            </Route>
           </Route>
+
+          {/* Catch-all route for 404/Wrong URLs */}
+          <Route path="*" element={<NotFoundRedirect />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
