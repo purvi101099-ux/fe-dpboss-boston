@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Modal, Space } from "antd";
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm, FormProvider, Watch } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import CommonInput from "@/components/common/commonInput";
 import CommonButton from "@/components/common/commonButton";
@@ -53,14 +53,12 @@ const BazarResultForm: React.FC<BazarResultFormProps> = ({
   });
 
   const { handleSubmit, reset } = methods;
-
   useEffect(() => {
     if (open) {
       if (initialData) {
         const parts = initialData.value ? initialData.value.split("-") : [];
-
         reset({
-          name: (initialData.game_id || initialData.bazar?.id || "").toString(),
+          name: bazars?.find((b) => b.bazarName === initialData.game)?.bazarId,
           openNumber: initialData.first_number || parts[0] || "",
           closeNumber: initialData.second_number || parts[2] || "",
           jodiNumber: initialData.jodi_number || parts[1] || "",
@@ -73,14 +71,14 @@ const BazarResultForm: React.FC<BazarResultFormProps> = ({
         reset(defaultValues);
       }
     }
-  }, [open, initialData, reset]);
+  }, [open, initialData, reset, bazars]);
 
   const onInternalSubmit = (data: any) => {
     onSubmit(data);
   };
   const bazarOptions = bazars.map((b) => ({
     label: b?.bazarName || "Unknown Bazar",
-    value: (b?.bazarId).toString(),
+    value: b?.bazarId,
   }));
 
   return (
