@@ -22,6 +22,7 @@ interface JodiRecordTableProps {
   data?: JodiRecordRow[];
   loading?: boolean;
   gameName?: string;
+  onRefresh?: () => void;
 }
 
 const headerDays = ["Mo", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -30,6 +31,7 @@ export default function JodiRecordTable({
   data,
   loading,
   gameName,
+  onRefresh,
 }: JodiRecordTableProps) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -64,49 +66,69 @@ export default function JodiRecordTable({
 
   return (
     <div className="jodi-record-container ">
-      <div style={{ textAlign: "center", marginBottom: "5px" }}>
+      <div
+        style={{
+          textAlign: "center",
+          marginBottom: "10px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+          alignItems: "center",
+        }}
+      >
+        {onRefresh && (
+          <button
+            className="footer-small-btn"
+            onClick={onRefresh}
+            style={{ width: "fit-content", cursor: "pointer" }}
+          >
+            Refresh Result
+          </button>
+        )}
         <button onClick={scrollToBottom} className="go-bottom-btn">
           Go to Bottom
         </button>
       </div>
 
-      <div
-        className="jodi-table-header"
-        style={{
-          borderRadius: "8px 8px 0 0",
-          border: "1px solid #000",
-          borderBottom: "none",
-        }}
-      >
-        {(gameName || "SRIDEVI MORNING").toUpperCase()} MATKA JODI RECORD 2020 -
-        2026
-      </div>
-      <div
-        className="jodi-table-wrapper"
-        style={{ borderRadius: "0 0 8px 8px" }}
-      >
-        <table className="jodi-record-table">
-          <thead>
-            <tr>
-              {headerDays.map((day) => (
-                <th key={day}>{day}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {data?.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                <td>{renderJodi(row.mon)}</td>
-                <td>{renderJodi(row.tue)}</td>
-                <td>{renderJodi(row.wed)}</td>
-                <td>{renderJodi(row.thu)}</td>
-                <td>{renderJodi(row.fri)}</td>
-                <td>{renderJodi(row.sat)}</td>
-                <td>{renderJodi(row.sun)}</td>
+      <div className="jodi-table-main-wrapper">
+        <div
+          className="jodi-table-header"
+          style={{
+            borderRadius: "8px 8px 0 0",
+            border: "1px solid #000",
+            borderBottom: "none",
+          }}
+        >
+          {(gameName || "SRIDEVI MORNING").toUpperCase()} MATKA JODI RECORD 2020
+          - 2026
+        </div>
+        <div
+          className="jodi-table-wrapper"
+          style={{ borderRadius: "0 0 8px 8px" }}
+        >
+          <table className="jodi-record-table">
+            <thead>
+              <tr>
+                {headerDays.map((day) => (
+                  <th key={day}>{day}</th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data?.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  <td>{renderJodi(row.mon)}</td>
+                  <td>{renderJodi(row.tue)}</td>
+                  <td>{renderJodi(row.wed)}</td>
+                  <td>{renderJodi(row.thu)}</td>
+                  <td>{renderJodi(row.fri)}</td>
+                  <td>{renderJodi(row.sat)}</td>
+                  <td>{renderJodi(row.sun)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* New Info Sections */}
