@@ -9,27 +9,43 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import Dashboard from "@/pages/admin/Dashboard";
 import Bazar from "@/pages/admin/Bazar";
 import BazarResult from "@/pages/admin/BazarResult";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
+import PrivateRoute from "@/components/common/PrivateRoute";
+import NotFoundRedirect from "@/components/common/NotFoundRedirect";
 
 function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/jodi-chart-record" element={<JodiChartRecord />} />
-        <Route path="/panel-chart-record" element={<PanelChartRecord />} />
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/jodi-chart-record/:id" element={<JodiChartRecord />} />
+          <Route
+            path="/panel-chart-record/:id"
+            element={<PanelChartRecord />}
+          />
 
-        {/* Admin Routes */}
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<Dashboard />} />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="bazar" element={<Bazar />} />
-          <Route path="bazar-result" element={<BazarResult />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          {/* Protected Admin Routes */}
+          <Route element={<PrivateRoute />}>
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="bazar" element={<Bazar />} />
+              <Route path="bazar-result" element={<BazarResult />} />
+            </Route>
+          </Route>
+
+          {/* Catch-all route for 404/Wrong URLs */}
+          <Route path="*" element={<NotFoundRedirect />} />
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

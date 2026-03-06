@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Modal, Space } from "antd";
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm, FormProvider, Watch } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import CommonInput from "@/components/common/commonInput";
 import CommonButton from "@/components/common/commonButton";
@@ -18,10 +18,11 @@ interface BazarResultFormProps {
   onSubmit: (values: any) => void;
   initialData?: any;
   loading?: boolean;
+  bazars: any[];
 }
 
 interface IDefaultValues {
-  name: string;
+  name: string; // This will store game_id
   openNumber: string;
   closeNumber: string;
   jodiNumber: string;
@@ -44,6 +45,7 @@ const BazarResultForm: React.FC<BazarResultFormProps> = ({
   onSubmit,
   initialData,
   loading,
+  bazars,
 }) => {
   const methods = useForm<IDefaultValues>({
     resolver: yupResolver(bazarResultSchema) as any,
@@ -51,30 +53,52 @@ const BazarResultForm: React.FC<BazarResultFormProps> = ({
   });
 
   const { handleSubmit, reset } = methods;
-
   useEffect(() => {
     if (open) {
       if (initialData) {
+        const parts = initialData.value ? initialData.value.split("-") : [];
         reset({
-          ...initialData,
-          date: initialData.date ? new Date(initialData.date) : null,
+          name: bazars?.find((b) => b.bazarName === initialData.game)?.bazarId,
+          openNumber: initialData.first_number || parts[0] || "",
+          closeNumber: initialData.second_number || parts[2] || "",
+          jodiNumber: initialData.jodi_number || parts[1] || "",
+          date: initialData.created_at
+            ? new Date(initialData.created_at)
+            : null,
+          isLucky: initialData.jodi_luck === 1 ? "yes" : "no",
         });
       } else {
         reset(defaultValues);
       }
     }
-  }, [open, initialData, reset]);
+  }, [open, initialData, reset, bazars]);
 
   const onInternalSubmit = (data: any) => {
     onSubmit(data);
   };
+  const bazarOptions = bazars.map((b) => ({
+    label: b?.bazarName || "Unknown Bazar",
+    value: b?.bazarId,
+  }));
 
   return (
     <Modal
       title={
-        initialData
-          ? BAZAR_RESULT_MESSAGES.FORM_TITLE_EDIT
-          : BAZAR_RESULT_MESSAGES.FORM_TITLE_ADD
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <div
+            style={{
+              width: "4px",
+              height: "18px",
+              background: "var(--pink-logo)",
+              borderRadius: "2px",
+            }}
+          />
+          <span>
+            {initialData
+              ? BAZAR_RESULT_MESSAGES.FORM_TITLE_EDIT
+              : BAZAR_RESULT_MESSAGES.FORM_TITLE_ADD}
+          </span>
+        </div>
       }
       open={open}
       onCancel={onCancel}
@@ -91,7 +115,7 @@ const BazarResultForm: React.FC<BazarResultFormProps> = ({
             <CommonLabel label="Bazar Name" required />
             <CommonSelect
               name="name"
-              options={bazarNames}
+              options={bazarOptions}
               placeholder="Select Bazar"
             />
           </div>

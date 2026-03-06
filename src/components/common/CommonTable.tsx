@@ -39,6 +39,11 @@ const CommonTable = <T extends object>({
   const { token } = theme.useToken();
   const [searchText, setSearchText] = useState("");
 
+  // Helper to get nested value from object
+  const getNestedValue = (obj: any, path: string) => {
+    return path.split(".").reduce((acc, part) => acc && acc[part], obj);
+  };
+
   // Handle global search
   const filteredData = useMemo(() => {
     if (!searchText) return dataSource;
@@ -48,11 +53,13 @@ const CommonTable = <T extends object>({
         ? Array.isArray(globalSearchKey)
           ? globalSearchKey
           : [globalSearchKey]
-        : (Object.keys(item) as (keyof T)[]);
+        : (Object.keys(item) as string[]);
 
       return searchInKeys.some((key) => {
-        const value = item[key];
-        return String(value).toLowerCase().includes(searchText.toLowerCase());
+        const value = getNestedValue(item, key as string);
+        return String(value ?? "")
+          .toLowerCase()
+          .includes(searchText.toLowerCase());
       });
     });
   }, [dataSource, searchText, globalSearchKey]);

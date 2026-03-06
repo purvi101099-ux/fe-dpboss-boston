@@ -1373,19 +1373,23 @@ body {
   border-radius: 4px;
 }
 
-.jodi-table-wrapper {
+.jodi-table-main-wrapper {
   margin: 0 auto;
   width: 100%;
   max-width: 100vw;
-  border: 1px solid #000;
-  overflow-x: auto;
-  display: block;
 }
 
 @media (min-width: 769px) {
-  .jodi-table-wrapper {
+  .jodi-table-main-wrapper {
     max-width: 900px;
   }
+}
+
+.jodi-table-wrapper {
+  width: 100%;
+  border: 1px solid #000;
+  overflow-x: auto;
+  display: block;
 }
 
 .jodi-table-header {
@@ -1677,6 +1681,7 @@ body {
   font-style: normal;
   padding: 3px 15px;
   font-size: 0.7rem;
+  cursor: pointer;
 }
 
 /* ===============================

@@ -1,6 +1,7 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import { message } from "antd";
 import { ShopOutlined, PlusOutlined } from "@ant-design/icons";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import CommonDeleteModal from "@/components/common/CommonDeleteModal";
 import useModal from "@/hooks/useModal";
 import BazarTable from "@/pages/admin/Bazar/BazarTable";
@@ -8,89 +9,108 @@ import BazarForm from "@/pages/admin/Bazar/BazarForm";
 import { formatTime } from "@/utils/dateFunctions";
 import CommonPageHeader from "@/components/common/CommonPageHeader";
 import { BAZAR_MESSAGES } from "@/utils/message-const";
+import { getBazar, addBazar, updateBazar, deleteBazar } from "@/api/game";
+import {
+  AddBazarRequest,
+  UpdateBazarRequest,
+  DeleteBazarRequest,
+} from "@/api/types";
 
 const BazarManagement: React.FC = () => {
-  const [loading, setLoading] = useState(false);
+  const queryClient = useQueryClient();
   const editModal = useModal<any>();
   const deleteModal = useModal<any>();
 
-  const initialData = useMemo(() => {
-    return Array.from({ length: 30 }, (_, i) => ({
-      key: `${i + 1}`,
-      name:
-        [
-          "KALYAN",
-          "MAIN BAZAR",
-          "MILAN DAY",
-          "MILAN NIGHT",
-          "RAJDHANI DAY",
-          "SRIDEVI",
-          "TIME BAZAR",
-          "MADHUR NIGHT",
-        ][i % 8] + ` ${Math.floor(i / 8) + 1}`,
-      openTime: "10:30",
-      closeTime: "22:30",
-      openFormat: i % 2 === 0 ? "AM" : "PM",
-      closeFormat: "PM",
-      status: i % 3 === 0 ? "inactive" : "active",
-    }));
-  }, []);
+  // Fetch data
+  const { data, isLoading, refetch } = useQuery({
+    queryKey: ["games"],
+    queryFn: getBazar,
+  });
 
-  const [data, setData] = useState<any[]>(initialData);
+  // Defensive check to ensure we pass an array to the table
+  const bazarData = useMemo(() => {
+    if (!data) return [];
+    if (Array.isArray(data)) return data;
+    // Handle nested data if API returns an object (e.g., { games: [...] } or { data: [...] })
+    const results =
+      (data as any).games ||
+      (data as any).data ||
+      (data as any).bazar ||
+      (data as any).gamelist ||
+      [];
+    return Array.isArray(results) ? results : [];
+  }, [data]);
 
-  const handleRefresh = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      message.success(BAZAR_MESSAGES.REFRESH_SUCCESS);
-    }, 1000);
-  };
+  // Create mutation
+  const createMutation = useMutation({
+    mutationFn: (values: AddBazarRequest) => addBazar(values),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["games"] });
+      message.success(BAZAR_MESSAGES.CREATE_SUCCESS);
+      editModal.closeModal();
+    },
+    onError: (error: any) => {
+      message.error(error.response?.data?.message || "Failed to create bazar");
+    },
+  });
+
+  // Update mutation
+  const updateMutation = useMutation({
+    mutationFn: (values: UpdateBazarRequest) => updateBazar(values),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["games"] });
+      message.success(BAZAR_MESSAGES.UPDATE_SUCCESS);
+      editModal.closeModal();
+    },
+    onError: (error: any) => {
+      message.error(error.response?.data?.message || "Failed to update bazar");
+    },
+  });
+
+  // Delete mutation
+  const deleteMutation = useMutation({
+    mutationFn: (payload: DeleteBazarRequest) => deleteBazar(payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["games"] });
+      message.success(
+        BAZAR_MESSAGES.DELETE_SUCCESS(deleteModal.data?.bazarName || "Bazar"),
+      );
+      deleteModal.closeModal();
+    },
+    onError: (error: any) => {
+      message.error(error.response?.data?.message || "Failed to delete bazar");
+    },
+  });
 
   const handleFormSubmit = (values: any) => {
-    setLoading(true);
     const formattedValues = {
       ...values,
-      openTime: formatTime(values.openTime),
-      closeTime: formatTime(values.closeTime),
+      open_time: formatTime(values.open_time),
+      close_time: formatTime(values.close_time),
     };
 
-    setTimeout(() => {
-      if (editModal.data) {
-        // Edit mode
-        setData((prev) =>
-          prev.map((item) =>
-            item.key === editModal.data.key
-              ? { ...item, ...formattedValues }
-              : item,
-          ),
-        );
-        message.success(BAZAR_MESSAGES.UPDATE_SUCCESS);
-      } else {
-        // Add mode
-        const newBazar = {
-          key: Date.now().toString(),
-          ...formattedValues,
-        };
-        setData((prev) => [newBazar, ...prev]);
-        message.success(BAZAR_MESSAGES.CREATE_SUCCESS);
-      }
-      setLoading(false);
-      editModal.closeModal();
-    }, 800);
+    if (editModal.data?.bazarId) {
+      // Edit mode
+      updateMutation.mutate({
+        id: editModal.data.bazarId,
+        ...formattedValues,
+      });
+    } else {
+      // Add mode
+      createMutation.mutate(formattedValues);
+    }
   };
 
   const confirmDelete = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setData((prev) =>
-        prev.filter((item) => item.key !== deleteModal.data.key),
-      );
-      setLoading(false);
-      deleteModal.closeModal();
-      message.success(BAZAR_MESSAGES.DELETE_SUCCESS(deleteModal.data.name));
-    }, 800);
+    if (deleteModal.data?.bazarId) {
+      deleteMutation.mutate({ id: deleteModal.data.bazarId });
+    }
   };
 
+  const isActionLoading =
+    createMutation.isPending ||
+    updateMutation.isPending ||
+    deleteMutation.isPending;
   return (
     <div>
       <CommonPageHeader
@@ -102,11 +122,11 @@ const BazarManagement: React.FC = () => {
       />
 
       <BazarTable
-        data={data}
-        loading={loading}
+        data={bazarData}
+        loading={isLoading}
         onEdit={editModal.openModal}
         onDelete={deleteModal.openModal}
-        onRefresh={handleRefresh}
+        onRefresh={() => refetch()}
       />
 
       <BazarForm
@@ -114,15 +134,15 @@ const BazarManagement: React.FC = () => {
         onCancel={editModal.closeModal}
         onSubmit={handleFormSubmit}
         initialData={editModal.data}
-        loading={loading}
+        loading={isActionLoading}
       />
 
       <CommonDeleteModal
         open={deleteModal.isOpen}
         onConfirm={confirmDelete}
         onCancel={deleteModal.closeModal}
-        itemName={deleteModal.data?.name}
-        loading={loading}
+        itemName={deleteModal.data?.bazarName}
+        loading={deleteMutation.isPending}
       />
     </div>
   );

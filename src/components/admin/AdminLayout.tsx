@@ -10,6 +10,7 @@ import {
   Grid,
   Drawer,
   ConfigProvider,
+  message,
 } from "antd";
 import {
   DashboardOutlined,
@@ -23,7 +24,9 @@ import {
   BulbFilled,
   UnorderedListOutlined,
 } from "@ant-design/icons";
-import { Link, useLocation, Outlet } from "react-router-dom";
+import { Link, useLocation, Outlet, useNavigate } from "react-router-dom";
+import { TOKEN } from "@/utils/constants";
+import { COMMON_MESSAGES } from "@/utils/message-const";
 
 const { Header, Sider, Content } = Layout;
 const { useBreakpoint } = Grid;
@@ -33,6 +36,7 @@ const AdminLayout: React.FC = () => {
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const screens = useBreakpoint();
 
   const isMobile =
@@ -118,6 +122,11 @@ const AdminLayout: React.FC = () => {
       label: (
         <span style={{ fontSize: isMobile ? "12px" : "14px" }}>Logout</span>
       ),
+      onClick: () => {
+        localStorage.removeItem(TOKEN);
+        message.success(COMMON_MESSAGES.LOGOUT_SUCCESS);
+        navigate("/sign-in");
+      },
     },
   ];
 

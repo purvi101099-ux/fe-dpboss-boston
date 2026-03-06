@@ -2,17 +2,39 @@ import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import CommonButton from "@/components/common/commonButton";
 import CommonInput from "@/components/common/commonInput";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signInSchema } from "@/utils/validation";
+import { useMutation } from "@tanstack/react-query";
+import { loginUser } from "@/api/auth";
+import { message } from "antd";
+import { COMMON_MESSAGES } from "@/utils/message-const";
+import { TOKEN } from "@/utils/constants";
 
 const SignIn: React.FC = () => {
+  const navigate = useNavigate();
+  const mutation = useMutation({
+    mutationFn: (credentials: any) => loginUser(credentials),
+    onSuccess: (data: any) => {
+      localStorage.setItem(TOKEN, data?.token);
+      message.success(COMMON_MESSAGES.LOGIN_SUCCESS);
+      navigate("/admin/dashboard");
+    },
+    onError: (error: any) => {
+      message.error(error.response.data.message || COMMON_MESSAGES.LOGIN_ERROR);
+    },
+  });
+
   const methods = useForm({
     resolver: yupResolver(signInSchema),
   });
 
   const onSubmit = (data: any) => {
-    console.log("Signin Data:", data);
+    const payload = {
+      mobile: data.mobile,
+      password: data.password,
+    };
+    mutation.mutate(payload);
   };
 
   return (
@@ -29,9 +51,9 @@ const SignIn: React.FC = () => {
               <p className="auth-subtitle">Login to manage your CRM</p>
               <div className="form-group">
                 <label className="form-label">
-                  Username <span>*</span>
+                  Mobile No <span>*</span>
                 </label>
-                <CommonInput name="username" placeholder="Enter username" />
+                <CommonInput name="mobile" placeholder="Enter username" />
               </div>
 
               <div className="form-group">

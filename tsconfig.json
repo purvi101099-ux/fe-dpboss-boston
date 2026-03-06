@@ -6,7 +6,8 @@
       "@Assets/*": ["src/assets/*"],
       "@Components/*": ["src/components/*"],
       "@Page/*": ["src/pages/*"],
-      "@Utlis": ["src/utils/*"]
+      "@Utlis/*": ["src/utils/*"],
+      "@Api/*": ["src/api/*"]
     },
     "target": "ESNext",
     "module": "ESNext",
@@ -15,7 +16,8 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "types": ["vite/client"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

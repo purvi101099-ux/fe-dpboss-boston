@@ -2,8 +2,10 @@ import * as yup from "yup";
 
 /* ------------------ Sign In Schema ------------------ */
 export const signInSchema = yup.object({
-  username: yup.string().required("Username is required"),
-
+  mobile: yup
+    .string()
+    .required("Mobile number is required")
+    .matches(/^[0-9]{10}$/, "Enter valid 10 digit mobile number"),
   password: yup
     .string()
     .required("Password is required")
@@ -14,7 +16,7 @@ export const signInSchema = yup.object({
 export const signUpSchema = yup.object({
   username: yup.string().required("Username is required"),
 
-  mobileNo: yup
+  mobile: yup
     .string()
     .required("Mobile number is required")
     .matches(/^[0-9]{10}$/, "Enter valid 10 digit mobile number"),
@@ -23,21 +25,16 @@ export const signUpSchema = yup.object({
     .string()
     .required("Password is required")
     .min(6, "Minimum 6 characters"),
-
-  confirmPassword: yup
-    .string()
-    .required("Confirm Password is required")
-    .oneOf([yup.ref("password")], "Passwords must match"),
 });
 
 /* ------------------ Bazar Schema ------------------ */
 export const bazarSchema = yup.object().shape({
   name: yup.string().required("Bazar name is required"),
-  openTime: yup.mixed().required("Open time is required"),
-  closeTime: yup.mixed().required("Close time is required"),
-  openFormat: yup.string().required("Open format is required"),
-  closeFormat: yup.string().required("Close format is required"),
-  status: yup.string().required("Status is required"),
+  open_time: yup.string().required("Open time is required"),
+  close_time: yup.string().required("Close time is required"),
+  format_open_time: yup.string().required("Open format is required"),
+  format_close_time: yup.string().required("Close format is required"),
+  is_active: yup.string().required("Status is required"),
 });
 
 /* ------------------ Bazar Result Schema ------------------ */
