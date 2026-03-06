@@ -147,7 +147,7 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
       tableTitle="Bazar Result List"
       onRefresh={onRefresh}
       searchPlaceholder="Search by bazar name..."
-      globalSearchKey={["bazar.bazarName"]}
+      globalSearchKey={["game"]}
     />
   );
 };
