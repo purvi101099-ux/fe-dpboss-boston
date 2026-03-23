@@ -1,24 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
-:root {
-  --bg-primary: #ffcc99;
-  --pink-primary: #ff0080;
-  --light-pink-color: #ff57a6;
-  --pink-logo: #ec008c;
-  --dark-red: #870000;
-  --blue-text: #000080;
-  --blue-btn: #1e40af;
-  --border-color: #000;
-  --yellow-bg: #ffff00;
-  --whatsapp-green: #25d366;
-  --white-color: #fff;
-  --yellow-bg: #ffcc66;
-  --red-text: #ff0016;
-  --black-color: #000;
-  --Firebrick-color: #b22222;
-  --purple-color: #540071;
-  --charry-red-color: #c4001a;
-}
+@import url("./local.css");
 
 * {
   margin: 0;
@@ -53,9 +35,9 @@ body {
   background-color: #fbe7ff;
   text-align: center;
   padding: 3px;
-  font-weight: bold;
+  font-weight: var(--fw-bold);
   font-style: italic;
-  font-size: 0.85rem;
+  font-size: var(--fs-0-85);
   border-radius: 8px;
   color: var(--black-color);
 }
@@ -80,8 +62,8 @@ body {
 }
 
 .logo {
-  font-size: 1.9rem;
-  font-weight: normal;
+  font-size: var(--fs-3);
+  font-weight: var(--fw-normal);
   color: var(--pink-logo);
   font-family: "Lobster", cursive;
   display: flex;
@@ -93,7 +75,8 @@ body {
 .logo span {
   color: #000;
   font-family: "Arial Black", Gadget, sans-serif;
-  font-size: 0.8rem;
+  font-size: var(--fs-1-2);
+  font-weight: var(--fw-100);
 }
 
 .welcome-line {
@@ -102,7 +85,7 @@ body {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #000;
-  font-weight: bold;
+  font-weight: var(--fw-bold);
 }
 
 .welcome-line img {
@@ -111,19 +94,19 @@ body {
 
 .welcome-line p {
   font-style: italic;
-  font-size: 0.7rem;
+  font-size: var(--fs-0-7);
   color: var(--black-color);
 }
 
 .marquee-box {
   text-align: center;
-  font-weight: bold;
-  font-size: 0.7rem;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-0-7);
   font-style: italic;
 }
 
 .marquee-box p {
-  font-size: 0.5rem;
+  font-size: var(--fs-0-5);
 }
 
 /* New: Guessing Forum */
@@ -136,9 +119,9 @@ body {
 }
 
 .guessing-forum p {
-  font-weight: bold;
+  font-weight: var(--fw-bold);
   font-style: italic;
-  font-size: 0.7rem;
+  font-size: var(--fs-0-7);
   margin-bottom: 5px;
   display: flex;
   align-items: center;
@@ -157,8 +140,8 @@ body {
   border: 2px solid #007bff;
   border-radius: 25px;
   padding: 5px 10px;
-  font-size: 0.6rem;
-  font-weight: bold;
+  font-size: var(--fs-0-6);
+  font-weight: var(--fw-bold);
   display: inline-flex;
   align-items: center;
   font-style: italic;
@@ -191,8 +174,8 @@ body {
 }
 
 .whatsapp-box p {
-  font-weight: bold;
-  font-size: 0.6rem;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-0-6);
   margin-bottom: 6px;
 }
 
@@ -202,8 +185,8 @@ body {
   border: 1px solid #fff;
   padding: 5px 10px;
   border-radius: 6px; /* small rounded corners */
-  font-size: 0.7rem;
-  font-weight: 500;
+  font-size: var(--fs-0-7);
+  font-weight: var(--fw-500);
   text-transform: capitalize;
   cursor: pointer;
   text-decoration: none;
@@ -215,8 +198,8 @@ body {
   border: 2px solid #007bff;
   border-radius: 25px;
   padding: 5px 10px;
-  font-size: 0.6rem;
-  font-weight: bold;
+  font-size: var(--fs-0-6);
+  font-weight: var(--fw-bold);
   display: inline-flex;
   align-items: center;
   font-style: italic;
@@ -241,9 +224,9 @@ body {
   background-color: var(--dark-red);
   color: #fff;
   padding: 2px;
-  font-weight: bold;
+  font-weight: var(--fw-bold);
   font-style: italic;
-  font-size: 0.85rem;
+  font-size: var(--fs-0-85);
 }
 
 .notice-body {
@@ -252,9 +235,9 @@ body {
 
 .notice-body p {
   color: var(--black-color);
-  font-weight: bold;
+  font-weight: var(--fw-bold);
   font-style: italic;
-  font-size: 0.75rem;
+  font-size: var(--fs-0-75);
   margin-bottom: 1px;
 }
 .notice-body .email-text {
@@ -270,8 +253,8 @@ body {
 .horizontal-nav {
   background-color: var(--bg-primary);
   text-align: center;
-  font-size: 0.6rem;
-  font-weight: 600;
+  font-size: var(--fs-0-6);
+  font-weight: var(--fw-600);
   font-style: italic;
   padding: 3px 10px;
   word-spacing: 2px;
@@ -289,8 +272,8 @@ body {
   color: #fff;
   padding: 3px;
   text-align: center;
-  font-weight: bold;
-  font-size: 0.8rem;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-0-8);
   border-radius: 8px;
   font-style: italic;
   border: 1px solid var(--white-color);
@@ -326,22 +309,22 @@ body {
 
 .game-name {
   color: var(--blue-text);
-  font-weight: 600;
+  font-weight: var(--fw-600);
   font-style: italic;
-  font-size: 0.9rem;
+  font-size: var(--fs-0-9);
   margin-bottom: 2px;
   text-align: center;
 }
 .game-value {
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: var(--fs-0-8);
+  font-weight: var(--fw-600);
   font-style: italic;
   color: var(--purple-color);
 }
 
 .game-time {
-  font-size: 0.7rem;
-  font-weight: bold;
+  font-size: var(--fs-0-7);
+  font-weight: var(--fw-bold);
   font-style: italic;
 }
 
@@ -353,10 +336,10 @@ body {
 
 .live-tagline {
   text-align: center;
-  font-weight: 600;
+  font-weight: var(--fw-600);
   font-style: italic;
   padding: 2px 0;
-  font-size: 0.7rem;
+  font-size: var(--fs-0-7);
   color: #000;
 }
 
@@ -367,14 +350,14 @@ body {
 
 .hindi-main {
   color: #000;
-  font-weight: 900;
-  font-size: 1rem;
+  font-weight: var(--fw-900);
+  font-size: var(--fs-1);
 }
 
 .hindi-sub {
   color: #000;
-  font-weight: bold;
-  font-size: 0.65rem;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-0-65);
 }
 
 .live-result-item {
@@ -390,22 +373,22 @@ body {
 
 .live-game-name {
   color: var(--blue-text);
-  font-weight: 600;
+  font-weight: var(--fw-600);
   font-style: italic;
-  font-size: 0.8rem;
+  font-size: var(--fs-0-8);
   text-transform: uppercase;
 }
 
 .live-game-value {
   color: var(--Firebrick-color);
-  font-weight: 600;
-  font-size: 0.8rem;
+  font-weight: var(--fw-600);
+  font-size: var(--fs-0-8);
 }
 
 .live-game-status {
   color: var(--Firebrick-color);
-  font-weight: 600;
-  font-size: 0.8rem;
+  font-weight: var(--fw-600);
+  font-size: var(--fs-0-8);
   font-style: italic;
 }
 
@@ -414,11 +397,11 @@ body {
   color: #fff;
   border: 1px solid #000;
   cursor: pointer;
-  font-size: 0.6rem;
+  font-size: var(--fs-0-6);
   width: 40px; /* fixed width */
   height: 18px;
   border-radius: 6px; /* small rounded corners */
-  font-weight: 400;
+  font-weight: var(--fw-400);
   text-transform: capitalize;
 }
 
@@ -430,14 +413,20 @@ body {
 .lucky-header {
   background-color: var(--pink-primary);
   color: #fff;
-  padding: 5px;
+  padding: 5px 10px;
   text-align: center;
-  font-weight: bold;
-  font-size: 1rem;
+  font-weight: var(--fw-700);
+  font-size: var(--fs-1);
   font-style: italic;
   border: 1px solid #fff;
   border-radius: 50px; /* Pill shape */
   margin-bottom: 3px;
+  transform-style: preserve-3d;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px #000;
+  transition:
+    transform 150ms cubic-bezier(0, 0, 0.58, 1),
+    background 150ms cubic-bezier(0, 0, 0.58, 1);
 }
 
 .lucky-content {
@@ -457,16 +446,16 @@ body {
 }
 
 .ank-title {
-  font-size: 0.7rem;
+  font-size: var(--fs-0-7);
   font-style: italic;
-  font-weight: bold;
+  font-weight: var(--fw-bold);
   margin-bottom: 0.1rem;
   color: var(--blue-text);
 }
 
 .ank-value {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--fs-1);
+  font-weight: var(--fw-600);
   color: var(--black-color);
   font-style: italic;
 }
@@ -484,8 +473,8 @@ body {
 }
 
 .headline-value {
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: var(--fs-0-7);
+  font-weight: var(--fw-600);
   color: var(--black-color);
   font-style: italic;
 }
@@ -508,8 +497,8 @@ body {
   color: #fff;
   padding: 2px 10px;
   border-radius: 8px;
-  font-size: 0.6rem;
-  font-weight: 500;
+  font-size: var(--fs-0-6);
+  font-weight: var(--fw-500);
   font-style: italic;
   cursor: pointer;
 }
@@ -528,7 +517,7 @@ body {
   padding: 1px 8px;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 0.7rem;
+  font-size: var(--fs-0-7);
   margin-top: 2px;
 }
 
@@ -547,9 +536,9 @@ body {
   padding: 4px;
   margin-bottom: 1px;
   text-align: center;
-  font-weight: 800;
+  font-weight: var(--fw-800);
   font-style: italic;
-  font-size: 1rem;
+  font-size: var(--fs-1);
   border-radius: 50px;
   text-transform: uppercase;
 }
@@ -564,7 +553,7 @@ body {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
-  font-size: 0.6rem;
+  font-size: var(--fs-0-6);
   margin-top: 3px;
   border: 0.5px solid #ff0000;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -575,7 +564,7 @@ body {
   color: #000;
   padding: 1px;
   border: 0.5px solid #ff0000;
-  font-weight: bold;
+  font-weight: var(--fw-bold);
 }
 
 .starline-table tr td {
@@ -583,7 +572,7 @@ body {
   background-color: var(--bg-primary);
   border: 0.5px solid #ff0000;
   text-align: center;
-  font-weight: bold;
+  font-weight: var(--fw-bold);
   font-style: italic;
 }
 
@@ -662,7 +651,7 @@ body {
   height: 40px;
   line-height: 40px;
   text-align: center;
-  font-weight: 900;
+  font-weight: var(--fw-900);
   font-size: 1em;
   color: #000;
   transform-origin: 50% 100px; /* Half of 200px */
@@ -692,8 +681,8 @@ body {
 
 .center-result {
   color: var(--blue-text);
-  font-weight: 900;
-  font-size: 0.8rem;
+  font-weight: var(--fw-900);
+  font-size: var(--fs-0-8);
   text-align: center;
   letter-spacing: -1px;
   font-family: Arial, sans-serif;
@@ -705,8 +694,8 @@ body {
   border: 2px solid #fff;
   padding: 8px 40px;
   border-radius: 50px;
-  font-weight: 900;
-  font-size: 1.1rem;
+  font-weight: var(--fw-900);
+  font-size: var(--fs-1-1);
   cursor: pointer;
   margin-top: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -740,19 +729,19 @@ body {
 }
 
 .fatafat-header h2 {
-  font-size: 1rem;
+  font-size: var(--fs-1);
   font-style: italic;
-  font-weight: 900;
+  font-weight: var(--fw-900);
   line-height: 1.2;
 }
 
 .fatafat-header p {
-  font-size: 0.8rem;
-  font-weight: bold;
+  font-size: var(--fs-0-8);
+  font-weight: var(--fw-bold);
 }
 
 .last-draw {
-  font-size: 0.75rem;
+  font-size: var(--fs-0-75);
   color: #ffff00;
   margin-top: 4px;
 }
@@ -760,7 +749,7 @@ body {
 .fatafat-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.7rem;
+  font-size: var(--fs-0-7);
   border: 1px solid #000;
 }
 
@@ -780,7 +769,7 @@ body {
 }
 
 .api-section h3 {
-  font-size: 0.6rem;
+  font-size: var(--fs-0-6);
   font-style: italic;
   margin-bottom: 8px;
 }
@@ -791,15 +780,15 @@ body {
   border: 1px solid #fff;
   padding: 4px 15px;
   border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: bold;
+  font-size: var(--fs-0-8);
+  font-weight: var(--fw-bold);
   cursor: pointer;
   margin-bottom: 8px;
 }
 
 .api-info {
-  font-size: 0.65rem;
-  font-weight: bold;
+  font-size: var(--fs-0-65);
+  font-weight: var(--fw-bold);
   font-style: italic;
   line-height: 1.4;
 }
@@ -815,9 +804,9 @@ body {
   color: #fff;
   padding: 5px;
   text-align: center;
-  font-weight: 900;
+  font-weight: var(--fw-900);
   font-style: italic;
-  font-size: 1rem;
+  font-size: var(--fs-1);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 5% 100%, 0 80%);
   position: relative;
   border: 1px solid #000;
@@ -834,11 +823,11 @@ body {
   padding: 6px;
   text-align: center;
   border-bottom: 1px solid var(--charry-red-color);
-  font-weight: 800;
+  font-weight: var(--fw-800);
   font-style: italic;
   text-decoration: none;
   display: block;
-  font-size: 0.9rem;
+  font-size: var(--fs-0-9);
   background: linear-gradient(to left, #ff0080 0%, #0000ff 50%, #ff0080 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -869,9 +858,9 @@ body {
   color: #fff;
   padding: 4px;
   text-align: center;
-  font-weight: 900;
+  font-weight: var(--fw-900);
   font-style: italic;
-  font-size: 1rem;
+  font-size: var(--fs-1);
   border: 1px solid #000;
   border-radius: 8px 8px 0 0;
 }
@@ -881,9 +870,9 @@ body {
   color: #fff;
   padding: 4px 12px;
   text-align: center;
-  font-weight: 800;
+  font-weight: var(--fw-800);
   font-style: italic;
-  font-size: 0.8rem;
+  font-size: var(--fs-0-8);
   border: 1px solid #000;
   border-radius: 8px 8px 0 0;
   line-height: 1.3;
@@ -910,9 +899,9 @@ body {
   color: #fff;
   padding: 4px;
   text-align: center;
-  font-weight: 900;
+  font-weight: var(--fw-900);
   font-style: italic;
-  font-size: 0.7rem;
+  font-size: var(--fs-0-7);
   border: 1px solid #000;
   border-top: none;
 }
@@ -927,24 +916,24 @@ body {
 }
 
 .pass-date {
-  font-weight: bold;
-  font-size: 0.75rem;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-0-75);
   margin-bottom: 3px;
 }
 
 .pass-item {
   color: var(--blue-text);
-  font-weight: 800;
+  font-weight: var(--fw-800);
   font-style: italic;
-  font-size: 0.75rem;
+  font-size: var(--fs-0-75);
   margin-bottom: 2px;
 }
 
 .weekly-data-text {
   color: var(--blue-text);
-  font-weight: 800;
+  font-weight: var(--fw-800);
   font-style: italic;
-  font-size: 0.8rem;
+  font-size: var(--fs-0-8);
   line-height: 1.4;
   white-space: pre-line;
 }
@@ -960,13 +949,13 @@ body {
 
 .fix-ank-date {
   color: var(--blue-text);
-  font-weight: bold;
-  font-size: 0.9rem;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-0-9);
 }
 
 .fix-ank-text {
-  font-weight: 900;
-  font-size: 0.85rem;
+  font-weight: var(--fw-900);
+  font-size: var(--fs-0-85);
   margin-top: 3px;
   line-height: 1.4;
 }
@@ -976,8 +965,8 @@ body {
   border: 2px solid var(--pink-primary);
   text-align: center;
   padding: 3px;
-  font-weight: 900;
-  font-size: 0.95rem;
+  font-weight: var(--fw-900);
+  font-size: var(--fs-0-95);
   margin-top: 8px;
   color: #000;
 }
@@ -1005,8 +994,8 @@ body {
   color: #fff;
   padding: 4px;
   text-align: center;
-  font-weight: 800;
-  font-size: 0.8rem;
+  font-weight: var(--fw-800);
+  font-size: var(--fs-0-8);
   clip-path: polygon(5% 0, 100% 0, 100% 100%, 0 100%);
   margin-bottom: 4px;
   position: relative;
@@ -1019,8 +1008,8 @@ body {
 .fix-ank-card-body {
   text-align: center;
   padding: 0 5px;
-  font-size: 0.8rem;
-  font-weight: 800;
+  font-size: var(--fs-0-8);
+  font-weight: var(--fw-800);
 }
 
 .fix-digits {
@@ -1073,8 +1062,8 @@ body {
   padding: 4px 12px;
   border-radius: 8px;
   text-decoration: none;
-  font-weight: 800;
-  font-size: 0.85rem;
+  font-weight: var(--fw-800);
+  font-size: var(--fs-0-85);
   font-style: italic;
   border: 1px solid #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -1087,7 +1076,7 @@ body {
 
 @media (max-width: 768px) {
   .logo {
-    font-size: 1.8rem;
+    font-size: var(--fs-1-8);
   }
   .welcome-line {
     flex-direction: column;
@@ -1103,16 +1092,16 @@ body {
 .fix-ank-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.8rem;
+  font-size: var(--fs-0-8);
 }
 
 .fix-ank-table-header {
   background-color: #ffff00;
   color: #0000ff;
-  font-weight: 800;
+  font-weight: var(--fw-800);
   text-align: center;
   font-style: italic;
-  font-size: 1rem;
+  font-size: var(--fs-1);
   border-bottom: 2px solid #000;
 }
 
@@ -1130,17 +1119,17 @@ body {
 }
 
 .day-cell {
-  font-weight: 900;
+  font-weight: var(--fw-900);
   font-style: italic;
   width: 15%;
   color: #000;
-  font-size: 1rem;
+  font-size: var(--fs-1);
   padding: 2px 2px !important;
 }
 
 .ank-cell {
-  font-size: 1rem;
-  font-weight: 900;
+  font-size: var(--fs-1);
+  font-weight: var(--fw-900);
   font-style: italic;
   width: 12%;
   color: #000;
@@ -1153,16 +1142,16 @@ body {
 }
 
 .patti-top {
-  font-size: 0.75rem;
-  font-weight: 900;
+  font-size: var(--fs-0-75);
+  font-weight: var(--fw-900);
   display: block;
   border-bottom: 1px solid #000;
   padding: 2px 0;
 }
 
 .patti-bottom {
-  font-size: 0.75rem;
-  font-weight: 900;
+  font-size: var(--fs-0-75);
+  font-weight: var(--fw-900);
   display: block;
   padding: 2px 0;
 }
@@ -1194,9 +1183,9 @@ body {
   color: #fff;
   text-align: center;
   padding: 4px;
-  font-weight: 900;
+  font-weight: var(--fw-900);
   font-style: italic;
-  font-size: 0.8rem;
+  font-size: var(--fs-0-8);
   border-bottom: 1px solid #000;
 }
 
@@ -1210,10 +1199,10 @@ body {
   text-align: center;
   border-bottom: 1px solid #000;
   color: var(--blue-text);
-  font-weight: 800;
+  font-weight: var(--fw-800);
   font-style: italic;
   text-decoration: none;
-  font-size: 0.7rem;
+  font-size: var(--fs-0-7);
 }
 
 .matka-chart-item:last-child {
@@ -1255,15 +1244,15 @@ body {
 
 .info-title {
   color: var(--blue-text);
-  font-size: 0.6rem;
-  font-weight: 700;
+  font-size: var(--fs-0-6);
+  font-weight: var(--fw-700);
   text-align: center;
   margin-bottom: 5px;
 }
 
 .info-content {
-  font-size: 0.56rem;
-  font-weight: 500; /* Reduced weight from 800 */
+  font-size: var(--fs-0-56);
+  font-weight: var(--fw-500); /* Reduced weight from 800 */
   color: var(--black-color);
   text-align: center;
   line-height: 1.4;
@@ -1288,15 +1277,15 @@ body {
 }
 
 .keywords-list {
-  font-size: 0.5rem;
+  font-size: var(--fs-0-5);
   color: #ff0000;
-  font-weight: 600;
+  font-weight: var(--fw-600);
   line-height: 1.5;
 }
 
 .highlight-keywords .keywords-list {
   color: #870000;
-  font-weight: 900;
+  font-weight: var(--fw-900);
   font-style: italic;
 }
 
@@ -1310,16 +1299,16 @@ body {
 
 .disclaimer-title {
   color: #000;
-  font-size: 0.85rem;
-  font-weight: 900;
+  font-size: var(--fs-0-85);
+  font-weight: var(--fw-900);
   margin-bottom: 6px;
   font-style: italic;
 }
 
 .disclaimer-text {
   color: #0000ff;
-  font-size: 0.5rem;
-  font-weight: 600;
+  font-size: var(--fs-0-5);
+  font-weight: var(--fw-600);
   line-height: 1.4;
 }
 
@@ -1329,23 +1318,23 @@ body {
 }
 
 .powerd-by {
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: var(--fs-0-8);
+  font-weight: var(--fw-500);
   color: #000;
   margin-bottom: 5px;
 }
 
 .copyright {
-  font-size: 0.5rem;
+  font-size: var(--fs-0-5);
   color: #bc3b58;
-  font-weight: bold;
+  font-weight: var(--fw-bold);
   margin-bottom: 5px;
   margin-top: 5px;
 }
 
 .footer-links {
-  font-size: 0.6rem;
-  font-weight: bold;
+  font-size: var(--fs-0-6);
+  font-weight: var(--fw-bold);
   color: #0000ff;
   line-height: 1.6;
 }
@@ -1367,8 +1356,8 @@ body {
   color: #000;
   border: 1px solid #000;
   padding: 4px 20px;
-  font-weight: 900;
-  font-size: 0.8rem;
+  font-weight: var(--fw-900);
+  font-size: var(--fs-0-8);
   cursor: pointer;
   border-radius: 4px;
 }
@@ -1397,8 +1386,8 @@ body {
   color: #fff;
   text-align: center;
   padding: 2px;
-  font-weight: 900;
-  font-size: 0.8rem;
+  font-weight: var(--fw-900);
+  font-size: var(--fs-0-8);
   border-bottom: 1px solid #000;
 }
 
@@ -1414,16 +1403,16 @@ body {
   color: #000;
   padding: 2px;
   border: 1px solid #999;
-  font-size: 0.75rem;
-  font-weight: 900;
+  font-size: var(--fs-0-75);
+  font-weight: var(--fw-900);
 }
 
 .jodi-record-table td {
   padding: 8px 4px;
   border: 1px solid #ccc;
   text-align: center;
-  font-weight: 900;
-  font-size: 0.9rem;
+  font-weight: var(--fw-900);
+  font-size: var(--fs-0-9);
 }
 
 @media (max-width: 480px) {
@@ -1431,11 +1420,11 @@ body {
     padding: 0;
   }
   .jodi-record-table td {
-    font-size: 0.5rem;
+    font-size: var(--fs-0-5);
     padding: 2px 1px;
   }
   .jodi-record-table th {
-    font-size: 0.45rem;
+    font-size: var(--fs-0-45);
     padding: 1px 0;
   }
   .jodi-record-table {
@@ -1452,9 +1441,9 @@ body {
 }
 
 .jodi-info-text {
-  font-size: 0.65rem;
+  font-size: var(--fs-0-65);
   color: #000;
-  font-weight: 500;
+  font-weight: var(--fw-500);
   line-height: 1.4;
   margin-bottom: 12px;
   text-align: justify;
@@ -1462,8 +1451,8 @@ body {
 
 .jodi-info-title {
   color: #ff0000;
-  font-size: 0.8rem;
-  font-weight: 900;
+  font-size: var(--fs-0-8);
+  font-weight: var(--fw-900);
   margin: 10px 0 5px;
   text-transform: capitalize;
 }
@@ -1474,8 +1463,8 @@ body {
 
 .jodi-faq-title {
   color: #ff0000;
-  font-size: 0.9rem;
-  font-weight: 900;
+  font-size: var(--fs-0-9);
+  font-weight: var(--fw-900);
   margin-bottom: 5px;
 }
 
@@ -1484,15 +1473,15 @@ body {
 }
 
 .faq-q {
-  font-size: 0.75rem;
-  font-weight: 900;
+  font-size: var(--fs-0-75);
+  font-weight: var(--fw-900);
   color: #000;
   margin-bottom: 4px;
 }
 
 .faq-a {
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: var(--fs-0-7);
+  font-weight: var(--fw-600);
   color: #000;
 }
 
@@ -1508,22 +1497,22 @@ body {
 .jodi-footer-logo {
   color: #007bff;
   font-family: "Helvetica", cursive; /* Reusing font from header */
-  font-size: 1.8rem;
-  font-weight: normal;
+  font-size: var(--fs-1-8);
+  font-weight: var(--fw-normal);
   margin-bottom: 5px;
 }
 
 .jodi-footer-msg {
   color: #ff0000;
-  font-weight: 900;
-  font-size: 1.1rem;
+  font-weight: var(--fw-900);
+  font-size: var(--fs-1-1);
   margin-bottom: 2px;
 }
 
 .jodi-footer-contact {
   color: #ff0000;
-  font-weight: 900;
-  font-size: 1.2rem;
+  font-weight: var(--fw-900);
+  font-size: var(--fs-1-2);
   margin-top: 5px;
 }
 
@@ -1544,8 +1533,8 @@ body {
   color: #000;
   padding: 4px;
   border: 1px solid #999;
-  font-size: 0.8rem;
-  font-weight: 900;
+  font-size: var(--fs-0-8);
+  font-weight: var(--fw-900);
 }
 
 .panel-record-table td {
@@ -1554,8 +1543,8 @@ body {
 }
 
 .date-cell {
-  font-size: 0.75rem;
-  font-weight: 900;
+  font-size: var(--fs-0-75);
+  font-weight: var(--fw-900);
   text-align: center;
   padding: 4px 2px;
   width: 90px;
@@ -1563,8 +1552,8 @@ body {
 }
 
 .date-to {
-  font-size: 0.65rem;
-  font-weight: normal;
+  font-size: var(--fs-0-65);
+  font-weight: var(--fw-normal);
   color: #333;
   margin: 2px 0;
 }
@@ -1582,9 +1571,9 @@ body {
 }
 
 .panel-digits.side {
-  font-size: 0.6rem;
+  font-size: var(--fs-0-6);
   line-height: 1.1;
-  font-weight: 800;
+  font-weight: var(--fw-800);
   color: #000;
   width: 14px;
   text-align: center;
@@ -1592,8 +1581,8 @@ body {
 }
 
 .panel-jodi {
-  font-size: 1.1rem;
-  font-weight: 900;
+  font-size: var(--fs-1-1);
+  font-weight: var(--fw-900);
   margin: 0 10px;
   min-width: 30px;
   text-align: center;
@@ -1602,27 +1591,27 @@ body {
 
 @media (max-width: 480px) {
   .panel-jodi {
-    font-size: 0.6rem;
+    font-size: var(--fs-0-6);
     margin: 0;
     min-width: 10px;
-    font-weight: 800;
+    font-weight: var(--fw-800);
   }
   .panel-digits.side {
-    font-size: 0.35rem;
+    font-size: var(--fs-0-35);
     width: 7px;
     line-height: 0.8;
   }
   .panel-record-table th {
-    font-size: 0.45rem;
+    font-size: var(--fs-0-45);
     padding: 1px 0;
   }
   .date-cell {
-    font-size: 0.4rem;
+    font-size: var(--fs-0-4);
     width: 48px;
     padding: 1px 0;
   }
   .date-to {
-    font-size: 0.35rem;
+    font-size: var(--fs-0-35);
     margin: 0;
   }
   .panel-record-table {
@@ -1641,7 +1630,7 @@ body {
 
 .section-header {
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: var(--fs-1);
   padding: 4px;
 }
 
@@ -1650,13 +1639,13 @@ body {
 }
 
 .info-title {
-  font-size: 0.75rem;
+  font-size: var(--fs-0-75);
   color: var(--blue-text);
   margin-bottom: 2px;
 }
 
 .keywords-list {
-  font-size: 0.55rem;
+  font-size: var(--fs-0-55);
   text-align: center;
   color: var(--black-color);
   line-height: 1.2;
@@ -1668,19 +1657,19 @@ body {
 }
 
 .live-game-name {
-  font-size: 1rem;
+  font-size: var(--fs-1);
   margin-bottom: 4px;
 }
 
 .live-game-value {
-  font-size: 1.3rem;
+  font-size: var(--fs-1-3);
   margin-bottom: 6px;
 }
 
 .footer-small-btn {
   font-style: normal;
   padding: 3px 15px;
-  font-size: 0.7rem;
+  font-size: var(--fs-0-7);
   cursor: pointer;
 }
 
@@ -1753,15 +1742,15 @@ body {
 /* Title */
 .auth-title {
   text-align: center;
-  font-size: 1.6rem;
-  font-weight: 600;
+  font-size: var(--fs-1-6);
+  font-weight: var(--fw-600);
   color: var(--blue-text);
   margin-bottom: 5px;
 }
 
 .auth-subtitle {
   text-align: center;
-  font-size: 0.9rem;
+  font-size: var(--fs-0-9);
   margin-bottom: 25px;
   color: var(--black-color);
 }
@@ -1782,8 +1771,8 @@ body {
 }
 
 .form-label {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--fs-0-9);
+  font-weight: var(--fw-600);
   margin-bottom: 6px;
   color: var(--black-color);
 }
@@ -1820,7 +1809,7 @@ body {
   background: var(--blue-btn) !important;
   border-color: var(--blue-btn) !important;
   border-radius: 6px !important;
-  font-weight: 600;
+  font-weight: var(--fw-600);
   margin-top: 10px;
 }
 .auth-btn:hover {
@@ -1835,12 +1824,12 @@ body {
 .auth-footer {
   margin-top: 20px;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: var(--fs-0-9);
 }
 
 .auth-footer a {
   color: var(--purple-color);
-  font-weight: 600;
+  font-weight: var(--fw-600);
   text-decoration: none;
 }
 
@@ -1874,4 +1863,50 @@ body {
   color: var(--red-text);
   font-size: 12px;
   margin-top: 4px;
+}
+
+/* Notice Message Section */
+.notice-message-container {
+  background-color: var(--bg-primary);
+  text-align: center;
+  padding: 8px 4px;
+  margin: 2px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.notice-title {
+  color: var(--pink-primary);
+  font-weight: var(--fw-bold);
+  font-style: italic;
+  font-size: var(--fs-1);
+  margin-bottom: 2px;
+}
+
+.notice-warning {
+  color: var(--dark-red);
+  font-weight: var(--fw-bold);
+  font-style: italic;
+  font-size: var(--fs-0-8);
+}
+
+.notice-text {
+  color: var(--charry-red-color);
+  font-weight: var(--fw-bold);
+  font-style: italic;
+  font-size: var(--fs-0-75);
+}
+
+/* Override Notice sizes to be slightly smaller on desktop */
+@media screen and (min-width: 768px) {
+  .notice-title {
+    font-size: var(--fs-1);
+  }
+  .notice-warning {
+    font-size: var(--fs-0-7);
+  }
+  .notice-text {
+    font-size: var(--fs-0-65);
+  }
 }

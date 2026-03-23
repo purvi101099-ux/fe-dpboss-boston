@@ -5,13 +5,13 @@ function TopHeader() {
 
   return (
     <div className="header-top common-border">
-      <h5
+      <h1
         className="logo"
         onClick={() => navigate("/")}
         style={{ cursor: "pointer" }}
       >
         Dp<span>BOSS.BOSTON</span>
-      </h5>
+      </h1>
     </div>
   );
 }

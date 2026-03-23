@@ -18,7 +18,7 @@ export default function LiveResult() {
 
   return (
     <div className="live-results-container common-border">
-      <div className="lucky-header">📢 LIVE RESULT 📢</div>
+      <h3 className="lucky-header">📢 LIVE RESULT 📢</h3>
 
       <p className="live-tagline">Sabse Tezz Live Result Yahi Milega</p>
 
