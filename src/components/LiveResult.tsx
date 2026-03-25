@@ -18,9 +18,9 @@ export default function LiveResult() {
 
   return (
     <div className="live-results-container common-border">
-      <h3 className="lucky-header">📢 LIVE RESULT 📢</h3>
+      <h3 className="lucky-header">Fastest Results... Live & Accurate</h3>
 
-      <p className="live-tagline">Sabse Tezz Live Result Yahi Milega</p>
+      <p className="live-tagline">Fastest Live Result Yahi Milega</p>
 
       {isLoading && <div className="loading-text">Loading live results...</div>}
 

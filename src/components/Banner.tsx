@@ -19,11 +19,11 @@ export default function Banner() {
       <div className="notice-box common-border">
         <div className="notice-header">★ NOTICE ★</div>
         <div className="notice-body">
-          <p>अपना बाजार dpboss.boston वेबसाइट में डलवाने</p>
+          <p>अपना बाजार Satta8055.boston वेबसाइट में डलवाने</p>
           <p>के लिए आज ही हमें ईमेल करे</p>
           <p>
             <span className="email-text">Email : </span>
-            <a href="mailto:support@dpboss.net">support@dpboss.net</a>
+            <a href="mailto:support@Satta8055.net">support@Satta8055.com</a>
           </p>
           <p>शर्तें लागू</p>
         </div>

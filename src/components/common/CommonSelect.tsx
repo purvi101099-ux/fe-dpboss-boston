@@ -14,6 +14,7 @@ interface CommonSelectProps {
   showSearch?: boolean;
   style?: React.CSSProperties;
   loading?: boolean;
+  disabled?: boolean;
 }
 
 const CommonSelect: React.FC<CommonSelectProps> = ({
@@ -23,6 +24,7 @@ const CommonSelect: React.FC<CommonSelectProps> = ({
   showSearch = true,
   style,
   loading,
+  disabled = false,
 }) => {
   const {
     control,
@@ -50,6 +52,7 @@ const CommonSelect: React.FC<CommonSelectProps> = ({
             options={options}
             status={errorMessage ? "error" : ""}
             style={{ width: "100%", ...style }}
+            disabled={disabled}
           />
         )}
       />

@@ -91,9 +91,9 @@ const BazarResultManagement: React.FC = () => {
       created_at: moment(values.date).format("YYYY-MM-DD"),
     };
 
-    if (editModal.data?.id) {
+    if (editModal.data?.record_id) {
       updateMutation.mutate({
-        id: editModal.data.id,
+        id: editModal.data.record_id ,
         ...payload,
       });
     } else {
@@ -116,9 +116,9 @@ const BazarResultManagement: React.FC = () => {
       <CommonPageHeader
         title={BAZAR_RESULT_MESSAGES.PAGE_TITLE}
         icon={<UnorderedListOutlined />}
-        buttonLabel={BAZAR_RESULT_MESSAGES.CREATE_BUTTON}
+        // buttonLabel={BAZAR_RESULT_MESSAGES.CREATE_BUTTON}
         buttonIcon={<PlusOutlined />}
-        onButtonClick={() => editModal.openModal()}
+        // onButtonClick={() => editModal.openModal()}
       />
 
       <BazarResultTable

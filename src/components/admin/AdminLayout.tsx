@@ -23,6 +23,7 @@ import {
   BulbOutlined,
   BulbFilled,
   UnorderedListOutlined,
+  SettingOutlined,
 } from "@ant-design/icons";
 import { Link, useLocation, Outlet, useNavigate } from "react-router-dom";
 import { TOKEN } from "@/utils/constants";
@@ -89,6 +90,23 @@ const AdminLayout: React.FC = () => {
           onClick={() => isMobile && setDrawerVisible(false)}
         >
           Bazar Result
+        </Link>
+      ),
+    },
+    {
+      key: "/admin/site-settings",
+      icon: (
+        <SettingOutlined
+          style={{ fontSize: isMobile ? "16px" : "18px" }}
+        />
+      ),
+      label: (
+        <Link
+          to="/admin/site-settings"
+          style={{ fontSize: isMobile ? "13px" : "14px", fontWeight: 500 }}
+          onClick={() => isMobile && setDrawerVisible(false)}
+        >
+          Site Settings
         </Link>
       ),
     },
@@ -275,7 +293,7 @@ const AdminLayout: React.FC = () => {
                 }}
               />
               <Dropdown
-                menu={{ items: profileMenuItems }}
+                menu={{ items: [] }}
                 placement="bottomRight"
                 arrow={{ pointAtCenter: true }}
                 trigger={["click"]}

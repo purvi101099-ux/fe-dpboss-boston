@@ -10,7 +10,7 @@ function TopHeader() {
         onClick={() => navigate("/")}
         style={{ cursor: "pointer" }}
       >
-        Dp<span>BOSS.BOSTON</span>
+        Satta8055<span></span>
       </h1>
     </div>
   );

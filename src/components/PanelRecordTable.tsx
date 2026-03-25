@@ -162,7 +162,7 @@ export default function PanelRecordTable({
         className="jodi-footer-info"
         style={{ marginTop: "15px", padding: "0 10px" }}
       >
-        <p className="jodi-info-text">
+        {/* <p className="jodi-info-text">
           Welcome to DPBoss Services, your trusted destination for comprehensive
           and accurate {gameName || "this game"} Panel Chart Records. We take
           proud in offering a reliable platform that caters specifically to the
@@ -217,7 +217,7 @@ export default function PanelRecordTable({
               {gameName || "this"} matka enthusiasts.
             </p>
           </div>
-        </div>
+        </div> */}
 
         <div style={{ textAlign: "center", margin: "15px 0" }}>
           <button onClick={scrollToTop} className="go-bottom-btn">
@@ -227,19 +227,19 @@ export default function PanelRecordTable({
 
         <div
           className="jodi-custom-footer common-border"
-          style={{ border: "3px solid #3f51b5", padding: "10px" }}
+          style={{ padding: "10px", marginTop: "10px" }}
         >
-          <h2 className="jodi-footer-logo" style={{ color: "#007bff" }}>
-            DPBOSS.BOSTON
+          <h2 className="jodi-footer-logo" style={{ fontSize: "1.8rem" }}>
+            Satta8055 Services
           </h2>
-          <p className="jodi-footer-msg" style={{ color: "red" }}>
+          <p className="jodi-footer-msg" style={{ fontSize: "0.9rem" }}>
             All Rights Reserved®
           </p>
-          <p className="jodi-footer-msg" style={{ color: "red" }}>
+          {/* <p className="jodi-footer-msg" style={{ fontSize: "0.8rem" }}>
             (1998-2024)
-          </p>
-          <p className="jodi-footer-contact" style={{ color: "red" }}>
-            Contact (Astrologer-<span>Dpboss</span>)
+          </p> */}
+          <p className="jodi-footer-contact" style={{ fontSize: "1rem" }}>
+            Contact (Astrologer-<span>Satta8055</span>)
           </p>
         </div>
       </div>

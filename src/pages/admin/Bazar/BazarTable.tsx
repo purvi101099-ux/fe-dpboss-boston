@@ -28,18 +28,18 @@ const BazarTable: React.FC<BazarTableProps> = ({
           <Tooltip title="Edit Bazar">
             <Button
               type="text"
-              icon={<EditOutlined style={{ color: "var(--blue-btn)" }} />}
+              icon={<EditOutlined style={{ color: "var(--blue-btn)", fontSize: "15px" }} />}
               onClick={() => onEdit(record)}
             />
           </Tooltip>
-          <Tooltip title="Delete Bazar">
+          {/* <Tooltip title="Delete Bazar">
             <Button
               type="text"
               danger
               icon={<DeleteOutlined />}
               onClick={() => onDelete(record)}
             />
-          </Tooltip>
+          </Tooltip> */}
         </Space>
       ),
     },
@@ -48,7 +48,7 @@ const BazarTable: React.FC<BazarTableProps> = ({
       dataIndex: "bazarName",
       key: "bazarName",
       sorter: (a: any, b: any) => a.bazarName.localeCompare(b.bazarName),
-      render: (text: string) => <span style={{ fontWeight: 600 }}>{text}</span>,
+      render: (text: string) => <span style={{ fontWeight: 600 ,fontSize: "15px"}}>{text}</span>,
     },
     {
       title: "Open Time",
@@ -56,8 +56,8 @@ const BazarTable: React.FC<BazarTableProps> = ({
       key: "openTime",
       sorter: (a: any, b: any) => a.openTime.localeCompare(b.openTime),
       render: (text: string, record: any) => (
-        <span>
-          {text} <Tag color="blue">{record.formatOpenTime}</Tag>
+        <span style={{fontSize: "15px"}}>
+          {text} &nbsp;{record.formatOpenTime}
         </span>
       ),
     },
@@ -67,8 +67,8 @@ const BazarTable: React.FC<BazarTableProps> = ({
       key: "closeTime",
       sorter: (a: any, b: any) => a.closeTime.localeCompare(b.closeTime),
       render: (text: string, record: any) => (
-        <span>
-          {text} <Tag color="orange">{record.formatCloseTime}</Tag>
+        <span style={{fontSize: "15px"}}>
+          {text} &nbsp;{record.formatCloseTime}
         </span>
       ),
     },
@@ -84,7 +84,7 @@ const BazarTable: React.FC<BazarTableProps> = ({
       render: (status: number) => (
         <Tag
           color={status === 1 ? "green" : "red"}
-          style={{ borderRadius: "4px", textTransform: "capitalize" }}
+          style={{ borderRadius: "4px", textTransform: "capitalize",fontSize: "15px" }}
         >
           {status === 1 ? "Active" : "Inactive"}
         </Tag>

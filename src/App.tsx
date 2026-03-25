@@ -15,6 +15,7 @@ const queryClient = new QueryClient();
 
 import PrivateRoute from "@/components/common/PrivateRoute";
 import NotFoundRedirect from "@/components/common/NotFoundRedirect";
+import SiteSettingsPage from "./pages/admin/Site";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="bazar" element={<Bazar />} />
               <Route path="bazar-result" element={<BazarResult />} />
+              <Route path="site-settings" element={<SiteSettingsPage />} />
             </Route>
           </Route>
 

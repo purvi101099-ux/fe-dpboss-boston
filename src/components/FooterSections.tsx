@@ -40,31 +40,30 @@ export default function FooterSections() {
       <div className="disclaimer-box common-border">
         <h3 className="disclaimer-title">-:DISCLAIMER:-</h3>
         <p className="disclaimer-text">
-          Visiting this site and browsing it is strictly recommended at your own
-          risk. Every information available here is only according to
-          informational purpose and based on astrology and number calculations.
-          We are no associated or affiliated with any illegal Matka business. We
-          make sure we follow all rules and regulations of the regions where you
-          are accessing the website. There are also chances that the website may
-          be banned in your area and after that if you are using it, you are
-          solely dependable and responsible for any damage, loss or legal action
-          taken.
+          Visiting and using this website is entirely at your own risk. All information provided on this platform is strictly for informational and entertainment purposes only, based on numerical analysis and general interpretations.
+
+We are not associated, affiliated, or connected with any illegal Satta Matka or gambling activities in any form. We strictly comply with all applicable laws and regulations.
+
+Users are advised to check their local laws and regulations before accessing or using this website. If the website is restricted or banned in your region, you should not access it.
+
+By continuing to use this website, you agree that you are solely responsible for any consequences, including legal issues, losses, or damages that may arise.
         </p>
       </div>
 
       {/* Final Footer */}
       <div className="bottom-footer ">
-        <h2 className="powerd-by common-border">POWERD BY dpboss.boston</h2>
+        <h2 className="powerd-by common-border">Satta8055.com</h2>
         <div className="common-border">
-          <p className="copyright">© 2011 - 2026 dpboss.boston</p>
-          <div className="footer-links">
+          <p className="copyright">©2026 Satta8055.com</p>
+          {/* <div className="footer-links">
             <a href="#">About us</a> | <a href="#">Contact us</a>
             <br />
             <a href="#">Privacy policy</a> | <a href="#">Term And Conditions</a>{" "}
             | <a href="#">Result Api</a>
-          </div>
+          </div> */}
         </div>
       </div>
+
     </div>
   );
 }

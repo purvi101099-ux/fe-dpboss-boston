@@ -25,6 +25,11 @@ const JodiChartRecord = () => {
     return (response as any).data || [];
   }, [response]);
 
+    const gameData = React.useMemo(() => {
+    if (!response) return [];
+    return (response as any).game || {};
+  }, [response]);
+
   // Extract game info from the first record if available
   const gameInfo = React.useMemo(() => {
     // Priority 1: Data passed via navigation state
@@ -45,7 +50,7 @@ const JodiChartRecord = () => {
     if (chartData.length > 0) {
       const first = chartData[0];
       return {
-        name: first.bazar?.name || first.bazar?.bazarName || "Game",
+        name: first.bazar?.name || first.bazar?.bazarName,
         value:
           first.value ||
           `${first.first_number}-${first.jodi_number}-${first.second_number}`,
@@ -55,43 +60,55 @@ const JodiChartRecord = () => {
     return { name: "SRIDEVI MORNING", value: "Loading..." };
   }, [chartData, passedGame]);
 
-  const keywords = `
-    Dpboss ${gameInfo.name} jodi chart, ${gameInfo.name} jodi chart,
-    old ${gameInfo.name} jodi chart, dpboss ${gameInfo.name} chart,
-    ${gameInfo.name} jodi record, ${gameInfo.name} jodi chart 2015,
-    ${gameInfo.name} jodi chart 2012 to 2023, ${gameInfo.name} final ank,
-    ${gameInfo.name} matka chart, satta ${gameInfo.name} chart jodi,
-    डीपी बॉस, सट्टा चार्ट, ${gameInfo.name} जोड़ी चार्ट
-  `;
+const gameName = gameInfo.name || gameData?.game_name;
+
+const keywords = `
+Satta8055 ${gameName} jodi chart,
+${gameName} jodi chart,
+${gameName} old jodi chart,
+${gameName} chart,
+${gameName} jodi record,
+${gameName} jodi chart 2015,
+${gameName} final ank,
+${gameName} matka chart,
+satta ${gameName} chart jodi,
+${gameName} guessing,
+${gameName} result,
+${gameName} live result,
+Satta8055 matka result,
+सट्टा चार्ट,
+${gameName} जोड़ी चार्ट
+`.replace(/\s+/g, ' ').trim();
 
   return (
     <div className="container">
       <TopHeader />
 
       <div className="section-header">
-        {gameInfo.name.toUpperCase()} JODI CHART
+        {gameInfo.name || gameData?.game_name.toUpperCase()} JODI CHART
       </div>
 
       <div className="keywords-container">
         <h2 className="info-title">
-          {gameInfo.name.toUpperCase()} JODI RESULT CHART RECORDS
+          {gameInfo.name || gameData?.game_name.toUpperCase()} JODI RESULT CHART RECORDS
         </h2>
         <p className="keywords-list">{keywords}</p>
       </div>
 
-      <div className="result-item common-border">
-        <h3 className="live-game-name">{gameInfo.name}</h3>
+      {/* <div className="result-item common-border">
+        <h3 className="live-game-name">{gameInfo.name || gameData?.game_name}</h3>
         <div className="live-game-value">{gameInfo.value}</div>
 
         <button className="footer-small-btn" onClick={() => refetch()}>
           Refresh Result
         </button>
-      </div>
+      </div> */}
 
       <JodiRecordTable
         data={chartData}
         loading={isLoading}
-        gameName={gameInfo.name}
+        gameName={gameInfo.name || gameData?.game_name}
+        onRefresh={refetch}
       />
     </div>
   );

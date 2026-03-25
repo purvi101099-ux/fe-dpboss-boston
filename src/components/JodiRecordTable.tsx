@@ -99,8 +99,7 @@ export default function JodiRecordTable({
             borderBottom: "none",
           }}
         >
-          {(gameName || "SRIDEVI MORNING").toUpperCase()} MATKA JODI RECORD 2020
-          - 2026
+          {(gameName || "SRIDEVI MORNING").toUpperCase()} MATKA JODI RECORD 
         </div>
         <div
           className="jodi-table-wrapper"
@@ -133,11 +132,11 @@ export default function JodiRecordTable({
 
       {/* New Info Sections */}
       <div className="jodi-footer-info" style={{ marginTop: "10px" }}>
-        <p className="jodi-info-text">
+        {/* <p className="jodi-info-text">
           Are you passionate about the game of luck and intrigued by the world
           of matka gambling? If so, exploring {gameName || "this game"} Jodi
           Chart Records can add an exciting dimension to your matka journey.
-          Dpboss Services offers a comprehensive platform to access and analyze{" "}
+          Satta8055 Services offers a comprehensive platform to access and analyze{" "}
           {gameName || "this game"} Jodi Chart Records, providing enthusiasts
           with valuable insights and historical data.
         </p>
@@ -148,11 +147,11 @@ export default function JodiRecordTable({
         <p className="jodi-info-text">
           Embark on your matka journey with confidence, armed with the insights
           derived from {gameName || "this game"} Jodi Chart Records available
-          through Dpboss Services. Explore the rich history of matka outcomes
+          through Satta8055 Services. Explore the rich history of matka outcomes
           and elevate your gaming strategies to new heights.
-        </p>
+        </p> */}
 
-        <div className="jodi-faq-section" style={{ margin: "10px 0" }}>
+        {/* <div className="jodi-faq-section" style={{ margin: "10px 0" }}>
           <h3 className="jodi-faq-title">Frequently Asked Questions (FAQs):</h3>
           <div className="faq-item" style={{ marginBottom: "8px" }}>
             <h4 className="faq-q">
@@ -164,30 +163,30 @@ export default function JodiRecordTable({
               displaying the combinations of numbers that have appeared over
               time. These charts are invaluable tools for matka players, helping
               them identify patterns, trends, and potential winning strategies.
-              Dpboss Services ensures easy access to {gameName || "these"} Jodi
+              Satta8055 Services ensures easy access to {gameName || "these"} Jodi
               Chart Records, allowing users to make informed decisions and
               enhance their matka gaming experience.
             </p>
           </div>
           <div className="faq-item" style={{ marginBottom: "8px" }}>
             <h4 className="faq-q">
-              Q2. How does Dpboss Services enhance your matka experience with{" "}
+              Q2. How does Satta8055 Services enhance your matka experience with{" "}
               {gameName || "these"} Jodi Chart Records?
             </h4>
             <p className="faq-a">
-              Dpboss Services takes pride in offering a user-friendly interface
+              Satta8055 Services takes pride in offering a user-friendly interface
               that simplifies the navigation and retrieval of{" "}
               {gameName || "these"} Jodi Chart Records. The platform is designed
               to cater to both novice and seasoned players, providing a reliable
               source of historical data for analysis. By understanding past
               patterns and outcomes, matka enthusiasts can make more informed
-              guesses, improving their chances of success. Dpboss Services
+              guesses, improving their chances of success. Satta8055 Services
               strives to create a seamless experience, ensuring that users have
               all the tools they need to navigate the intricate world of matka
               gambling.
             </p>
           </div>
-        </div>
+        </div> */}
 
         <div style={{ textAlign: "center", margin: "10px 0" }}>
           <button onClick={scrollToTop} className="go-bottom-btn">
@@ -200,21 +199,21 @@ export default function JodiRecordTable({
           style={{ padding: "10px", marginTop: "10px" }}
         >
           <h2 className="jodi-footer-logo" style={{ fontSize: "1.8rem" }}>
-            DPBOSS.BOSTON
+            Satta8055 Services
           </h2>
           <p className="jodi-footer-msg" style={{ fontSize: "0.9rem" }}>
             All Rights Reserved®
           </p>
-          <p className="jodi-footer-msg" style={{ fontSize: "0.8rem" }}>
+          {/* <p className="jodi-footer-msg" style={{ fontSize: "0.8rem" }}>
             (1998-2024)
-          </p>
+          </p> */}
           <p className="jodi-footer-contact" style={{ fontSize: "1rem" }}>
-            Contact (Astrologer-<span>Dpboss</span>)
+            Contact (Astrologer-<span>Satta8055</span>)
           </p>
         </div>
       </div>
 
-      <div style={{ marginTop: "10px" }}>
+      {/* <div style={{ marginTop: "10px" }}>
         <a
           href="#"
           className="footer-small-btn"
@@ -222,7 +221,7 @@ export default function JodiRecordTable({
         >
           Matka Play
         </a>
-      </div>
+      </div> */}
     </div>
   );
 }

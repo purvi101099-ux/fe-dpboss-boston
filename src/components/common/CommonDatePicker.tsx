@@ -8,6 +8,7 @@ interface CommonDatePickerProps {
   placeholder?: string;
   format?: string;
   style?: React.CSSProperties;
+  disabled?: boolean;
 }
 
 const CommonDatePicker: React.FC<CommonDatePickerProps> = ({
@@ -15,6 +16,7 @@ const CommonDatePicker: React.FC<CommonDatePickerProps> = ({
   placeholder = "Select date",
   format = "DD-MM-YYYY",
   style,
+  disabled= false,
 }) => {
   const {
     control,
@@ -22,7 +24,9 @@ const CommonDatePicker: React.FC<CommonDatePickerProps> = ({
   } = useFormContext();
 
   const errorMessage = errors?.[name]?.message as string | undefined;
-
+  const disabledDate = (current:any) => {
+    return current && !current.isSame(moment(), "day");
+  };
   return (
     <div className="common-datepicker-wrapper">
       <Controller
@@ -37,6 +41,7 @@ const CommonDatePicker: React.FC<CommonDatePickerProps> = ({
             format={format}
             status={errorMessage ? "error" : ""}
             style={{ width: "100%", ...style }}
+            disabled={disabled}
           />
         )}
       />

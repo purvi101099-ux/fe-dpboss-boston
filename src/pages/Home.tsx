@@ -15,27 +15,29 @@ import MatkaCharts from "@/components/MatkaCharts";
 import InfoSections from "@/components/InfoSections";
 import FooterSections from "@/components/FooterSections";
 import Footer from "@/components/Footer";
+import Notice from "@/components/Notice";
 
 const Home = () => {
   return (
     <div className="container">
       <Header />
-      <LuckyNumber />
+      <Notice/>
+      {/* <LuckyNumber /> */}
       <LiveResult />
       <Banner />
       <Results />
-      <Starline />
-      <BombayBazar />
-      <FataFat />
-      <ApiSection />
-      <SpecialZone />
+      {/* <Starline />
+      <BombayBazar /> */}
+      {/* <FataFat /> */}
+      {/* <ApiSection /> */}
+      {/* <SpecialZone />
       <WeeklyCharts />
       <FixAnk />
-      <Kalayan />
+      <Kalayan /> */}
       <MatkaCharts />
       <InfoSections />
       <FooterSections />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

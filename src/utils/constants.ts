@@ -461,7 +461,7 @@ export const keywords1 = [
 export const keywords2 = [
   "dp boss net",
   "dp satta",
-  "dpboss dpboss",
+  "Satta8055 Satta8055",
   "Indian satta matka",
   "kalyan matka result today",
   "matka boss",
@@ -484,7 +484,7 @@ export const keywords2 = [
   "satta fix",
   "kalyan final ank",
   "dp matka",
-  "dpboss net",
+  "Satta8055 net",
   "satta mata com",
   "सट्टा मटका",
   "sattamatka 143",
@@ -493,8 +493,8 @@ export const keywords2 = [
   "satta fast",
   "kalyan open",
   "satta 143",
-  "dpboss 143 guessing",
-  "dpboss satta",
+  "Satta8055 143 guessing",
+  "Satta8055 satta",
   "golden satta matka",
   "satta bajar",
 ];
@@ -1465,7 +1465,7 @@ export const results = [
 ];
 
 export const specialGames = [
-  "Dpboss Guessing Forum (New)",
+  "Satta8055 Guessing Forum (New)",
   "All market free fix game",
   "Ratan Khatri Fix Panel Chart",
   "Matka Final Number Trick Chart",

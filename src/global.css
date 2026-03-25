@@ -64,12 +64,13 @@ body {
 .logo {
   font-size: var(--fs-3);
   font-weight: var(--fw-normal);
-  color: var(--pink-logo);
+  color:linear-gradient(rgb(252, 227, 138) 0%, rgb(243, 129, 129) 100%);
   font-family: "Lobster", cursive;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2px;
+  background: linear-gradient(#FCE38A 0%, #F38181 100%);
 }
 
 .logo span {
@@ -222,6 +223,14 @@ body {
 
 .notice-header {
   background-color: var(--dark-red);
+  color: #fff;
+  padding: 2px;
+  font-weight: var(--fw-bold);
+  font-style: italic;
+  font-size: var(--fs-0-85);
+}
+.notice-header-new {
+  background-color: #ff00a2;
   color: #fff;
   padding: 2px;
   font-weight: var(--fw-bold);
@@ -398,7 +407,7 @@ body {
   border: 1px solid #000;
   cursor: pointer;
   font-size: var(--fs-0-6);
-  width: 40px; /* fixed width */
+  width: 60px; /* fixed width */
   height: 18px;
   border-radius: 6px; /* small rounded corners */
   font-weight: var(--fw-400);
@@ -1355,7 +1364,7 @@ body {
   background: linear-gradient(180deg, #66b3ff 0%, #3399ff 100%);
   color: #000;
   border: 1px solid #000;
-  padding: 4px 20px;
+  padding: 2px 10px;
   font-weight: var(--fw-900);
   font-size: var(--fs-0-8);
   cursor: pointer;

@@ -4,7 +4,7 @@ export default function Starline() {
   return (
     <div className="starline-container">
       <div className="support-header common-border">
-        Email for any inquiries Or Support: <span>support@dpboss.net</span>
+        Email for any inquiries Or Support: <span>support@Satta8055.net</span>
       </div>
 
       <div className="starline-section">
