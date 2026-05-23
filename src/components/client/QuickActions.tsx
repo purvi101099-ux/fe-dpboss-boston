@@ -1,10 +1,6 @@
 import React from "react";
 import { Button, Row, Col } from "antd";
-import {
-  MessageOutlined,
-  WalletOutlined,
-  DownloadOutlined,
-} from "@ant-design/icons";
+import { Icon } from "@iconify/react";
 
 const QuickActions: React.FC = () => {
   const primaryBtnStyle: React.CSSProperties = {
@@ -13,22 +9,28 @@ const QuickActions: React.FC = () => {
     border: "none",
     fontWeight: "600",
     borderRadius: "12px",
-    fontSize: "16px",
-    color: "#000080", // Blue text as seen in screenshot
+    fontSize: "14px",
+    color: "#000080",
+    whiteSpace: "normal",
+    lineHeight: "1.2",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   };
 
   const actionBtnStyle: React.CSSProperties = {
     flex: 1,
     background: "#ffcc99",
     border: "none",
-    fontSize: "12px",
-    height: "38px",
+    fontSize: "11px",
+    height: "36px",
     borderRadius: "20px",
     fontWeight: "600",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     gap: "4px",
+    padding: "0 8px",
   };
 
   return (
@@ -49,13 +51,22 @@ const QuickActions: React.FC = () => {
 
       {/* Action Icons */}
       <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
-        <Button icon={<MessageOutlined />} style={actionBtnStyle}>
+        <Button
+          icon={<Icon icon="material-symbols:chat" width="16" />}
+          style={actionBtnStyle}
+        >
           Support
         </Button>
-        <Button icon={<WalletOutlined />} style={actionBtnStyle}>
+        <Button
+          icon={<Icon icon="material-symbols:add-card" width="16" />}
+          style={actionBtnStyle}
+        >
           Add Money
         </Button>
-        <Button icon={<DownloadOutlined />} style={actionBtnStyle}>
+        <Button
+          icon={<Icon icon="material-symbols:upload" width="16" />}
+          style={actionBtnStyle}
+        >
           Withdraw
         </Button>
       </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import GameCard from "@/components/client/GameCard";
 import QuickActions from "@/components/client/QuickActions";
+import NewsMarquee from "@/components/client/NewsMarquee";
 
 const ClientHome: React.FC = () => {
   const games = [
@@ -28,16 +29,148 @@ const ClientHome: React.FC = () => {
       numbers: "136-1-***",
       color: "green",
     },
+    {
+      name: "KALYAN",
+      status: "Betting is Closed for Today",
+      numbers: "678-13-238",
+      color: "red",
+    },
+    {
+      name: "MILAN DAY",
+      status: "Betting is Closed for Today",
+      numbers: "378-86-150",
+      color: "red",
+    },
+    {
+      name: "MILAN NIGHT",
+      status: "Betting is Running For Close",
+      numbers: "136-1-***",
+      color: "green",
+    },
+
+    {
+      name: "KALYAN",
+      status: "Betting is Closed for Today",
+      numbers: "678-13-238",
+      color: "red",
+    },
+    {
+      name: "MILAN DAY",
+      status: "Betting is Closed for Today",
+      numbers: "378-86-150",
+      color: "red",
+    },
+    {
+      name: "MILAN NIGHT",
+      status: "Betting is Running For Close",
+      numbers: "136-1-***",
+      color: "green",
+    },
+
+    {
+      name: "KALYAN",
+      status: "Betting is Closed for Today",
+      numbers: "678-13-238",
+      color: "red",
+    },
+    {
+      name: "MILAN DAY",
+      status: "Betting is Closed for Today",
+      numbers: "378-86-150",
+      color: "red",
+    },
+    {
+      name: "MILAN NIGHT",
+      status: "Betting is Running For Close",
+      numbers: "136-1-***",
+      color: "green",
+    },
+
+    {
+      name: "KALYAN",
+      status: "Betting is Closed for Today",
+      numbers: "678-13-238",
+      color: "red",
+    },
+    {
+      name: "MILAN DAY",
+      status: "Betting is Closed for Today",
+      numbers: "378-86-150",
+      color: "red",
+    },
+    {
+      name: "MILAN NIGHT",
+      status: "Betting is Running For Close",
+      numbers: "136-1-***",
+      color: "green",
+    },
+
+    {
+      name: "KALYAN",
+      status: "Betting is Closed for Today",
+      numbers: "678-13-238",
+      color: "red",
+    },
+    {
+      name: "MILAN DAY",
+      status: "Betting is Closed for Today",
+      numbers: "378-86-150",
+      color: "red",
+    },
+    {
+      name: "MILAN NIGHT",
+      status: "Betting is Running For Close",
+      numbers: "136-1-***",
+      color: "green",
+    },
+
+    {
+      name: "KALYAN",
+      status: "Betting is Closed for Today",
+      numbers: "678-13-238",
+      color: "red",
+    },
+    {
+      name: "MILAN DAY",
+      status: "Betting is Closed for Today",
+      numbers: "378-86-150",
+      color: "red",
+    },
+    {
+      name: "MILAN NIGHT",
+      status: "Betting is Running For Close",
+      numbers: "136-1-***",
+      color: "green",
+    },
+
+    {
+      name: "KALYAN",
+      status: "Betting is Closed for Today",
+      numbers: "678-13-238",
+      color: "red",
+    },
+    {
+      name: "MILAN DAY",
+      status: "Betting is Closed for Today",
+      numbers: "378-86-150",
+      color: "red",
+    },
+    {
+      name: "MILAN NIGHT",
+      status: "Betting is Running For Close",
+      numbers: "136-1-***",
+      color: "green",
+    },
   ];
 
   return (
     <div
       style={{
         padding: "12px",
-        background: "#fff",
         minHeight: "calc(100vh - 130px)",
       }}
     >
+      <NewsMarquee />
       <QuickActions />
 
       {/* Game Cards */}

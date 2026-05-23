@@ -1,0 +1,131 @@
+.game-card {
+  margin-bottom: 8px;
+  border-radius: 12px;
+  border: 1px solid var(--gc-border);
+  box-shadow: 0 2px 8px var(--gc-shadow);
+}
+
+.game-card :where(.ant-card-body) {
+  padding: 8px 12px !important;
+}
+
+.game-card-layout {
+  display: grid;
+  align-items: center;
+  text-align: center;
+  /* Mobile default layout: stacked/centered as in image */
+  grid-template-areas:
+    "name name name"
+    "time status play"
+    "nums nums nums";
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2px 1px;
+}
+
+.game-name {
+  grid-area: name;
+  font-weight: 700;
+  font-size: 0.95rem; /* Further reduced from 1.15rem */
+  color: var(--gc-name-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-style: italic;
+  line-height: 1.2;
+  word-spacing: 100vw;
+}
+
+.game-side-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.game-time-col {
+  grid-area: time;
+}
+
+.game-play-col {
+  grid-area: play;
+}
+
+.game-card-icon {
+  font-size: 1.25rem; /* Reduced from 1.5rem */
+  color: var(--gc-accent);
+}
+
+.game-card-label {
+  font-size: 0.55rem; /* Reduced from 0.6rem */
+  color: var(--gc-text-muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.game-status {
+  grid-area: status;
+  font-size: 0.65rem; /* Further reduced from 0.75rem */
+  font-weight: 600;
+  margin: 0 2px;
+  line-height: 1.2;
+}
+
+.game-numbers {
+  grid-area: nums;
+  font-weight: 700;
+  font-size: 1.2rem; /* Reduced from 1.4rem */
+  color: var(--gc-number-color);
+  letter-spacing: 0.5px;
+  margin-top: 1px;
+}
+
+/* Desktop: No change version (3 columns) */
+@media (min-width: 768px) {
+  .game-card-layout {
+    grid-template-areas: "time info play";
+    grid-template-columns: 80px 1fr 80px;
+    gap: 0 12px;
+    padding: 4px 8px;
+  }
+
+  /* Create a virtual "info" column by positioning items into the middle cell */
+  .game-name,
+  .game-status,
+  .game-numbers {
+    grid-column: 2;
+  }
+
+  .game-name {
+    grid-row: 1;
+    font-size: 1.0625rem;
+    font-style: normal; /* Restore desktop style */
+    word-spacing: normal;
+    margin-bottom: 2px;
+  }
+
+  .game-status {
+    grid-row: 2;
+    font-size: 0.75rem;
+  }
+
+  .game-numbers {
+    grid-row: 3;
+    font-size: 1.25rem;
+    margin-top: 2px;
+  }
+
+  .game-name,
+  .game-status,
+  .game-numbers {
+    grid-area: auto; /* Clear mobile grid-area */
+  }
+
+  /* Specific positioning for desktop to mimic old layout */
+  .game-time-col {
+    grid-row: 1 / 4;
+    grid-column: 1;
+  }
+  .game-play-col {
+    grid-row: 1 / 4;
+    grid-column: 3;
+  }
+}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { Icon } from "@iconify/react";
 import ClientHeader from "@/components/client/ClientHeader";
 import SidebarDrawer from "@/components/client/SidebarDrawer";
 import BottomNavbar from "@/components/client/BottomNavbar";
@@ -29,11 +30,7 @@ const ProtectedLayout: React.FC = () => {
         className="floating-whatsapp"
         onClick={() => window.open("https://wa.me/your-number", "_blank")}
       >
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-          alt="WhatsApp"
-          style={{ width: "100%", height: "100%" }}
-        />
+        <Icon icon="logos:whatsapp-icon" width="100%" height="100%" />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "@/components/common/ScrollToTop";
 import PrivateRoute from "@/components/common/PrivateRoute";
-import NotFoundRedirect from "@/components/common/NotFoundRedirect";
+import NotFound from "@/pages/common/NotFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { publicRoutes, clientRoutes, adminRoutes } from "@/routes";
 
@@ -45,7 +45,7 @@ function App() {
           </Route>
 
           {/* Catch-all route for 404/Wrong URLs */}
-          <Route path="*" element={<NotFoundRedirect />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

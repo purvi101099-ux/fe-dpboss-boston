@@ -2,123 +2,195 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #fff;
+  background-color: var(--bg-gray);
   font-family: Arial, sans-serif;
 }
 
+/* Header */
 .client-header {
-  background-color: #ffcc99;
-  padding: 10px 16px;
+  background-color: var(--bg-primary);
+  padding: 0.4rem 1.5rem; /* Reduced from 0.5rem */
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.25rem var(--shadow-light);
+  width: 100%;
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 1.25rem;
 }
 
-.menu-trigger {
-  font-size: 20px;
+.menu-trigger-icon {
+  font-size: 1.5rem; /* Reduced from 2rem */
   cursor: pointer;
-  color: #333;
+  color: var(--black-color);
+  display: flex;
+  align-items: center;
 }
 
 .brand-name {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 700;
-  color: #000080; /* Blue-ish from image */
+  color: var(--blue-text);
+  margin-top: -2px;
+}
+
+/* Logged-in header area */
+.header-user-area {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-wallet-chip {
+  display: flex;
+  align-items: center;
+  background-color: var(--white-color);
+  border-radius: 10%;
+  padding: 8px 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  justify-content: center;
+}
+
+.wallet-icon {
+  font-size: 1.1rem;
+  color: var(--black-color);
+}
+
+.wallet-amount {
+  font-size: 1.1rem;
+  color: var(--black-color);
 }
 
 .login-btn {
-  background-color: #fff;
-  border: 1px solid #d9d9d9;
-  padding: 6px 12px;
-  border-radius: 4px;
+  background-color: var(--white-color);
+  border: 0.0625rem solid var(--border-light);
+  padding: 0.4375rem 0.875rem;
+  border-radius: 0.375rem;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.4375rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-dark);
   cursor: pointer;
+  font-size: 0.9375rem;
 }
 
+/* Content Container */
 .client-content {
   flex: 1;
-  padding-bottom: 70px; /* Space for bottom navbar */
-  overflow-x: hidden;
+  padding-bottom: 5rem;
   width: 100%;
-  margin: 0;
-  background-color: #fff;
+  max-width: 1200px; /* Reduced width to match the "boxed" feel of the image */
+  margin: 0 auto; /* Center the content area */
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: unset !important;
 }
 
+/* Bottom Navbar */
 .bottom-navbar {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 65px;
-  background-color: #fff;
+  height: 4.375rem;
+  background-color: var(--white-color);
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-top: 1px solid #f0f0f0;
   z-index: 1000;
   padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); /* Added top shadow as in second image */
 }
 
 .nav-item {
+  color: var(--dark-red);
+  text-decoration: none;
+  font-size: 0.6875rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 2px;
-  color: #870000; /* Red/Maroon as requested */
-  text-decoration: none;
-  font-size: 11px;
-  flex: 1;
-  opacity: 0.7;
+  gap: 0.25rem;
+  opacity: 0.8;
   cursor: pointer;
-  transition: opacity 0.2s;
 }
 
 .nav-item.active {
   opacity: 1;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .nav-item .anticon {
-  font-size: 22px;
+  font-size: 1.5rem;
 }
 
-.nav-item span {
-  font-size: 10px;
-}
-
+/* Floating button */
 .floating-whatsapp {
   position: fixed;
-  bottom: 85px; /* Above the bottom navbar */
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background-color: #25d366;
+  bottom: 5.5rem;
+  right: 1.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: var(--whatsapp-green);
   border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
+  padding: 0.75rem;
+  box-shadow: 0 0.25rem 0.75rem var(--shadow-heavy);
   z-index: 1001;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s;
 }
 
 .floating-whatsapp:hover {
   transform: scale(1.1);
+}
+
+/* MOBILE OVERRIDES */
+@media (max-width: 480px) {
+  .client-header {
+    padding: 0.35rem 1rem; /* Reduced from 0.4375rem */
+  }
+
+  .header-left {
+    gap: 1rem;
+  }
+
+  .menu-trigger-icon {
+    font-size: 1.375rem; /* Reduced from 1.75rem */
+  }
+
+  .brand-name {
+    font-size: 1rem;
+  }
+
+  .login-btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  .nav-item {
+    font-size: 0.5625rem;
+  }
+
+  .nav-item .anticon {
+    font-size: 1.25rem;
+  }
+
+  .bottom-navbar {
+    height: 4rem;
+  }
+
+  .floating-whatsapp {
+    width: 3rem;
+    height: 3rem;
+    bottom: 5rem;
+    right: 1rem;
+  }
 }

@@ -1,12 +1,8 @@
 import React from "react";
 import { Drawer } from "antd";
-import { useNavigate } from "react-router-dom";
-import {
-  HomeFilled,
-  UserOutlined,
-  CustomerServiceOutlined,
-  LogoutOutlined,
-} from "@ant-design/icons";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Icon } from "@iconify/react";
+import "./SidebarDrawer.css";
 
 interface SidebarDrawerProps {
   open: boolean;
@@ -15,62 +11,115 @@ interface SidebarDrawerProps {
 
 const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ open, onClose }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const menuItems = [
-    { key: "home", label: "Home", icon: <HomeFilled />, path: "/client/home" },
+    { key: "/client/home", label: "Home", icon: "material-symbols:home" },
     {
-      key: "profile",
-      label: "My Profile",
-      icon: <UserOutlined />,
-      path: "/profile",
+      key: "/history",
+      label: "Transaction History",
+      icon: "material-symbols:wallet",
     },
     {
-      key: "support",
-      label: "Support",
-      icon: <CustomerServiceOutlined />,
-      path: "/support",
+      key: "/bidding",
+      label: "Bidding History",
+      icon: "material-symbols:list-alt",
     },
     {
-      key: "logout",
-      label: "Logout",
-      icon: <LogoutOutlined />,
-      path: "/sign-in",
+      key: "/starline-bid",
+      label: "Starline Bid History",
+      icon: "material-symbols:list-alt",
+    },
+    { key: "/fund", label: "Fund History", icon: "material-symbols:payments" },
+    {
+      key: "/notifications",
+      label: "Notifications",
+      icon: "material-symbols:notifications",
+    },
+    {
+      key: "/winners",
+      label: "Top Winners",
+      icon: "material-symbols:emoji-events",
+    },
+    {
+      key: "/starline-winners",
+      label: "Starline Winners",
+      icon: "material-symbols:emoji-events",
+    },
+    {
+      key: "/rates",
+      label: "Game Rates",
+      icon: "material-symbols:trending-up",
+    },
+    {
+      key: "download",
+      label: "Download App",
+      icon: "material-symbols:download",
     },
   ];
 
   return (
     <Drawer
-      title="Menu"
       placement="left"
       onClose={onClose}
       open={open}
-      width={280}
+      width={260}
+      closable={false}
       styles={{ body: { padding: 0 } }}
+      className="sidebar-drawer"
     >
-      <div className="drawer-content">
+      {/* Header */}
+      <div className="sidebar-header">
+        <div className="user-info">
+          <h2>Hello User</h2>
+          <p>Welcome Back</p>
+        </div>
+        <div className="close-sidebar-btn" onClick={onClose}>
+          <Icon icon="material-symbols:arrow-back" className="icon-size" />
+        </div>
+      </div>
+
+      {/* Menu Items */}
+      <div className="sidebar-menu-list">
         {menuItems.map((item) => (
           <div
             key={item.key}
-            className="drawer-item"
+            className={`sidebar-menu-item ${location.pathname === item.key ? "active" : ""}`}
             onClick={() => {
-              navigate(item.path);
+              if (item.key !== "download") {
+                navigate(item.key);
+              }
               onClose();
             }}
-            style={{
-              padding: "16px 24px",
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              cursor: "pointer",
-              borderBottom: "1px solid #f0f0f0",
-            }}
           >
-            <span style={{ fontSize: "18px", color: "#870000" }}>
-              {item.icon}
-            </span>
-            <span style={{ fontWeight: "500" }}>{item.label}</span>
+            <Icon icon={item.icon} className="sidebar-menu-icon" />
+            <span>{item.label}</span>
           </div>
         ))}
+      </div>
+
+      <div className="sidebar-divider" />
+
+      {/* Footer Buttons */}
+      <div className="sidebar-footer">
+        <button
+          className="sidebar-btn btn-profile"
+          onClick={() => {
+            navigate("/profile");
+            onClose();
+          }}
+        >
+          My Profile
+        </button>
+        <button
+          className="sidebar-btn btn-logout"
+          onClick={() => {
+            navigate("/signin");
+            onClose();
+          }}
+        >
+          Logout
+        </button>
       </div>
     </Drawer>
   );

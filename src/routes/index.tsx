@@ -19,6 +19,7 @@ import Dashboard from "@/pages/admin/Dashboard";
 import Bazar from "@/pages/admin/Bazar";
 import BazarResult from "@/pages/admin/BazarResult";
 import AdminLayout from "@/components/admin/AdminLayout";
+import NotFound from "@/pages/common/NotFound";
 
 import { PATHS } from "./paths";
 
@@ -47,6 +48,7 @@ export const clientRoutes: RouteConfig = {
     { path: PATHS.PASSWORD, element: <Password /> },
     { path: PATHS.MY_BIDS, element: <MyBids /> },
     { path: PATHS.SUPPORT, element: <Support /> },
+    { path: "*", element: <NotFound /> },
   ],
 };
 
@@ -58,5 +60,6 @@ export const adminRoutes: RouteConfig = {
     { path: PATHS.ADMIN_DASHBOARD, element: <Dashboard /> },
     { path: PATHS.ADMIN_BAZAR, element: <Bazar /> },
     { path: PATHS.ADMIN_BAZAR_RESULT, element: <BazarResult /> },
+    { path: "*", element: <NotFound /> },
   ],
 };
