@@ -13,6 +13,7 @@ import Profile from "@/pages/client-side/profile";
 import Password from "@/pages/client-side/password";
 import MyBids from "@/pages/client-side/my-bids";
 import Support from "@/pages/client-side/support";
+import BankDetails from "@/pages/client-side/bank-details";
 
 // Admin Pages
 import Dashboard from "@/pages/admin/Dashboard";
@@ -48,6 +49,7 @@ export const clientRoutes: RouteConfig = {
     { path: PATHS.PASSWORD, element: <Password /> },
     { path: PATHS.MY_BIDS, element: <MyBids /> },
     { path: PATHS.SUPPORT, element: <Support /> },
+    { path: PATHS.BANK_DETAILS, element: <BankDetails /> },
     { path: "*", element: <NotFound /> },
   ],
 };

@@ -13,6 +13,7 @@ export const PATHS = {
   PASSWORD: '/password',
   MY_BIDS: '/my-bids',
   SUPPORT: '/support',
+  BANK_DETAILS: '/client/bank-details',
 
   // Admin Protected
   ADMIN: '/admin',

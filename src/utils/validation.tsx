@@ -46,3 +46,17 @@ export const bazarResultSchema = yup.object().shape({
   date: yup.mixed().required("Date is required"),
   isLucky: yup.string().required("Lucky status is required"),
 });
+
+/* ------------------ Bank Details Schema ------------------ */
+export const bankDetailsSchema = yup.object().shape({
+  beneficiaryName: yup.string().required("Beneficiary name is required"),
+  accountNumber: yup
+    .string()
+    .required("Account number is required")
+    .matches(/^[0-9]{9,18}$/, "Enter a valid account number"),
+  ifscCode: yup
+    .string()
+    .required("IFSC code is required")
+    .matches(/^[A-Z]{4}0[A-Z0-9]{6}$/, "Enter a valid IFSC code"),
+  bankName: yup.string().required("Bank name is required"),
+});

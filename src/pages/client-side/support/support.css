@@ -1,0 +1,22 @@
+/* Support Page */
+.support-page {
+  padding: 16px;
+  min-height: calc(100vh - 130px);
+}
+
+.support-menu-card {
+  background-color: var(--white-color);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-extra-light);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  margin-bottom: 20px;
+}
+
+.support-note {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-dark);
+  padding: 0 8px;
+  line-height: 1.5;
+}

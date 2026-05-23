@@ -1,8 +1,11 @@
 import React from "react";
 import { Button, Row, Col } from "antd";
 import { Icon } from "@iconify/react";
+import { useNavigate } from "react-router-dom";
+import { PATHS } from "@/routes/paths";
 
 const QuickActions: React.FC = () => {
+  const navigate = useNavigate();
   const primaryBtnStyle: React.CSSProperties = {
     height: "60px",
     background: "#ffcc99",
@@ -54,6 +57,7 @@ const QuickActions: React.FC = () => {
         <Button
           icon={<Icon icon="material-symbols:chat" width="16" />}
           style={actionBtnStyle}
+          onClick={() => navigate(PATHS.SUPPORT)}
         >
           Support
         </Button>

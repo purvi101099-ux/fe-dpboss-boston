@@ -1,7 +1,6 @@
 import React from "react";
 import GameCard from "@/components/client/GameCard";
 import QuickActions from "@/components/client/QuickActions";
-import NewsMarquee from "@/components/client/NewsMarquee";
 
 const ClientHome: React.FC = () => {
   const games = [
@@ -164,20 +163,21 @@ const ClientHome: React.FC = () => {
   ];
 
   return (
-    <div
-      style={{
-        padding: "12px",
-        minHeight: "calc(100vh - 130px)",
-      }}
-    >
-      <NewsMarquee />
-      <QuickActions />
+    <>
+      <div
+        style={{
+          padding: "12px",
+          minHeight: "calc(100vh - 130px)",
+        }}
+      >
+        <QuickActions />
 
-      {/* Game Cards */}
-      {games.map((game, index) => (
-        <GameCard key={index} game={game} />
-      ))}
-    </div>
+        {/* Game Cards */}
+        {games.map((game, index) => (
+          <GameCard key={index} game={game} />
+        ))}
+      </div>
+    </>
   );
 };
 
