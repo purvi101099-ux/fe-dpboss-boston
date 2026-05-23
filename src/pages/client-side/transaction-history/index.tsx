@@ -1,28 +1,31 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import MenuListItem from "@/components/client/MenuListItem";
+import { PATHS } from "@/routes/paths";
 import "./TransactionHistory.css";
 
 const TransactionHistory: React.FC = () => {
+  const navigate = useNavigate();
   const historyOptions = [
     {
       label: "Fund History",
       icon: "material-symbols:payments-outline-rounded",
-      onClick: () => console.log("Fund History"),
+      navigatePath: PATHS.FUND_HISTORY,
     },
     {
       label: "Main Bidding History",
       icon: "material-symbols:list-alt-outline-rounded",
-      onClick: () => console.log("Main Bidding History"),
+      navigatePath: PATHS.BIDDING_HISTORY,
     },
     {
       label: "Starline Bidding History",
       icon: "material-symbols:format-list-bulleted-rounded",
-      onClick: () => console.log("Starline Bidding History"),
+      navigatePath: PATHS.STARLINE_HISTORY,
     },
     {
       label: "Transaction History",
       icon: "material-symbols:receipt-long-outline-rounded",
-      onClick: () => console.log("Transaction History"),
+      navigatePath: PATHS.TXN_HISTORY,
     },
   ];
 
@@ -33,7 +36,7 @@ const TransactionHistory: React.FC = () => {
           key={index}
           icon={option.icon}
           label={option.label}
-          onClick={option.onClick}
+          onClick={() => navigate(option.navigatePath)}
           divider={index !== historyOptions.length - 1}
           showChevron={true}
         />

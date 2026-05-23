@@ -9,6 +9,10 @@ export const PATHS = {
   // Client Protected
   CLIENT_HOME: '/client/home',
   HISTORY: '/history',
+  FUND_HISTORY: '/history/fund',
+  BIDDING_HISTORY: '/history/bidding',
+  STARLINE_HISTORY: '/history/starline',
+  TXN_HISTORY: '/history/transaction',
   PROFILE: '/profile',
   MY_BIDS: '/my-bids',
   SUPPORT: '/client/support',

@@ -1,0 +1,43 @@
+.history-details-page {
+  min-height: calc(100vh - 130px);
+}
+
+.history-details-header {
+  padding: 30px 20px 20px;
+  text-align: center;
+}
+
+.history-details-header h1 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #ffcc99; /* Light orange/peach as in image */
+  margin-bottom: 8px;
+}
+
+.history-details-header p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.history-details-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.no-record-found {
+  font-size: 1.6rem;
+  color: #5e0032; /* Dark burgundy */
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .history-details-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .no-record-found {
+    font-size: 1.3rem;
+  }
+}

@@ -1,6 +1,8 @@
 import React from "react";
 import { Card } from "antd";
 import { Icon } from "@iconify/react";
+import useModal from "@/hooks/useModal";
+import GameTimeModal from "./GameTimeModal";
 import "./GameCard.css";
 
 interface Game {
@@ -8,6 +10,12 @@ interface Game {
   status: string;
   numbers: string;
   color: string;
+  times?: {
+    openBidEnds: string;
+    closeBidEnds: string;
+    openResult: string;
+    closeResult: string;
+  };
 }
 
 interface GameCardProps {
@@ -15,38 +23,42 @@ interface GameCardProps {
 }
 
 const GameCard: React.FC<GameCardProps> = ({ game }) => {
+  const { isOpen, openModal, closeModal } = useModal();
+
   return (
-    <Card className="game-card">
-      <div className="game-card-layout">
-        {/* Top: Name (Mobile) / Center: Name (Desktop) */}
-        <div className="game-name">{game.name}</div>
+    <>
+      <Card className="game-card">
+        <div className="game-card-layout">
+          <div className="game-name">{game.name}</div>
+          <div
+            className="game-side-col game-time-col"
+            onClick={openModal}
+            style={{ cursor: "pointer" }}
+          >
+            <Icon
+              icon="material-symbols:schedule-outline-rounded"
+              className="game-card-icon"
+            />
+            <div className="game-card-label">Game Time</div>
+          </div>
+          <div className="game-status" style={{ color: game.color }}>
+            {game.status}
+          </div>
 
-        {/* Left column: Game Time */}
-        <div className="game-side-col game-time-col">
-          <Icon
-            icon="material-symbols:schedule-outline-rounded"
-            className="game-card-icon"
-          />
-          <div className="game-card-label">Game Time</div>
+          <div className="game-numbers">{game.numbers}</div>
+
+          <div className="game-side-col game-play-col">
+            <Icon
+              icon="material-symbols:play-circle-outline-rounded"
+              className="game-card-icon"
+            />
+            <div className="game-card-label">Play Game</div>
+          </div>
         </div>
+      </Card>
 
-        {/* Middle items: Status and Numbers */}
-        <div className="game-status" style={{ color: game.color }}>
-          {game.status}
-        </div>
-
-        <div className="game-numbers">{game.numbers}</div>
-
-        {/* Right column: Play Game */}
-        <div className="game-side-col game-play-col">
-          <Icon
-            icon="material-symbols:play-circle-outline-rounded"
-            className="game-card-icon"
-          />
-          <div className="game-card-label">Play Game</div>
-        </div>
-      </div>
-    </Card>
+      <GameTimeModal game={game} isOpen={isOpen} onClose={closeModal} />
+    </>
   );
 };
 

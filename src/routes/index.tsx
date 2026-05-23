@@ -16,6 +16,7 @@ import Support from "@/pages/client-side/support";
 import BankDetails from "@/pages/client-side/bank-details";
 import AddFund from "@/pages/client-side/add-fund";
 import WithdrawFund from "@/pages/client-side/withdraw-fund";
+import HistoryDetails from "@/pages/client-side/history-details";
 
 // Admin Pages
 import Dashboard from "@/pages/admin/Dashboard";
@@ -54,6 +55,10 @@ export const clientRoutes: RouteConfig = {
     { path: PATHS.BANK_DETAILS, element: <BankDetails /> },
     { path: PATHS.ADD_FUND, element: <AddFund /> },
     { path: PATHS.WITHDRAW_FUND, element: <WithdrawFund /> },
+    { path: PATHS.FUND_HISTORY, element: <HistoryDetails /> },
+    { path: PATHS.BIDDING_HISTORY, element: <HistoryDetails /> },
+    { path: PATHS.STARLINE_HISTORY, element: <HistoryDetails /> },
+    { path: PATHS.TXN_HISTORY, element: <HistoryDetails /> },
     { path: "*", element: <NotFound /> },
   ],
 };

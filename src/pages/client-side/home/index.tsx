@@ -9,24 +9,48 @@ const ClientHome: React.FC = () => {
       status: "Betting is Closed for Today",
       numbers: "557-71-399",
       color: "red",
+      times: {
+        openBidEnds: "01:00 PM",
+        closeBidEnds: "02:00 PM",
+        openResult: "01:10 PM",
+        closeResult: "02:10 PM",
+      },
     },
     {
       name: "KALYAN",
       status: "Betting is Closed for Today",
       numbers: "678-13-238",
       color: "red",
+      times: {
+        openBidEnds: "09:00 PM",
+        closeBidEnds: "11:00 PM",
+        openResult: "09:10 PM",
+        closeResult: "11:10 PM",
+      },
     },
     {
       name: "MILAN DAY",
       status: "Betting is Closed for Today",
       numbers: "378-86-150",
       color: "red",
+      times: {
+        openBidEnds: "03:00 PM",
+        closeBidEnds: "05:00 PM",
+        openResult: "03:10 PM",
+        closeResult: "05:10 PM",
+      },
     },
     {
       name: "MILAN NIGHT",
       status: "Betting is Running For Close",
       numbers: "136-1-***",
       color: "green",
+      times: {
+        openBidEnds: "08:00 PM",
+        closeBidEnds: "10:00 PM",
+        openResult: "08:10 PM",
+        closeResult: "10:10 PM",
+      },
     },
     {
       name: "KALYAN",
