@@ -20,6 +20,8 @@ export const PATHS = {
   WITHDRAW_FUND: '/client/withdraw-fund',
   CHANGE_PASSWORD: '/client/profile/change-password',
   BANK_DETAILS: '/client/profile/bank-details',
+  NOTIFICATION: '/client/notification',
+  GAME_RATES: '/client/game-rates',
 
   // Admin Protected
   ADMIN: '/admin',

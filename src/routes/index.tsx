@@ -17,6 +17,8 @@ import BankDetails from "@/pages/client-side/bank-details";
 import AddFund from "@/pages/client-side/add-fund";
 import WithdrawFund from "@/pages/client-side/withdraw-fund";
 import HistoryDetails from "@/pages/client-side/history-details";
+import Notification from "@/pages/client-side/notification";
+import GameRates from "@/pages/client-side/game-rates";
 
 // Admin Pages
 import Dashboard from "@/pages/admin/Dashboard";
@@ -53,6 +55,8 @@ export const clientRoutes: RouteConfig = {
     { path: PATHS.MY_BIDS, element: <MyBids /> },
     { path: PATHS.SUPPORT, element: <Support /> },
     { path: PATHS.BANK_DETAILS, element: <BankDetails /> },
+    { path: PATHS.NOTIFICATION, element: <Notification /> },
+    { path: PATHS.GAME_RATES, element: <GameRates /> },
     { path: PATHS.ADD_FUND, element: <AddFund /> },
     { path: PATHS.WITHDRAW_FUND, element: <WithdrawFund /> },
     { path: PATHS.FUND_HISTORY, element: <HistoryDetails /> },

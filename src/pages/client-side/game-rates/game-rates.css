@@ -1,0 +1,120 @@
+.game-rates-page {
+  min-height: 100vh;
+  padding-bottom: 30px;
+}
+
+.rates-header {
+  text-align: center;
+  padding: 20px 0 10px;
+}
+
+.rates-title {
+  color: var(--bg-primary);
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.rates-subtitle {
+  color: #666;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.rates-content {
+  padding: 12px;
+  max-width: 600px; /* Center content on desktop */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rates-box {
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--white-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.box-title {
+  color: var(--bg-primary);
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 14px;
+  border-bottom: 1px solid var(--border-extra-light);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.rates-list {
+  padding: 8px 20px;
+}
+
+.rate-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-extra-light);
+}
+
+.rate-row:last-child {
+  border-bottom: none;
+}
+
+.game-name {
+  color: var(--charry-red-color);
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  flex: 1;
+}
+
+.game-rate {
+  color: var(--charry-red-color);
+  font-weight: 800;
+  font-size: 1rem;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 480px) {
+  .rates-title {
+    font-size: 1.1rem;
+  }
+
+  .rates-subtitle {
+    font-size: 0.7rem;
+  }
+
+  .box-title {
+    font-size: 0.85rem;
+    padding: 10px;
+    color: #ffdab9 !important; /* Light peach color from image */
+  }
+
+  .rates-list {
+    padding: 4px 12px;
+  }
+
+  .rate-row {
+    padding: 12px 0;
+  }
+
+  .game-name {
+    font-size: 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .game-rate {
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+}

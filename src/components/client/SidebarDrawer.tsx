@@ -17,23 +17,27 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ open, onClose }) => {
   const menuItems = [
     { key: PATHS.CLIENT_HOME, label: "Home", icon: "material-symbols:home" },
     {
-      key: PATHS.HISTORY,
+      key: PATHS.TXN_HISTORY,
       label: "Transaction History",
       icon: "material-symbols:wallet",
     },
     {
-      key: "/bidding",
+      key: PATHS.BIDDING_HISTORY,
       label: "Bidding History",
       icon: "material-symbols:list-alt",
     },
     {
-      key: "/starline-bid",
+      key: PATHS.STARLINE_HISTORY,
       label: "Starline Bid History",
       icon: "material-symbols:list-alt",
     },
-    { key: "/fund", label: "Fund History", icon: "material-symbols:payments" },
     {
-      key: "/notifications",
+      key: PATHS.FUND_HISTORY,
+      label: "Fund History",
+      icon: "material-symbols:payments",
+    },
+    {
+      key: PATHS.NOTIFICATION,
       label: "Notifications",
       icon: "material-symbols:notifications",
     },
@@ -48,7 +52,7 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ open, onClose }) => {
       icon: "material-symbols:emoji-events",
     },
     {
-      key: "/rates",
+      key: PATHS.GAME_RATES,
       label: "Game Rates",
       icon: "material-symbols:trending-up",
     },

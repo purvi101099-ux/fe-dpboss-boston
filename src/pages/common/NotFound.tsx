@@ -2,9 +2,20 @@ import React from "react";
 import { Button, Result } from "antd";
 import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import { PATHS } from "@/routes/paths";
+import { TOKEN } from "@/utils/constants";
 
 const NotFound: React.FC = () => {
   const navigate = useNavigate();
+  const isLoggedIn = !!localStorage.getItem(TOKEN);
+
+  const handleBackHome = () => {
+    if (isLoggedIn) {
+      navigate(PATHS.CLIENT_HOME);
+    } else {
+      navigate(PATHS.HOME);
+    }
+  };
 
   return (
     <div
@@ -13,7 +24,6 @@ const NotFound: React.FC = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "var(--bg-primary)",
         padding: "20px",
       }}
     >
@@ -36,7 +46,7 @@ const NotFound: React.FC = () => {
           <Button
             type="primary"
             size="large"
-            onClick={() => navigate("/")}
+            onClick={handleBackHome}
             style={{
               backgroundColor: "var(--dark-red)",
               borderColor: "var(--dark-red)",
