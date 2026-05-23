@@ -1673,6 +1673,7 @@ body {
 .live-game-value {
   font-size: var(--fs-1-3);
   margin-bottom: 6px;
+  font-style: italic;
 }
 
 .footer-small-btn {

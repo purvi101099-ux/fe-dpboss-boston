@@ -41,7 +41,7 @@ export default function LiveResult() {
               <div className="live-game-info">
                 <div className="live-game-name">{gameName}</div>
                 {(openTime || closeTime) && (
-                  <div className="live-game-time">
+                  <div className="live-game-time" style={{fontStyle:"italic"}}>
                     {openTime} - {closeTime}
                   </div>
                 )}

@@ -40,9 +40,21 @@ export const bazarSchema = yup.object().shape({
 /* ------------------ Bazar Result Schema ------------------ */
 export const bazarResultSchema = yup.object().shape({
   name: yup.string().required("Bazar name is required"),
-  openNumber: yup.string().required("Open number is required"),
-  closeNumber: yup.string().required("Close number is required"),
-  jodiNumber: yup.string().required("Jodi number is required"),
+  openNumber: yup
+    .string()
+    .required("Open number is required")
+    .matches(/^[0-9]{1,3}$/, "Open number must be 1-3 digits (0-999)")
+    .typeError("Open number must be a number"),
+  closeNumber: yup
+    .string()
+    .required("Close number is required")
+    .matches(/^[0-9]{1,3}$/, "Close number must be 1-3 digits (0-999)")
+    .typeError("Close number must be a number"),
+  jodiNumber: yup
+    .string()
+    .required("Jodi number is required")
+    .matches(/^[0-9]{1,2}$/, "Jodi number must be 1-2 digits (0-99)")
+    .typeError("Jodi number must be a number"),
   date: yup.mixed().required("Date is required"),
   isLucky: yup.string().required("Lucky status is required"),
 });
