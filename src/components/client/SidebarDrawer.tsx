@@ -2,6 +2,7 @@ import React from "react";
 import { Drawer } from "antd";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import { PATHS } from "@/routes/paths";
 import "./SidebarDrawer.css";
 
 interface SidebarDrawerProps {
@@ -14,9 +15,9 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ open, onClose }) => {
   const location = useLocation();
 
   const menuItems = [
-    { key: "/client/home", label: "Home", icon: "material-symbols:home" },
+    { key: PATHS.CLIENT_HOME, label: "Home", icon: "material-symbols:home" },
     {
-      key: "/history",
+      key: PATHS.HISTORY,
       label: "Transaction History",
       icon: "material-symbols:wallet",
     },
@@ -105,7 +106,7 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ open, onClose }) => {
         <button
           className="sidebar-btn btn-profile"
           onClick={() => {
-            navigate("/profile");
+            navigate(PATHS.PROFILE);
             onClose();
           }}
         >
@@ -114,7 +115,7 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ open, onClose }) => {
         <button
           className="sidebar-btn btn-logout"
           onClick={() => {
-            navigate("/signin");
+            navigate(PATHS.SIGN_IN);
             onClose();
           }}
         >

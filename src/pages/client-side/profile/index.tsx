@@ -19,7 +19,7 @@ const Profile: React.FC = () => {
         <MenuListItem
           icon="mdi:lock-reset"
           label="Change Password"
-          onClick={() => navigate(PATHS.PASSWORD)}
+          onClick={() => navigate(PATHS.CHANGE_PASSWORD)}
         />
       </div>
     </div>

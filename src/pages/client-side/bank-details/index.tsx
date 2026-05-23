@@ -3,6 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { bankDetailsSchema } from "@/utils/validation";
 import CommonInput from "@/components/common/commonInput";
 import CommonButton from "@/components/common/commonButton";
+import "@/styles/client-forms.css";
 import "./bank-details.css";
 
 interface BankDetailsForm {
@@ -22,15 +23,18 @@ const BankDetails: React.FC = () => {
   };
 
   return (
-    <div className="bank-details-page">
-      <div className="bank-details-card">
-        <div className="bank-details-header">
+    <div className="client-form-page">
+      <div className="client-form-card">
+        <div className="client-form-header">
           <h1>Bank Details</h1>
           <p>Provide Valid Bank Details</p>
         </div>
 
         <FormProvider {...methods}>
-          <form className="bank-form" onSubmit={methods.handleSubmit(onSubmit)}>
+          <form
+            className="client-form"
+            onSubmit={methods.handleSubmit(onSubmit)}
+          >
             <div className="form-row">
               <div className="form-group">
                 <label className="form-label">A/c Holder Name:</label>
@@ -65,8 +69,8 @@ const BankDetails: React.FC = () => {
               label="Submit"
               htmlType="submit"
               block
-              className="submit-btn"
-              style={{ height: "48px", marginTop: "10px" }}
+              className="client-submit-btn"
+              style={{ marginTop: "10px" }}
             />
           </form>
         </FormProvider>

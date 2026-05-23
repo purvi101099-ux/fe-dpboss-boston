@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import { PATHS } from "@/routes/paths";
 
 const BottomNavbar: React.FC = () => {
   const navigate = useNavigate();
@@ -8,27 +9,27 @@ const BottomNavbar: React.FC = () => {
 
   const navItems = [
     {
-      key: "/client/home",
+      key: PATHS.CLIENT_HOME,
       label: "Home",
       icon: "material-symbols:home-rounded",
     },
     {
-      key: "/history",
+      key: PATHS.HISTORY,
       label: "History",
       icon: "material-symbols:history-rounded",
     },
     {
-      key: "/profile",
+      key: PATHS.PROFILE,
       label: "Profile",
       icon: "material-symbols:person-rounded",
     },
     {
-      key: "/password",
+      key: PATHS.CHANGE_PASSWORD,
       label: "Passbook",
       icon: "material-symbols:book-rounded",
     },
     {
-      key: "/my-bids",
+      key: PATHS.MY_BIDS,
       label: "My Bids",
       icon: "material-symbols:view-list-rounded",
     },

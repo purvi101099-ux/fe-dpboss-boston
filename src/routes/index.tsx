@@ -14,6 +14,8 @@ import Password from "@/pages/client-side/password";
 import MyBids from "@/pages/client-side/my-bids";
 import Support from "@/pages/client-side/support";
 import BankDetails from "@/pages/client-side/bank-details";
+import AddFund from "@/pages/client-side/add-fund";
+import WithdrawFund from "@/pages/client-side/withdraw-fund";
 
 // Admin Pages
 import Dashboard from "@/pages/admin/Dashboard";
@@ -46,10 +48,12 @@ export const clientRoutes: RouteConfig = {
     { path: PATHS.CLIENT_HOME, element: <ClientHome /> },
     { path: PATHS.HISTORY, element: <History /> },
     { path: PATHS.PROFILE, element: <Profile /> },
-    { path: PATHS.PASSWORD, element: <Password /> },
+    { path: PATHS.CHANGE_PASSWORD, element: <Password /> },
     { path: PATHS.MY_BIDS, element: <MyBids /> },
     { path: PATHS.SUPPORT, element: <Support /> },
     { path: PATHS.BANK_DETAILS, element: <BankDetails /> },
+    { path: PATHS.ADD_FUND, element: <AddFund /> },
+    { path: PATHS.WITHDRAW_FUND, element: <WithdrawFund /> },
     { path: "*", element: <NotFound /> },
   ],
 };

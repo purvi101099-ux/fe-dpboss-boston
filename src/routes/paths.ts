@@ -10,10 +10,12 @@ export const PATHS = {
   CLIENT_HOME: '/client/home',
   HISTORY: '/history',
   PROFILE: '/profile',
-  PASSWORD: '/password',
   MY_BIDS: '/my-bids',
-  SUPPORT: '/support',
-  BANK_DETAILS: '/client/bank-details',
+  SUPPORT: '/client/support',
+  ADD_FUND: '/client/add-fund',
+  WITHDRAW_FUND: '/client/withdraw-fund',
+  CHANGE_PASSWORD: '/client/profile/change-password',
+  BANK_DETAILS: '/client/profile/bank-details',
 
   // Admin Protected
   ADMIN: '/admin',

@@ -1,0 +1,90 @@
+.client-form-page {
+  padding: 20px;
+  min-height: calc(100vh - 130px);
+  display: flex;
+  justify-content: center;
+}
+
+.client-form-card {
+  background-color: #fff;
+  width: 100%;
+  max-width: 1200px;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-light);
+  height: fit-content;
+}
+
+.client-form-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.client-form-header h1 {
+  font-size: 1.6rem;
+  margin-bottom: 5px;
+  font-weight: 400;
+  color: var(--black-color);
+}
+
+.client-form-header p {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 400;
+}
+
+.client-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #333;
+}
+
+.client-submit-btn {
+  background-color: var(--bg-primary) !important;
+  border-color: var(--bg-primary) !important;
+  color: #000 !important;
+  height: 48px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.client-submit-btn:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .client-form-card {
+    padding: 20px;
+  }
+
+  .client-form-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}

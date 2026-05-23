@@ -36,6 +36,24 @@ const QuickActions: React.FC = () => {
     padding: "0 8px",
   };
 
+  const actionItems = [
+    {
+      label: "Support",
+      icon: "material-symbols:chat",
+      onClick: () => navigate(PATHS.SUPPORT),
+    },
+    {
+      label: "Add Money",
+      icon: "material-symbols:add-card",
+      onClick: () => navigate(PATHS.ADD_FUND),
+    },
+    {
+      label: "Withdraw",
+      icon: "material-symbols:upload",
+      onClick: () => navigate(PATHS.WITHDRAW_FUND),
+    },
+  ];
+
   return (
     <>
       {/* Top Buttons */}
@@ -54,25 +72,16 @@ const QuickActions: React.FC = () => {
 
       {/* Action Icons */}
       <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
-        <Button
-          icon={<Icon icon="material-symbols:chat" width="16" />}
-          style={actionBtnStyle}
-          onClick={() => navigate(PATHS.SUPPORT)}
-        >
-          Support
-        </Button>
-        <Button
-          icon={<Icon icon="material-symbols:add-card" width="16" />}
-          style={actionBtnStyle}
-        >
-          Add Money
-        </Button>
-        <Button
-          icon={<Icon icon="material-symbols:upload" width="16" />}
-          style={actionBtnStyle}
-        >
-          Withdraw
-        </Button>
+        {actionItems.map((item, index) => (
+          <Button
+            key={index}
+            icon={<Icon icon={item.icon} width="16" />}
+            style={actionBtnStyle}
+            onClick={item.onClick}
+          >
+            {item.label}
+          </Button>
+        ))}
       </div>
     </>
   );

@@ -60,3 +60,26 @@ export const bankDetailsSchema = yup.object().shape({
     .matches(/^[A-Z]{4}0[A-Z0-9]{6}$/, "Enter a valid IFSC code"),
   bankName: yup.string().required("Bank name is required"),
 });
+
+/* ------------------ Change Password Schema ------------------ */
+export const changePasswordSchema = yup.object().shape({
+  oldPassword: yup.string().required("Old password is required"),
+  newPassword: yup
+    .string()
+    .required("New password is required")
+    .min(6, "Password must be at least 6 characters"),
+  confirmPassword: yup
+    .string()
+    .required("Confirm password is required")
+    .oneOf([yup.ref("newPassword")], "Passwords must match"),
+});
+
+/* ------------------ Add Fund Schema ------------------ */
+export const addFundSchema = yup.object().shape({
+  amount: yup
+    .number()
+    .required("Amount is required")
+    .typeError("Enter a valid amount")
+    .min(10, "Minimum amount is 10"),
+  paymentMethod: yup.string().required("Payment method is required"),
+});
