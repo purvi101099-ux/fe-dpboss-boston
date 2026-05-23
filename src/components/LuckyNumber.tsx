@@ -30,7 +30,7 @@ export default function LuckyNumber() {
       <section className="guessing-forum common-border">
         <p>🌎दुनिया को दिखाओ अपनी Guessing का जलवा</p>
         <p>🏆 बनो Guessing Champion और जीतों सबका दिल</p>
-        <p>🚀 Download DPBoss Forum App & Join the Winning Community</p>
+        <p>🚀 Download Satta8055 Forum App & Join the Winning Community</p>
         <button className="download-button">📥 Download App</button>
       </section>
     </div>

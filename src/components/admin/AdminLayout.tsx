@@ -169,7 +169,7 @@ const AdminLayout: React.FC = () => {
             letterSpacing: "0.5px",
           }}
         >
-          {isMobile ? "DPBOSS" : collapsed ? "DB" : "DPBOSS"}
+          {isMobile ? "Satta8055" : collapsed ? "DB" : "Satta8055"}
         </h2>
       </div>
       <Menu

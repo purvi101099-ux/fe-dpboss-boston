@@ -503,9 +503,9 @@ export const infoData = [
   {
     sections: [
       {
-        title: "Introduction to DPBoss Service",
+        title: "Introduction to Satta8055 Service",
         content:
-          "Welcome To DPBoss, Where Entertainment Takes Center Stage, And A World Of Diverse Activities Awaits You. In Our Vibrant Community, We've Crafted An Experience Beyond Conventional Platforms, Offering A Rich Tapestry Of Entertainment For Users With Varied Interests.\n\nDiscover The Joy Of Connecting With Like-Minded Individuals Through Our Socializing Features. Whether You're An Extrovert Seeking Lively Conversations Or An Introvert Looking For A Cozy Virtual Space, DPBoss Is Your Go-To Destination For Meaningful Connections.\n\nDPBOSS Service Is Your Ultimate Destination For Everything Related To The Fascinating World Of The Satta Matka. As The DPBOSS Is A Leading Authority In The Realm Of Matka Games. This Is Your Go-To Platform For Any Reliable Information Along With Accurate Matka Results And Expert Guidance Obviously. Whether You Are A Pro Or A Newcomer Player The Comprehensive Collection Of Resources Such As Kalyan Matka, Matka Result, And Mumbai Matka, Will Provide You With The Thrilling And Immersive Experience. Join Us Along And We Will Embark On This Captivating Adventure, Where Every Matka Number, Matka Chart, And Matka Games Hold The Potential To Unlock Fortunes.",
+          "Welcome To Satta8055, Where Entertainment Takes Center Stage, And A World Of Diverse Activities Awaits You. In Our Vibrant Community, We've Crafted An Experience Beyond Conventional Platforms, Offering A Rich Tapestry Of Entertainment For Users With Varied Interests.\n\nDiscover The Joy Of Connecting With Like-Minded Individuals Through Our Socializing Features. Whether You're An Extrovert Seeking Lively Conversations Or An Introvert Looking For A Cozy Virtual Space, Satta8055 Is Your Go-To Destination For Meaningful Connections.\n\nDPBOSS Service Is Your Ultimate Destination For Everything Related To The Fascinating World Of The Satta Matka. As The Satta8055 Is A Leading Authority In The Realm Of Matka Games. This Is Your Go-To Platform For Any Reliable Information Along With Accurate Matka Results And Expert Guidance Obviously. Whether You Are A Pro Or A Newcomer Player The Comprehensive Collection Of Resources Such As Kalyan Matka, Matka Result, And Mumbai Matka, Will Provide You With The Thrilling And Immersive Experience. Join Us Along And We Will Embark On This Captivating Adventure, Where Every Matka Number, Matka Chart, And Matka Games Hold The Potential To Unlock Fortunes.",
       },
       {
         title: "HISTORY OF SATTA MATKA",
@@ -524,12 +524,12 @@ export const infoData = [
       {
         title: "MATKA BAZAR & GAME TYPES",
         content:
-          "DPBoss covers the full Matka Bazar. This includes Satta Matka, Worli Matka, Milan Matka, and Mumbai Matka. Whether it's Satta Matka Satta or Satta 143, DPBoss tracks all records and charts with exact date.",
+          "Satta8055 covers the full Matka Bazar. This includes Satta Matka, Worli Matka, Milan Matka, and Mumbai Matka. Whether it's Satta Matka Satta or Satta 143, Satta8055 tracks all records and charts with exact date.",
       },
       {
-        title: "WHY USE DPBOSS FOR SATTA MATKA?",
+        title: "WHY USE Satta8055 FOR SATTA MATKA?",
         content:
-          "DPBoss Boston offers easy design and daily updated data. Users trust DPBoss for Matka Satta, Kalyan Matka number, and DPBoss result charts. Also, all Satta Matka results come from tested sources. We don't use fake tips or wrong data.",
+          "Satta8055 Boston offers easy design and daily updated data. Users trust Satta8055 for Matka Satta, Kalyan Matka number, and Satta8055 result charts. Also, all Satta Matka results come from tested sources. We don't use fake tips or wrong data.",
       },
       {
         title: "KALYAN SATTA MATKA: THE HEART OF SATTA",
@@ -1577,7 +1577,7 @@ export const navLinksBanner = [
   "ALL MATKA RESULT LIVE ONLINE",
   "MATKA RESULT",
   "KALYAN MATKA RESULT",
-  "DPBOSS MATKA 143",
+  "Satta8055 MATKA 143",
   "MAIN MATKA",
 ];
 

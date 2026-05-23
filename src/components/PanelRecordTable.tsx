@@ -163,7 +163,7 @@ export default function PanelRecordTable({
         style={{ marginTop: "15px", padding: "0 10px" }}
       >
         {/* <p className="jodi-info-text">
-          Welcome to DPBoss Services, your trusted destination for comprehensive
+          Welcome to Satta8055 Services, your trusted destination for comprehensive
           and accurate {gameName || "this game"} Panel Chart Records. We take
           proud in offering a reliable platform that caters specifically to the
           needs of matka enthusiasts, providing in-depth insights into{" "}
@@ -178,7 +178,7 @@ export default function PanelRecordTable({
           meet the demands of both seasoned players and newcomers, our charts
           provide a detailed historical overview of gaming patterns and trends.
           Whether you're strategizing your next move or seeking to understand
-          the dynamics of {gameName || "this"} matka, DPBoss Services is your
+          the dynamics of {gameName || "this"} matka, Satta8055 Services is your
           go-to source for accurate and up-to-date information.
         </p>
 
@@ -190,11 +190,11 @@ export default function PanelRecordTable({
           <div className="faq-item">
             <h4 className="faq-q">
               Q1: How often are the {gameName || "this game"} Panel Chart
-              Records updated on DPBoss Services?
+              Records updated on Satta8055 Services?
             </h4>
             <p className="faq-a">
               We understand the importance of real-time information in the matka
-              world. At DPBoss Services, we are committed to regular updates of
+              world. At Satta8055 Services, we are committed to regular updates of
               our {gameName || "this game"} Panel Chart Records. Our dedicated
               team ensures that you have access to the latest gaming trends and
               patterns, empowering you with timely information to make informed
@@ -204,15 +204,15 @@ export default function PanelRecordTable({
           <div className="faq-item">
             <h4 className="faq-q">
               Q2: Is there a subscription fee for accessing{" "}
-              {gameName || "this game"} Panel Chart Records on DPBoss Services?
+              {gameName || "this game"} Panel Chart Records on Satta8055 Services?
             </h4>
             <p className="faq-a">
               No, accessing {gameName || "this game"} Panel Chart Records on
-              DPBoss Services is completely free of charge. We believe in making
+              Satta8055 Services is completely free of charge. We believe in making
               valuable information accessible to all enthusiasts without any
               subscription fees. Simply visit our user-friendly website,
               navigate to the section, and explore the latest charts at your
-              convenience. DPBoss Services is dedicated to democratizing
+              convenience. Satta8055 Services is dedicated to democratizing
               information and providing equal opportunities for all{" "}
               {gameName || "this"} matka enthusiasts.
             </p>

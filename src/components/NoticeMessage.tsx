@@ -14,7 +14,7 @@ const NoticeMessage: React.FC = () => {
         या बैंक जानकारी साझा न करें
       </p>
       <p className="notice-text">
-        If anyone claims it's DPBOSS number, it is false / यदि कोई इसे DPBOSS
+        If anyone claims it's Satta8055 number, it is false / यदि कोई इसे Satta8055
         नंबर बताए तो यह गलत है
       </p>
       <p className="notice-text">
