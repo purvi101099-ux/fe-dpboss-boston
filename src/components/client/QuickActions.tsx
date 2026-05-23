@@ -21,21 +21,6 @@ const QuickActions: React.FC = () => {
     justifyContent: "center",
   };
 
-  const actionBtnStyle: React.CSSProperties = {
-    flex: 1,
-    background: "#ffcc99",
-    border: "none",
-    fontSize: "11px",
-    height: "36px",
-    borderRadius: "20px",
-    fontWeight: "600",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "4px",
-    padding: "0 8px",
-  };
-
   const actionItems = [
     {
       label: "Support",
@@ -73,14 +58,43 @@ const QuickActions: React.FC = () => {
       {/* Action Icons */}
       <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
         {actionItems.map((item, index) => (
-          <Button
+          <div
             key={index}
-            icon={<Icon icon={item.icon} width="16" />}
-            style={actionBtnStyle}
             onClick={item.onClick}
+            style={{
+              flex: 1,
+              background: "var(--bg-primary)",
+              borderRadius: "20px",
+              display: "flex",
+              alignItems: "center",
+              padding: "6px 0px",
+              cursor: "pointer",
+              boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
+            }}
           >
-            {item.label}
-          </Button>
+            <div
+              style={{
+                width: "25px",
+                height: "25px",
+                background: "var(--bg-gray)",
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginLeft: "5px",
+              }}
+            >
+              <Icon icon={item.icon} width="12" style={{ color: "#333" }} />
+            </div>
+            <span
+              style={{
+                marginLeft: "8px",
+                fontSize: "12px",
+              }}
+            >
+              {item.label}
+            </span>
+          </div>
         ))}
       </div>
     </>
