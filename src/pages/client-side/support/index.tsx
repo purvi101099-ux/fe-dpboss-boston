@@ -1,6 +1,5 @@
 ﻿import React from "react";
 import MenuListItem from "@/components/client/MenuListItem";
-import "./support.css";
 
 const Support: React.FC = () => {
   const handleWhatsAppFund = () => {

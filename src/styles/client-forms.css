@@ -1,6 +1,4 @@
 .client-form-page {
-  padding: 20px;
-  min-height: calc(100vh - 130px);
   display: flex;
   justify-content: center;
 }

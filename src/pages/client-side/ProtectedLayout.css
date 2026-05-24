@@ -85,7 +85,6 @@
 /* Content Container */
 .client-content {
   flex: 1;
-  padding-top: 0;
   margin-top: 0;
   padding-bottom: 5rem;
   width: 100%;
@@ -95,6 +94,9 @@
   padding-left: 15px;
   padding-right: 15px;
   background-color: unset !important;
+  padding: 16px;
+  min-height: calc(100vh - 130px);
+  box-sizing: border-box;
 }
 
 /* Bottom Navbar */
@@ -225,4 +227,13 @@
     bottom: 4.75rem;
     right: 0.75rem;
   }
+}
+
+/* Support Page */
+.support-note {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-dark);
+  padding: 0 8px;
+  line-height: 1.5;
 }

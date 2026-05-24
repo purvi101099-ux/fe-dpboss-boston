@@ -24,7 +24,7 @@ const BottomNavbar: React.FC = () => {
       icon: "fa:user",
     },
     {
-      key: PATHS.CHANGE_PASSWORD,
+      key: PATHS.PASSBOOK,
       label: "Passbook",
       icon: "fa:list-alt",
     },

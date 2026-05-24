@@ -19,6 +19,7 @@ export const PATHS = {
   ADD_FUND: '/client/add-fund',
   WITHDRAW_FUND: '/client/withdraw-fund',
   CHANGE_PASSWORD: '/client/profile/change-password',
+  PASSBOOK: '/client/passbook',
   BANK_DETAILS: '/client/profile/bank-details',
   NOTIFICATION: '/client/notification',
   GAME_RATES: '/client/game-rates',

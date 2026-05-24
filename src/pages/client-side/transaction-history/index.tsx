@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import MenuListItem from "@/components/client/MenuListItem";
 import { PATHS } from "@/routes/paths";
-import "./TransactionHistory.css";
 
 const TransactionHistory: React.FC = () => {
   const navigate = useNavigate();

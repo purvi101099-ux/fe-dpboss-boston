@@ -1,6 +1,4 @@
 .profile-page {
-  padding: 16px;
-  min-height: calc(100vh - 130px);
   background-color: var(--bg-gray);
   display: flex;
   flex-direction: column;
