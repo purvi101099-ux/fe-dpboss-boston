@@ -1,109 +1,228 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
+import { Typography, Card, Button, Space, message } from "antd";
+import CommonPageHeader from "@/components/common/CommonPageHeader";
+import { SaveOutlined, SettingOutlined } from "@ant-design/icons";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { getSiteSettings, saveSiteSettings } from "@/api/siteSettings";
 
 interface SiteSettings {
-    banner: string;
-    footer: string;
+    advertise1: string;
+    advertise2: string;
+    notice: string;
 }
 
 const SiteSettingsPage: React.FC = () => {
+    const queryClient = useQueryClient();
     const [settings, setSettings] = useState<SiteSettings>({
-        banner: "",
-        footer: "",
+        advertise1: "",
+        advertise2: "",
+        notice: "",
+    });
+    const { Title, Text } = Typography;
+
+    const advertise1Ref = useRef<HTMLDivElement>(null);
+    const advertise2Ref = useRef<HTMLDivElement>(null);
+    const noticeRef = useRef<HTMLDivElement>(null);
+
+    const advertise1Quill = useRef<Quill | null>(null);
+    const advertise2Quill = useRef<Quill | null>(null);
+    const noticeQuill = useRef<Quill | null>(null);
+
+    // Fetch existing settings
+    const { data: settingsResponse, isLoading: isLoadingSettings } = useQuery({
+        queryKey: ["site-settings"],
+        queryFn: getSiteSettings,
     });
 
-    const [isSaving, setIsSaving] = useState(false);
+    // Process settings data
+    const existingSettings = useMemo(() => {
+        if (!settingsResponse) return null;
+        const rawData = (settingsResponse as any).data || settingsResponse;
+        return Array.isArray(rawData) ? rawData[0] : rawData;
+    }, [settingsResponse]);
 
-    const bannerRef = useRef<HTMLDivElement>(null);
-    const footerRef = useRef<HTMLDivElement>(null);
+    // Save mutation
+    const saveMutation = useMutation({
+        mutationFn: (data: SiteSettings) => saveSiteSettings(data),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["site-settings"] });
+            message.success("Settings saved successfully");
+        },
+        onError: (error: any) => {
+            message.error(error.response?.data?.message || "Failed to save settings");
+        },
+    });
 
-    const bannerQuill = useRef<Quill | null>(null);
-    const footerQuill = useRef<Quill | null>(null);
-
+    // Initialize Quill editors and load existing data
     useEffect(() => {
-        if (bannerRef.current && !bannerQuill.current) {
-            bannerQuill.current = new Quill(bannerRef.current, {
+        if (advertise1Ref.current && !advertise1Quill.current) {
+            advertise1Quill.current = new Quill(advertise1Ref.current, {
                 theme: "snow",
-                placeholder: "Enter banner content...",
+                placeholder: "Enter advertise 1 content...",
                 modules: {
                     toolbar: [
                         ["bold", "italic", "underline"],
-                        [{ color: [] }], // ✅ color + highlight
+                        [{ color: [] }],
                         [{ header: [1, 2, 3, false] }],
                         [{ list: "ordered" }, { list: "bullet" }],
                         ["link"],
-                        ["clean"]
+                        ["clean"],
                     ],
                 },
             });
-            bannerQuill.current.on("text-change", () => {
+            advertise1Quill.current.on("text-change", () => {
                 setSettings((prev) => ({
                     ...prev,
-                    banner: bannerQuill.current!.root.innerHTML,
+                    advertise1: advertise1Quill.current!.root.innerHTML,
                 }));
-                localStorage.setItem("siteBanner", bannerQuill.current!.root.innerHTML);
             });
         }
 
-        if (footerRef.current && !footerQuill.current) {
-            footerQuill.current = new Quill(footerRef.current, {
+        if (advertise2Ref.current && !advertise2Quill.current) {
+            advertise2Quill.current = new Quill(advertise2Ref.current, {
                 theme: "snow",
-                placeholder: "Enter footer content...",
+                placeholder: "Enter advertise 2 content...",
+                modules: {
+                    toolbar: [
+                        ["bold", "italic", "underline"],
+                        [{ color: [] }],
+                        [{ header: [1, 2, 3, false] }],
+                        [{ list: "ordered" }, { list: "bullet" }],
+                        ["link"],
+                        ["clean"],
+                    ],
+                },
             });
-
-            footerQuill.current.on("text-change", () => {
+            advertise2Quill.current.on("text-change", () => {
                 setSettings((prev) => ({
                     ...prev,
-                    footer: footerQuill.current!.root.innerHTML,
+                    advertise2: advertise2Quill.current!.root.innerHTML,
+                }));
+            });
+        }
+
+        if (noticeRef.current && !noticeQuill.current) {
+            noticeQuill.current = new Quill(noticeRef.current, {
+                theme: "snow",
+                placeholder: "Enter notice content...",
+                modules: {
+                    toolbar: [
+                        ["bold", "italic", "underline"],
+                        [{ color: [] }],
+                        [{ header: [1, 2, 3, false] }],
+                        [{ list: "ordered" }, { list: "bullet" }],
+                        ["link"],
+                        ["clean"],
+                    ],
+                },
+            });
+            noticeQuill.current.on("text-change", () => {
+                setSettings((prev) => ({
+                    ...prev,
+                    notice: noticeQuill.current!.root.innerHTML,
                 }));
             });
         }
     }, []);
 
-    const handleSave = async () => {
-        setIsSaving(true);
-        try {
-            const response = await fetch("/api/site-settings", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(settings),
-            });
+    // Load existing data into editors
+    useEffect(() => {
+        if (
+            existingSettings &&
+            advertise1Quill.current &&
+            advertise2Quill.current &&
+            noticeQuill.current
+        ) {
+            advertise1Quill.current.root.innerHTML = existingSettings.advertise1 || "";
+            advertise2Quill.current.root.innerHTML = existingSettings.advertise2 || "";
+            noticeQuill.current.root.innerHTML = existingSettings.notice || "";
 
-            if (response.ok) {
-                alert("Settings saved successfully");
-            }
-        } catch (error) {
-            console.error("Error saving settings:", error);
-        } finally {
-            setIsSaving(false);
+            setSettings({
+                advertise1: existingSettings.advertise1 || "",
+                advertise2: existingSettings.advertise2 || "",
+                notice: existingSettings.notice || "",
+            });
         }
+    }, [existingSettings]);
+
+    const handleSave = () => {
+        saveMutation.mutate(settings);
     };
 
     return (
-        <div className="p-6 max-w-4xl mx-auto">
-            <h1 className="text-3xl font-bold mb-8">Site Settings</h1>
+        <div>
+            <CommonPageHeader
+                title="Site Settings"
+                icon={<SettingOutlined />}
+                buttonLabel="Save Settings"
+                buttonIcon={<SaveOutlined />}
+                onButtonClick={handleSave}
+            />
+            <label style={{ color: "red" }}>
+                * Always Save Site Settings After changes *
+            </label>
+            <Space direction="vertical" size="large" style={{ width: "100%" }}>
+                <div>
+                    <Text
+                        strong
+                        style={{
+                            fontSize: 28,
+                            display: "block",
+                            marginBottom: 12,
+                        }}
+                    >
+                        Advertise 1
+                    </Text>
 
-            <div className="mb-8">
-                <label className="block text-lg font-semibold mb-3">Banner</label>
-                <div ref={bannerRef} />
-            </div>
-            <div className="border p-4 mt-4">
-                <h2>Preview:</h2>
-                <div dangerouslySetInnerHTML={{ __html: settings.banner }} />
-            </div>
-            <div className="mb-8">
-                <label className="block text-lg font-semibold mb-3">Footer</label>
-                <div ref={footerRef} />
-            </div>
+                    <div ref={advertise1Ref} />
+                </div>
 
-            <button
-                onClick={handleSave}
-                disabled={isSaving}
-                className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
-            >
-                {isSaving ? "Saving..." : "Save Settings"}
-            </button>
+                <Card title="Advertise 1 Preview">
+                    <div className="notice-box common-border">
+                    <div className="notice-body" dangerouslySetInnerHTML={{ __html: settings.advertise1 }} style={{ backgroundColor: "#ffcc99" }} />
+                    </div>
+                </Card>
+
+                <div>
+                    <Text
+                        strong
+                        style={{
+                            fontSize: 28,
+                            display: "block",
+                            marginBottom: 12,
+                        }}
+                    >
+                        Advertise 2
+                    </Text>
+
+                    <div ref={advertise2Ref} />
+                </div>
+                <Card title="Advertise 2 Preview">
+                    <div dangerouslySetInnerHTML={{ __html: settings.advertise2 }} className="whatsapp-box common-border" />
+                </Card>
+                <div>
+                    <Text
+                        strong
+                        style={{
+                            fontSize: 28,
+                            display: "block",
+                            marginBottom: 12,
+                        }}
+                    >
+                        Notice
+                    </Text>
+
+                    <div ref={noticeRef} />
+                </div>
+                <Card title="Notice Preview">
+                    <div className="notice-box common-border">
+                        <div className="notice-header">★ NOTICE ★</div>
+                        <div dangerouslySetInnerHTML={{ __html: settings.notice }} className="notice-body" style={{ backgroundColor: "#ffcc99" }} />
+                    </div>
+                </Card>
+            </Space>
         </div>
     );
 };

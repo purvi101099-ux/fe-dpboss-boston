@@ -1,12 +1,18 @@
 import { navLinksBanner } from "@/utils/constants";
 
-export default function Notice() {
-    const siteBanner = localStorage.getItem("siteBanner") || "";
+interface NoticeProps {
+  advertise1?: string;
+}
+
+export default function Notice({ advertise1 = "" }: NoticeProps) {
+    const fallbackNotice = localStorage.getItem("siteBanner") || "";
+    const displayNotice = advertise1 || fallbackNotice;
+    
   return (
     <>
       <div className="notice-box common-border">
         {/* <div className="notice-header-new">★ NOTICE ★</div> */}
-        <div className="notice-body" dangerouslySetInnerHTML={{ __html: siteBanner }}>
+        <div className="notice-body" dangerouslySetInnerHTML={{ __html: displayNotice }}>
           
         </div>
       </div>

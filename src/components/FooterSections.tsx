@@ -1,8 +1,17 @@
 import { hindiInfo, keywords1, keywords2 } from "@/utils/constants";
 
-export default function FooterSections() {
+interface FooterSectionsProps {
+  footer?: string;
+}
+
+export default function FooterSections({ footer = "" }: FooterSectionsProps) {
   return (
     <div className="footer-sections-wrapper">
+      {/* Footer Advertisement */}
+      {footer && (
+        <div className="footer-ad common-border" dangerouslySetInnerHTML={{ __html: footer }} />
+      )}
+      
       {/* Scrollable Hindi Box */}
       <div className="info-scroll-box hindi-box common-border">
         {hindiInfo.map((item, idx) => (

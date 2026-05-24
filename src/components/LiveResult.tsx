@@ -18,7 +18,7 @@ export default function LiveResult() {
 
   return (
     <div className="live-results-container common-border">
-      <h3 className="lucky-header">Fastest Results... Live & Accurate</h3>
+      <h3 className="lucky-header shimmer-text">Fastest Results... Live & Accurate</h3>
 
       <p className="live-tagline">Fastest Live Result Yahi Milega</p>
 
