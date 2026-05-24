@@ -26,7 +26,8 @@ interface PanelRecordTableProps {
 }
 
 const RowCell = ({ data }: { data: DayData | undefined }) => {
-  if (!data || (data.jodi === "**" && data.left.every((d) => d === "*"))) {
+  //if (!data || (data.jodi === "**" && data.left.every((d) => d === "*"))) {
+  if (!data) {
     return (
       <td className="panel-cell">
         <div style={{ textAlign: "center", fontWeight: "900" }}>-</div>
