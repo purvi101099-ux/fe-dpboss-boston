@@ -114,7 +114,7 @@
   padding-right: 15px;
   background-color: unset !important;
   padding: 16px;
-  min-height: calc(100vh - 130px);
+  /* min-height: calc(100vh - 130px); */
   box-sizing: border-box;
 }
 

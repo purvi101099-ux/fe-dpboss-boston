@@ -1,3 +1,4 @@
+import { GameType } from "@/pages/client-side/my-bids/types";
 import * as yup from "yup";
 
 /* ------------------ Sign In Schema ------------------ */
@@ -83,3 +84,47 @@ export const addFundSchema = yup.object().shape({
     .min(10, "Minimum amount is 10"),
   paymentMethod: yup.string().required("Payment method is required"),
 });
+
+export const biddingSchema = yup.object({
+  gameType: yup
+    .string()
+    .required("Game type is required")
+    .oneOf(Object.values(GameType)),
+
+  ankSub: yup.string().nullable(),
+
+  jodiSub: yup.string().nullable(),
+
+  panaSub: yup.string().nullable(),
+
+  digits: yup
+    .string()
+    .required("Digits are required")
+    .test(
+      "digits-validation",
+      "Invalid digits for selected game type",
+      function (value) {
+        const { gameType } = this.parent;
+
+        if (!value) return false;
+
+        switch (gameType) {
+          case GameType.ANK:
+            return /^[0-9]{1}$/.test(value);
+
+          case GameType.JODI:
+            return /^[0-9]{2}$/.test(value);
+
+          case GameType.PANA:
+            return /^[0-9]{3}$/.test(value);
+
+          default:
+            return false;
+        }
+      },
+    ),
+
+  points: yup.string().required("Points are required"),
+});
+
+export type BiddingFormSchema = yup.InferType<typeof biddingSchema>;

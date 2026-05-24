@@ -1,0 +1,160 @@
+/* =========================
+   Game Type Section
+   ========================= */
+
+.game-type-section {
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.game-type-title {
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--black-color);
+  margin-bottom: 12px;
+}
+
+/* =========================
+   Sub Type
+   ========================= */
+
+.sub-type-options {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+/* =========================
+   Form Layout
+   ========================= */
+
+.bidding-form-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.bid-field {
+  flex: 1;
+  min-width: 0;
+}
+
+/* =========================
+   Add Bid Button
+   ========================= */
+
+.add-bid-btn {
+  width: 220px;
+  margin: 0 auto 20px;
+}
+
+/* =========================
+   Bid Table
+   ========================= */
+
+.bid-table-wrapper {
+  overflow-x: auto;
+  margin-top: 16px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+}
+
+.bid-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.bid-table thead {
+  background-color: var(--bg-primary);
+}
+
+.bid-table th {
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.bid-table td {
+  padding: 10px 14px;
+  font-size: 0.78rem;
+  border-bottom: 1px solid var(--border-extra-light);
+}
+
+.bid-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.bid-delete-btn {
+  border: 1px solid #ff4d4f;
+  background: transparent;
+  color: #ff4d4f;
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.bid-delete-btn:hover {
+  background: #ff4d4f;
+  color: #fff;
+}
+
+.bid-empty-state {
+  padding: 24px;
+  text-align: center;
+  color: #999;
+}
+
+/* =========================
+   Total Row
+   ========================= */
+
+.bid-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: #f8f8f8;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* =========================
+   Submit Button
+   ========================= */
+
+.submit-all-btn {
+  margin-top: 16px;
+}
+
+/* =========================
+   Mobile
+   ========================= */
+
+@media (max-width: 480px) {
+  .bidding-form-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .game-type-section {
+    padding: 10px 12px;
+  }
+
+  .game-type-title {
+    font-size: 0.75rem;
+  }
+
+  .add-bid-btn {
+    width: 100%;
+  }
+
+  .bid-table th,
+  .bid-table td {
+    padding: 8px 10px;
+    font-size: 0.72rem;
+  }
+}
