@@ -24,17 +24,17 @@ const QuickActions: React.FC = () => {
   const actionItems = [
     {
       label: "Support",
-      icon: "material-symbols:chat",
+      icon: "fa:comments",
       onClick: () => navigate(PATHS.SUPPORT),
     },
     {
       label: "Add Money",
-      icon: "material-symbols:add-card",
+      icon: "fa:money",
       onClick: () => navigate(PATHS.ADD_FUND),
     },
     {
       label: "Withdraw",
-      icon: "material-symbols:upload",
+      icon: "fa:credit-card",
       onClick: () => navigate(PATHS.WITHDRAW_FUND),
     },
   ];

@@ -35,10 +35,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
             onClick={openModal}
             style={{ cursor: "pointer" }}
           >
-            <Icon
-              icon="material-symbols:schedule-outline-rounded"
-              className="game-card-icon"
-            />
+            <Icon icon="fa:clock-o" className="game-card-icon" />
             <div className="game-card-label">Game Time</div>
           </div>
           <div className="game-status" style={{ color: game.color }}>
@@ -48,10 +45,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
           <div className="game-numbers">{game.numbers}</div>
 
           <div className="game-side-col game-play-col">
-            <Icon
-              icon="material-symbols:play-circle-outline-rounded"
-              className="game-card-icon"
-            />
+            <Icon icon="fa:play-circle" className="game-card-icon" />
             <div className="game-card-label">Play Game</div>
           </div>
         </div>

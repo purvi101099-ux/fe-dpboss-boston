@@ -15,51 +15,51 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ open, onClose }) => {
   const location = useLocation();
 
   const menuItems = [
-    { key: PATHS.CLIENT_HOME, label: "Home", icon: "material-symbols:home" },
+    { key: PATHS.CLIENT_HOME, label: "Home", icon: "fa:home" },
     {
       key: PATHS.TXN_HISTORY,
       label: "Transaction History",
-      icon: "material-symbols:wallet",
+      icon: "fa:list",
     },
     {
       key: PATHS.BIDDING_HISTORY,
       label: "Bidding History",
-      icon: "material-symbols:list-alt",
+      icon: "fa:list-alt",
     },
     {
       key: PATHS.STARLINE_HISTORY,
       label: "Starline Bid History",
-      icon: "material-symbols:list-alt",
+      icon: "fa:list-alt",
     },
     {
       key: PATHS.FUND_HISTORY,
       label: "Fund History",
-      icon: "material-symbols:payments",
+      icon: "fa:money",
     },
     {
       key: PATHS.NOTIFICATION,
       label: "Notifications",
-      icon: "material-symbols:notifications",
+      icon: "fa:bell",
     },
     {
       key: "/winners",
       label: "Top Winners",
-      icon: "material-symbols:emoji-events",
+      icon: "fa:trophy",
     },
     {
       key: "/starline-winners",
       label: "Starline Winners",
-      icon: "material-symbols:emoji-events",
+      icon: "fa:trophy",
     },
     {
       key: PATHS.GAME_RATES,
       label: "Game Rates",
-      icon: "material-symbols:trending-up",
+      icon: "fa:tasks",
     },
     {
       key: "download",
       label: "Download App",
-      icon: "material-symbols:download",
+      icon: "fa:download",
     },
   ];
 
@@ -80,7 +80,7 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ open, onClose }) => {
           <p>Welcome Back</p>
         </div>
         <div className="close-sidebar-btn" onClick={onClose}>
-          <Icon icon="material-symbols:arrow-back" className="icon-size" />
+          <Icon icon="fa:arrow-left" className="icon-size" />
         </div>
       </div>
 

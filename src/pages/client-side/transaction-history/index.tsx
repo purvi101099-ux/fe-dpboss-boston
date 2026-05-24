@@ -9,22 +9,22 @@ const TransactionHistory: React.FC = () => {
   const historyOptions = [
     {
       label: "Fund History",
-      icon: "material-symbols:payments-outline-rounded",
+      icon: "fa:money",
       navigatePath: PATHS.FUND_HISTORY,
     },
     {
       label: "Main Bidding History",
-      icon: "material-symbols:list-alt-outline-rounded",
+      icon: "fa:list-alt",
       navigatePath: PATHS.BIDDING_HISTORY,
     },
     {
       label: "Starline Bidding History",
-      icon: "material-symbols:format-list-bulleted-rounded",
+      icon: "fa:list-alt",
       navigatePath: PATHS.STARLINE_HISTORY,
     },
     {
       label: "Transaction History",
-      icon: "material-symbols:receipt-long-outline-rounded",
+      icon: "fa:list",
       navigatePath: PATHS.TXN_HISTORY,
     },
   ];

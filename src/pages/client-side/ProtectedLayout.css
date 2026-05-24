@@ -128,7 +128,13 @@
 }
 
 .nav-item .anticon {
-  font-size: 1.5rem;
+  font-size: 1rem;
+}
+
+.nav-icon {
+  font-size: 1rem !important; /* Same as sidebar icon */
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 /* Floating button */
@@ -179,8 +185,11 @@
     font-size: 0.5625rem;
   }
 
-  .nav-item .anticon {
-    font-size: 1.25rem;
+  .nav-item .anticon,
+  .nav-icon {
+    font-size: 0.9rem !important;
+    width: 1.1rem;
+    height: 1.1rem;
   }
 
   .bottom-navbar {

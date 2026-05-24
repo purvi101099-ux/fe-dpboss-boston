@@ -11,27 +11,27 @@ const BottomNavbar: React.FC = () => {
     {
       key: PATHS.CLIENT_HOME,
       label: "Home",
-      icon: "material-symbols:home-rounded",
+      icon: "fa:home",
     },
     {
       key: PATHS.HISTORY,
       label: "History",
-      icon: "material-symbols:history-rounded",
+      icon: "fa:list",
     },
     {
       key: PATHS.PROFILE,
       label: "Profile",
-      icon: "material-symbols:person-rounded",
+      icon: "fa:user",
     },
     {
       key: PATHS.CHANGE_PASSWORD,
       label: "Passbook",
-      icon: "material-symbols:book-rounded",
+      icon: "fa:list-alt",
     },
     {
       key: PATHS.MY_BIDS,
       label: "My Bids",
-      icon: "material-symbols:view-list-rounded",
+      icon: "fa:history",
     },
   ];
 

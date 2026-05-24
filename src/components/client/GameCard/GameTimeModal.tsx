@@ -40,9 +40,7 @@ const GameTimeModal: React.FC<GameTimeModalProps> = ({
       onCancel={onClose}
       footer={null}
       rootClassName="game-time-modal"
-      closeIcon={
-        <Icon icon="material-symbols:close" className="modal-close-icon" />
-      }
+      closeIcon={<Icon icon="fa:close" className="modal-close-icon" />}
       centered
       width={400}
     >
@@ -50,10 +48,7 @@ const GameTimeModal: React.FC<GameTimeModalProps> = ({
         {gameTimes.map((item, index) => (
           <div key={index} className="game-time-item">
             <div className="time-item-left">
-              <Icon
-                icon="material-symbols:schedule-outline-rounded"
-                className="time-icon-red"
-              />
+              <Icon icon="fa:clock-o" className="time-icon-red" />
               <span className="time-label">{item.label}</span>
             </div>
             <div className="time-value">{item.time}</div>

@@ -5,29 +5,32 @@
 
 .rates-header {
   text-align: center;
-  padding: 20px 0 10px;
+  padding: 24px 0 16px;
+  background-color: #ffdab9; /* Peach-orange from image */
+  margin-bottom: 24px;
 }
 
 .rates-title {
-  color: var(--bg-primary);
-  font-size: 1.6rem;
+  color: var(--blue-text);
+  font-size: 1.8rem;
   font-weight: 800;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .rates-subtitle {
-  color: #666;
-  font-size: 0.85rem;
+  color: var(--black-color);
+  font-size: 0.95rem;
+  font-weight: 600;
   margin: 0;
 }
 
 .rates-content {
-  padding: 12px;
-  max-width: 600px; /* Center content on desktop */
+  padding: 16px;
+  max-width: 600px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .rates-box {
@@ -40,12 +43,13 @@
 }
 
 .box-title {
-  color: var(--bg-primary);
+  background-color: var(--white-color);
+  color: var(--blue-text);
   text-align: center;
   font-size: 1.2rem;
   font-weight: 800;
-  padding: 14px;
-  border-bottom: 1px solid var(--border-extra-light);
+  padding: 16px;
+  border-bottom: 2px solid var(--bg-primary);
   margin: 0;
   text-transform: uppercase;
 }
@@ -84,37 +88,42 @@
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 480px) {
+  .rates-header {
+    padding: 16px 0 12px;
+    margin-bottom: 16px;
+  }
+
   .rates-title {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
   }
 
   .rates-subtitle {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 
   .box-title {
-    font-size: 0.85rem;
-    padding: 10px;
-    color: #ffdab9 !important; /* Light peach color from image */
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .rates-content {
+    padding: 12px;
+    gap: 16px;
   }
 
   .rates-list {
-    padding: 4px 12px;
+    padding: 0 15px;
   }
 
   .rate-row {
-    padding: 12px 0;
+    padding: 14px 0;
   }
 
   .game-name {
-    font-size: 0.75rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 0.85rem;
   }
 
   .game-rate {
-    font-size: 0.78rem;
-    white-space: nowrap;
+    font-size: 0.9rem;
   }
 }

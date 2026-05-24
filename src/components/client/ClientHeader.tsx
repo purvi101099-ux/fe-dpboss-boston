@@ -19,7 +19,7 @@ const ClientHeader: React.FC<ClientHeaderProps> = ({ onMenuClick }) => {
       <header className="client-header">
         <div className="header-left">
           <Icon
-            icon="heroicons-outline:menu-alt-1"
+            icon="fa:align-left"
             className="menu-trigger-icon"
             onClick={onMenuClick}
           />
@@ -30,13 +30,13 @@ const ClientHeader: React.FC<ClientHeaderProps> = ({ onMenuClick }) => {
           <div className="header-user-area">
             {/* Wallet balance chip */}
             <div className="header-wallet-chip">
-              <Icon icon="mdi:currency-inr" className="wallet-icon" />
+              <Icon icon="fa:money" className="wallet-icon" />
               <span className="wallet-amount">0</span>
             </div>
           </div>
         ) : (
           <button className="login-btn" onClick={() => navigate("/signin")}>
-            <Icon icon="material-symbols:login" className="icon-size" /> Login
+            <Icon icon="fa:sign-in" className="icon-size" /> Login
           </button>
         )}
       </header>
