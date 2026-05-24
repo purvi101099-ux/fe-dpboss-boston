@@ -8,7 +8,6 @@ import SignIn from "@/pages/SignIn";
 // Client Pages
 import ProtectedLayout from "@/pages/client-side/ProtectedLayout";
 import ClientHome from "@/pages/client-side/home";
-import History from "@/pages/client-side/history";
 import Profile from "@/pages/client-side/profile";
 import Password from "@/pages/client-side/password";
 import MyBids from "@/pages/client-side/my-bids";
@@ -28,6 +27,10 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import NotFound from "@/pages/common/NotFound";
 
 import { PATHS } from "./paths";
+import FundHistory from "@/pages/client-side/history/fund-histroy";
+import StarlineHistory from "@/pages/client-side/history/starline-history";
+import TransactionHistory from "@/pages/client-side/history/transaction-history";
+import BiddingHistory from "@/pages/client-side/history/bidding-histry";
 
 export interface RouteConfig {
   path: string;
@@ -49,7 +52,7 @@ export const clientRoutes: RouteConfig = {
   element: <ProtectedLayout />,
   children: [
     { path: PATHS.CLIENT_HOME, element: <ClientHome /> },
-    { path: PATHS.HISTORY, element: <History /> },
+    { path: PATHS.HISTORY, element: <TransactionHistory /> },
     { path: PATHS.PROFILE, element: <Profile /> },
     { path: PATHS.CHANGE_PASSWORD, element: <Password /> },
     { path: PATHS.MY_BIDS, element: <MyBids /> },
@@ -59,10 +62,22 @@ export const clientRoutes: RouteConfig = {
     { path: PATHS.GAME_RATES, element: <GameRates /> },
     { path: PATHS.ADD_FUND, element: <AddFund /> },
     { path: PATHS.WITHDRAW_FUND, element: <WithdrawFund /> },
-    { path: PATHS.FUND_HISTORY, element: <HistoryDetails /> },
-    { path: PATHS.BIDDING_HISTORY, element: <HistoryDetails /> },
-    { path: PATHS.STARLINE_HISTORY, element: <HistoryDetails /> },
-    { path: PATHS.TXN_HISTORY, element: <HistoryDetails /> },
+    {
+      path: PATHS.FUND_HISTORY,
+      element: <FundHistory />,
+    },
+    {
+      path: PATHS.BIDDING_HISTORY,
+      element: <BiddingHistory />,
+    },
+    {
+      path: PATHS.STARLINE_HISTORY,
+      element: <StarlineHistory />,
+    },
+    {
+      path: PATHS.TXN_HISTORY,
+      element: <TransactionHistory />,
+    },
     { path: "*", element: <NotFound /> },
   ],
 };

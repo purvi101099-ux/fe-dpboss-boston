@@ -1,29 +1,18 @@
+// src/components/HistoryDetails.tsx
 import React from "react";
-import { useLocation } from "react-router-dom";
-import { PATHS } from "@/routes/paths";
 import "./history-details.css";
 
-const HistoryDetails: React.FC = () => {
-  const location = useLocation();
-  const path = location.pathname;
+interface HistoryDetailsProps {
+  title: string;
+  subtitle: string;
+  records?: Array<{ id: string; date: string; amount: number; type: string }>;
+}
 
-  let title = "History";
-  let subtitle = "View your historical records";
-
-  if (path === PATHS.FUND_HISTORY) {
-    title = "Fund History";
-    subtitle = "Passbook View Fund Transaction History";
-  } else if (path === PATHS.BIDDING_HISTORY) {
-    title = "Bidding History";
-    subtitle = "Main markets bidding records";
-  } else if (path === PATHS.STARLINE_HISTORY) {
-    title = "Starline Bidding History";
-    subtitle = "Starline markets bidding records";
-  } else if (path === PATHS.TXN_HISTORY) {
-    title = "Transaction History";
-    subtitle = "Passbook View Transaction History";
-  }
-
+const HistoryDetails: React.FC<HistoryDetailsProps> = ({
+  title,
+  subtitle,
+  records,
+}) => {
   return (
     <div className="history-details-page">
       <div className="history-details-header">
@@ -32,7 +21,28 @@ const HistoryDetails: React.FC = () => {
       </div>
 
       <div className="history-details-content">
-        <div className="no-record-found">No Record Found.</div>
+        {records && records.length > 0 ? (
+          <table className="history-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {records.map((rec) => (
+                <tr key={rec.id}>
+                  <td>{rec.date}</td>
+                  <td>{rec.type}</td>
+                  <td>{rec.amount}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <div className="no-record-found">No Record Found.</div>
+        )}
       </div>
     </div>
   );

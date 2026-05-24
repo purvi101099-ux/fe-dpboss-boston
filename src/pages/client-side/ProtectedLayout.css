@@ -51,21 +51,40 @@
 .header-wallet-chip {
   display: flex;
   align-items: center;
-  background-color: var(--white-color);
-  border-radius: 10%;
-  padding: 8px 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   justify-content: center;
+  background-color: var(--white-color);
+  border-radius: 8px; /* smoother than 10% */
+  padding: 6px 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  gap: 6px; /* spacing between icon and text */
 }
 
 .wallet-icon {
-  font-size: 1.1rem;
   color: var(--black-color);
+  font-size: 1rem; /* consistent size */
 }
 
 .wallet-amount {
-  font-size: 1.1rem;
   color: var(--black-color);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* 📱 Mobile responsiveness */
+@media (max-width: 768px) {
+  .header-wallet-chip {
+    padding: 4px 10px;
+    border-radius: 6px;
+    gap: 4px;
+  }
+
+  .wallet-icon {
+    font-size: 0.9rem;
+  }
+
+  .wallet-amount {
+    font-size: 0.85rem;
+  }
 }
 
 .login-btn {
@@ -193,7 +212,6 @@
   }
 
   .wallet-icon {
-    font-size: 0.875rem;
   }
 
   .wallet-amount {

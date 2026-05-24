@@ -30,7 +30,7 @@ const ClientHeader: React.FC<ClientHeaderProps> = ({ onMenuClick }) => {
           <div className="header-user-area">
             {/* Wallet balance chip */}
             <div className="header-wallet-chip">
-              <Icon icon="fa:money" className="wallet-icon" />
+              <Icon icon="fa:inr" className="wallet-icon" />
               <span className="wallet-amount">0</span>
             </div>
           </div>
