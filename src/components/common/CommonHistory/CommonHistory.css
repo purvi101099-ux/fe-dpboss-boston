@@ -1,0 +1,269 @@
+/* Base container */
+.txn-history-container {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  background-color: #f7f9fc;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Mobile defaults */
+.desktop-header,
+.desktop-table-view {
+  display: none;
+}
+
+.mobile-header {
+  flex-shrink: 0;
+  padding: 16px 16px 8px 16px;
+  background-color: #f7f9fc;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.mobile-title {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0;
+  color: #333;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+/* Global Filters */
+.global-filters {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 8px 16px;
+  background-color: #f7f9fc;
+  position: sticky;
+  top: 40px;
+  z-index: 9;
+}
+
+.search-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  border: 1px solid #eef0f2;
+  height: 48px; /* Matching others */
+  display: flex;
+  align-items: center;
+}
+
+.filter-search {
+  width: 100%;
+}
+
+.filter-search.ant-input-affix-wrapper {
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 16px !important;
+  background: transparent !important;
+  height: 100% !important;
+}
+
+.filter-search .ant-input {
+  font-size: 0.9rem !important;
+  color: #333 !important;
+}
+
+.filter-select {
+  height: 48px !important;
+}
+
+.filter-select .ant-select-selector {
+  border-radius: 12px !important;
+  height: 48px !important;
+  padding: 0 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  border: 1px solid #eef0f2 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+  background-color: #fff !important;
+}
+
+.filter-date.ant-picker {
+  border-radius: 12px !important;
+  height: 48px !important;
+  padding: 0 16px !important;
+  border: 1px solid #eef0f2 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+  background-color: #fff !important;
+}
+
+/* Mobile List View */
+.mobile-card-view {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 16px 20px 16px;
+}
+
+.txn-group {
+  margin-bottom: 20px;
+}
+
+.txn-date-header {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #8e8e93;
+  margin-bottom: 8px;
+  margin-left: 4px;
+}
+
+.txn-card {
+  background-color: #fff;
+  border-radius: 14px;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  margin-bottom: 12px;
+  border: 1px solid #f2f2f7;
+  transition: transform 0.2s;
+}
+
+.txn-card:active {
+  transform: scale(0.98);
+}
+
+.txn-card-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.txn-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.txn-icon.deposit {
+  background-color: #f0fff4;
+  color: #25d366;
+  border: 1px solid #25d366;
+}
+
+.txn-icon.withdrawal {
+  background-color: #fff5f5;
+  color: #ff3b30;
+  border: 1px solid #ff3b30;
+}
+
+.txn-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.txn-desc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1px;
+}
+
+.txn-desc {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #000;
+  line-height: 1.2;
+}
+
+.txn-amount-inline {
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-left: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.txn-amount-inline.deposit {
+  color: #25d366;
+}
+
+.txn-amount-inline.withdrawal {
+  color: #ff3b30;
+}
+
+.txn-subtext {
+  font-size: 0.68rem;
+  color: #8e8e93;
+  font-weight: 500;
+}
+
+/* Desktop overrides */
+@media (min-width: 768px) {
+  .txn-history-container {
+    height: calc(100vh - 80px); /* accounting for bottom navigation overlap */
+    padding: 20px 30px 40px 30px; /* added bottom padding */
+    background-color: var(--bg-gray, #fafafa);
+    overflow: hidden;
+  }
+
+  .whatsapp-float,
+  .mobile-header,
+  .mobile-card-view {
+    display: none;
+  }
+
+  .desktop-header,
+  .desktop-table-view {
+    display: block;
+  }
+
+  .desktop-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+  }
+
+  .global-filters {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 0; /* originally 12px 20px */
+    background-color: transparent; /* making them individual floating buttons */
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 20px;
+  }
+
+  .search-wrapper {
+    /* Removed the border: none and box-shadow: none so it looks exactly like the others */
+    width: 300px;
+  }
+
+  .filter-select.ant-select {
+    min-width: 180px;
+  }
+
+  .desktop-table-view {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+  }
+}

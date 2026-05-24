@@ -1,4 +1,5 @@
 import React from "react";
+import "@/styles/client-forms.css";
 import "./game-rates.css";
 
 const GameRates: React.FC = () => {
@@ -21,11 +22,9 @@ const GameRates: React.FC = () => {
 
   return (
     <div className="game-rates-page">
-      <div className="rates-header">
-        <h1 className="rates-title">Game Rate List</h1>
-        <p className="rates-subtitle">
-          We Offer Best Rate in market - Full rate
-        </p>
+      <div className="client-form-header">
+        <h1>Game Rate List</h1>
+        <p>We Offer Best Rate in market - Full rate</p>
       </div>
 
       <div className="rates-content">
@@ -34,8 +33,8 @@ const GameRates: React.FC = () => {
           <div className="rates-list">
             {mainGames.map((item, idx) => (
               <div key={idx} className="rate-row">
-                <span className="game-name">{item.name}</span>
-                <span className="game-rate">{item.rate}</span>
+                <span className="gr-game-name">{item.name}</span>
+                <span className="gr-game-rate">{item.rate}</span>
               </div>
             ))}
           </div>
@@ -46,8 +45,8 @@ const GameRates: React.FC = () => {
           <div className="rates-list">
             {starlineGames.map((item, idx) => (
               <div key={idx} className="rate-row">
-                <span className="game-name">{item.name}</span>
-                <span className="game-rate">{item.rate}</span>
+                <span className="gr-game-name">{item.name}</span>
+                <span className="gr-game-rate">{item.rate}</span>
               </div>
             ))}
           </div>

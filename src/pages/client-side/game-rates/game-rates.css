@@ -1,68 +1,58 @@
+/* ==========================================
+   Game Rates Page
+   Font: inherits Arial, Helvetica, sans-serif from body
+   ========================================== */
+
 .game-rates-page {
   min-height: 100vh;
-  padding-bottom: 30px;
+  padding-bottom: 24px;
+  background-color: var(--bg-gray, #fafafa);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.rates-header {
-  text-align: center;
-  padding: 24px 0 16px;
-  background-color: #ffdab9; /* Peach-orange from image */
-  margin-bottom: 24px;
-}
-
-.rates-title {
-  color: var(--blue-text);
-  font-size: 1.8rem;
-  font-weight: 800;
-  margin-bottom: 8px;
-}
-
-.rates-subtitle {
-  color: var(--black-color);
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin: 0;
-}
-
+/* ── Content wrapper ── */
 .rates-content {
-  padding: 16px;
-  max-width: 600px;
+  padding: 10px 12px;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
 }
 
+/* ── Card box ── */
 .rates-box {
   border: 1px solid var(--border-light);
   border-radius: 8px;
-  padding: 0;
   overflow: hidden;
   background-color: var(--white-color);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
+/* ── Box heading ── */
 .box-title {
   background-color: var(--white-color);
   color: var(--blue-text);
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 0.78rem;
   font-weight: 800;
-  padding: 16px;
+  padding: 10px 12px;
   border-bottom: 2px solid var(--bg-primary);
   margin: 0;
   text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
 
+/* ── Row list ── */
 .rates-list {
-  padding: 8px 20px;
+  padding: 4px 14px;
 }
 
 .rate-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0;
+  padding: 8px 0;
   border-bottom: 1px solid var(--border-extra-light);
 }
 
@@ -70,60 +60,48 @@
   border-bottom: none;
 }
 
-.game-name {
+/* ── Game name cell ── */
+.gr-game-name {
   color: var(--charry-red-color);
-  font-weight: 800;
-  font-size: 0.95rem;
-  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: capitalize;
   flex: 1;
 }
 
-.game-rate {
+/* ── Game rate cell ── */
+.gr-game-rate {
   color: var(--charry-red-color);
-  font-weight: 800;
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: 0.78rem;
   text-align: right;
   flex-shrink: 0;
 }
 
-/* Mobile Responsive Adjustments */
+/* ==========================================
+   Mobile – max-width: 480px
+   ========================================== */
 @media (max-width: 480px) {
-  .rates-header {
-    padding: 16px 0 12px;
-    margin-bottom: 16px;
-  }
-
-  .rates-title {
-    font-size: 1.4rem;
-  }
-
-  .rates-subtitle {
-    font-size: 0.8rem;
+  .rates-content {
+    padding: 8px 10px;
+    gap: 10px;
   }
 
   .box-title {
-    font-size: 1rem;
-    padding: 12px;
-  }
-
-  .rates-content {
-    padding: 12px;
-    gap: 16px;
+    font-size: 0.72rem;
+    padding: 8px 10px;
   }
 
   .rates-list {
-    padding: 0 15px;
+    padding: 2px 12px;
   }
 
   .rate-row {
-    padding: 14px 0;
+    padding: 7px 0;
   }
 
-  .game-name {
-    font-size: 0.85rem;
-  }
-
-  .game-rate {
-    font-size: 0.9rem;
+  .gr-game-name,
+  .gr-game-rate {
+    font-size: 0.72rem;
   }
 }
