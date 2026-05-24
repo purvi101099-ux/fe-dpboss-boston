@@ -31,6 +31,7 @@ import FundHistory from "@/pages/client-side/history/fund-histroy";
 import StarlineHistory from "@/pages/client-side/history/starline-history";
 import TransactionHistory from "@/pages/client-side/history/transaction-history";
 import BiddingHistory from "@/pages/client-side/history/bidding-histry";
+import TransactionHistoryPage from "@/pages/client-side/transaction-history";
 
 export interface RouteConfig {
   path: string;
@@ -52,7 +53,7 @@ export const clientRoutes: RouteConfig = {
   element: <ProtectedLayout />,
   children: [
     { path: PATHS.CLIENT_HOME, element: <ClientHome /> },
-    { path: PATHS.HISTORY, element: <TransactionHistory /> },
+    { path: PATHS.HISTORY, element: <TransactionHistoryPage /> },
     { path: PATHS.PROFILE, element: <Profile /> },
     { path: PATHS.CHANGE_PASSWORD, element: <Password /> },
     { path: PATHS.MY_BIDS, element: <MyBids /> },

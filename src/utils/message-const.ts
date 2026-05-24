@@ -34,4 +34,16 @@ export const COMMON_MESSAGES = {
   LOGOUT_SUCCESS:'Logout success',
 };
 
+export const BANK_MESSAGES = {
+  PAGE_TITLE: "Bank Details",
+  CREATE_BUTTON: "Add Bank Details",
+  FORM_TITLE_ADD: "Bank Details",
+  FORM_TITLE_EDIT: "Edit Bank Details",
+  FORM_SUBMIT_ADD: "Submit",
+  FORM_SUBMIT_UPDATE: "Update",
+  REFRESH_SUCCESS: "Bank details data refreshed",
+  CREATE_SUCCESS: "Bank details added successfully",
+  UPDATE_SUCCESS: "Bank details updated successfully",
+  DELETE_SUCCESS: (name: string) => `Bank details for ${name} removed successfully`,
+};
 

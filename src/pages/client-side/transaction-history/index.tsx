@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import MenuListItem from "@/components/client/MenuListItem";
 import { PATHS } from "@/routes/paths";
 
-const TransactionHistory: React.FC = () => {
+const TransactionHistoryPage: React.FC = () => {
   const navigate = useNavigate();
   const historyOptions = [
     {
@@ -44,4 +44,4 @@ const TransactionHistory: React.FC = () => {
   );
 };
 
-export default TransactionHistory;
+export default TransactionHistoryPage;
