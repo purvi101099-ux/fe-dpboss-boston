@@ -59,3 +59,17 @@ export const PASSWORD_MESSAGES = {
   UPDATE_SUCCESS: "Password updated successfully",
   DELETE_SUCCESS: (name: string) => `Password for ${name} removed successfully`,
 };
+
+export const WITHDRAW_FUND_MESSAGES = {
+  PAGE_TITLE: "Withdraw Fund",
+  PAGE_SUBTITLE: "Send money to your bank account.",
+  INFO_MESSAGE:
+    "Withdrawal requests may take up to 24 hours.",
+  INFO_DESCRIPTION:
+    "Your funds will be credited to your bank account within 24 hours. Please rest assured that your money is always safe with us.",
+  SUNDAY_NOTE: "Note: Sunday withdrawals are off",
+  BANK_DETAILS_NOTE:
+    "NOTE: Kindly update your bank details first. then you can withdraw amount",
+  CONTACT_TEXT: "Unable to Withdraw Fund?",
+  CONTACT_BUTTON: "Contact Admin",
+};
