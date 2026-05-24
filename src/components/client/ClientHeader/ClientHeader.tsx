@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { TOKEN } from "@/utils/constants";
-import NewsMarquee from "./NewsMarquee";
+import NewsMarquee from "../NewsMarquee";
 
 interface ClientHeaderProps {
   onMenuClick: () => void;

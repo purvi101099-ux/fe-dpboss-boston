@@ -1,6 +1,6 @@
 import React from "react";
 import GameCard from "@/components/client/GameCard";
-import QuickActions from "@/components/client/QuickActions";
+import QuickActions from "@/components/client/QuickActions/QuickActions";
 
 const ClientHome: React.FC = () => {
   const games = [

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Icon } from "@iconify/react";
-import ClientHeader from "@/components/client/ClientHeader";
-import SidebarDrawer from "@/components/client/SidebarDrawer";
-import BottomNavbar from "@/components/client/BottomNavbar";
+import ClientHeader from "@/components/client/ClientHeader/ClientHeader";
+import SidebarDrawer from "@/components/client/SidebarDrawer/SidebarDrawer";
+import BottomNavbar from "@/components/client/BottomNavbar/BottomNavbar";
 import "./ProtectedLayout.css";
 
 const ProtectedLayout: React.FC = () => {

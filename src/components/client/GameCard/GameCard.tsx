@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "antd";
 import { Icon } from "@iconify/react";
 import useModal from "@/hooks/useModal";
-import GameTimeModal from "./GameTimeModal";
+import GameTimeModal from "@/components/client/GameTimeModal/GameTimeModal";
 import "./GameCard.css";
 
 interface Game {
