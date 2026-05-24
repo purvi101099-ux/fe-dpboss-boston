@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Button } from "antd";
 import { Icon } from "@iconify/react";
-import "./GameTimeModal.scss";
+import "./GameTimeModal.css";
 
 interface GameTimeModalProps {
   game: {

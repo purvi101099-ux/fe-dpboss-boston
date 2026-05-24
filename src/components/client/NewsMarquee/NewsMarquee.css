@@ -36,7 +36,7 @@
 }
 
 /* Adjust top position for mobile if header height changes */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .news-marquee-container {
     top: 2rem;
     height: 1.25rem;
