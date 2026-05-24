@@ -7,14 +7,6 @@ import CommonLabel from "@/components/common/CommonLabel";
 import { bankDetailsSchema } from "@/utils/validation";
 import { BANK_MESSAGES } from "@/utils/message-const";
 
-interface BankDetailsFormProps {
-  open: boolean;
-  onCancel: () => void;
-  onSubmit: (values: any) => void;
-  initialData?: any;
-  loading?: boolean;
-}
-
 interface IDefaultValues {
   beneficiaryName: string;
   accountNumber: string;
@@ -29,48 +21,23 @@ const defaultValues: IDefaultValues = {
   bankName: "",
 };
 
-const BankDetailsForm: React.FC<BankDetailsFormProps> = ({
-  open,
-  onCancel,
-  onSubmit,
-  initialData,
-  loading,
-}) => {
+const BankDetailsForm: React.FC = () => {
   const methods = useForm({
     resolver: yupResolver(bankDetailsSchema),
     defaultValues,
   });
 
-  const { handleSubmit, reset } = methods;
-
-  useEffect(() => {
-    if (open) {
-      if (initialData) {
-        reset({
-          beneficiaryName: initialData.beneficiaryName || "",
-          accountNumber: initialData.accountNumber || "",
-          ifscCode: initialData.ifscCode || "",
-          bankName: initialData.bankName || "",
-        });
-      } else {
-        reset(defaultValues);
-      }
-    }
-  }, [open, initialData, reset]);
+  const { handleSubmit } = methods;
 
   const onInternalSubmit = (data: any) => {
-    onSubmit(data);
+    console.log(data);
   };
 
   return (
     <div className="client-form-page">
       <div className="client-form-card">
         <div className="client-form-header">
-          <h1>
-            {initialData
-              ? BANK_MESSAGES.FORM_TITLE_EDIT
-              : BANK_MESSAGES.FORM_TITLE_ADD}
-          </h1>
+          <h1>{BANK_MESSAGES.FORM_TITLE_ADD}</h1>
           <p>Provide Valid Bank Details</p>
         </div>
 
@@ -96,13 +63,8 @@ const BankDetailsForm: React.FC<BankDetailsFormProps> = ({
             <CommonInput name="ifscCode" placeholder="HDFC0000139" />
 
             <CommonButton
-              label={
-                initialData
-                  ? BANK_MESSAGES.FORM_SUBMIT_UPDATE
-                  : BANK_MESSAGES.FORM_SUBMIT_ADD
-              }
+              label={BANK_MESSAGES.FORM_SUBMIT_ADD}
               htmlType="submit"
-              loading={loading}
               block
               className="client-submit-btn"
             />

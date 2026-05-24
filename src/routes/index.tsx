@@ -61,6 +61,7 @@ export const clientRoutes: RouteConfig = {
     { path: PATHS.BANK_DETAILS, element: <BankDetails /> },
     { path: PATHS.NOTIFICATION, element: <Notification /> },
     { path: PATHS.GAME_RATES, element: <GameRates /> },
+    { path: PATHS.PASSBOOK, element: <TransactionHistory /> },
     { path: PATHS.ADD_FUND, element: <AddFund /> },
     { path: PATHS.WITHDRAW_FUND, element: <WithdrawFund /> },
     {

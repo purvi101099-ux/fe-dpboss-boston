@@ -12,12 +12,12 @@ const Profile: React.FC = () => {
       {/* Menu List */}
       <div className="profile-menu-list">
         <MenuListItem
-          icon="mdi:bank-outline"
+          icon="fa-university"
           label="Bank Details"
           onClick={() => navigate(PATHS.BANK_DETAILS)}
         />
         <MenuListItem
-          icon="mdi:lock-reset"
+          icon="fa-key"
           label="Change Password"
           onClick={() => navigate(PATHS.CHANGE_PASSWORD)}
         />

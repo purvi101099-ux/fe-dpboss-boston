@@ -47,3 +47,15 @@ export const BANK_MESSAGES = {
   DELETE_SUCCESS: (name: string) => `Bank details for ${name} removed successfully`,
 };
 
+export const PASSWORD_MESSAGES = {
+  PAGE_TITLE: "Change Password",
+  CREATE_BUTTON: "Change Password",
+  FORM_TITLE_ADD: "Change Password",
+  FORM_TITLE_EDIT: "Change Password",
+  FORM_SUBMIT_ADD: "Submit",
+  FORM_SUBMIT_UPDATE: "Update",
+  REFRESH_SUCCESS: "Password data refreshed",
+  CREATE_SUCCESS: "Password added successfully",
+  UPDATE_SUCCESS: "Password updated successfully",
+  DELETE_SUCCESS: (name: string) => `Password for ${name} removed successfully`,
+};
