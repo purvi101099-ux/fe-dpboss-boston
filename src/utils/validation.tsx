@@ -47,9 +47,7 @@ export const bazarResultSchema = yup.object().shape({
     .typeError("Open number must be a number"),
   closeNumber: yup
     .string()
-    .required("Close number is required")
-    .matches(/^[0-9]{1,3}$/, "Close number must be 1-3 digits (0-999)")
-    .typeError("Close number must be a number"),
+    .optional(),
   jodiNumber: yup
     .string()
     .required("Jodi number is required")

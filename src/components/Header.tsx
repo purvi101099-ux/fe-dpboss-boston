@@ -7,11 +7,11 @@ export default function Header() {
     <header>
       <TopHeader />
       <div className="welcome-line common-border">
-        <img src="/logo.png" alt="Deity" />
-        <p className="">
+        <img src="/logo.png" alt="Deity" style={{ display: window.innerWidth <= 768 ? "none" : "block" }} />
+        <p className="" style={{ display: window.innerWidth <= 768 ? "none" : "block" }}>
         Welcome to Satta8055 Your Destination for Fast Satta Matka Results
         </p>
-        <img src="/logo.png" alt="Deity" />
+        <img src="/logo.png"  alt="Deity" />
       </div>
       <div className="marquee-box common-border">
        Satta Matka | Satta8055.com | Kalyan Matka Result | Satta Matka Result | Satta Matka Fast Result | Satta Matka Live Result | Kalyan Matka Fast Result | Satta Matka Online | Satta Matka Game | Satta Matka Chart | Satta Matka Number | Satta8055.com
