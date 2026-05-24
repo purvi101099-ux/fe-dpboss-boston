@@ -3,23 +3,10 @@ import { Button, Row, Col } from "antd";
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "@/routes/paths";
+import "./QuickActions.css";
 
 const QuickActions: React.FC = () => {
   const navigate = useNavigate();
-  const primaryBtnStyle: React.CSSProperties = {
-    height: "60px",
-    background: "#ffcc99",
-    border: "none",
-    fontWeight: "600",
-    borderRadius: "12px",
-    fontSize: "14px",
-    color: "#000080",
-    whiteSpace: "normal",
-    lineHeight: "1.2",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  };
 
   const actionItems = [
     {
@@ -42,58 +29,27 @@ const QuickActions: React.FC = () => {
   return (
     <>
       {/* Top Buttons */}
-      <Row gutter={[8, 8]} style={{ marginBottom: "16px" }}>
+      <Row gutter={[8, 8]} className="quick-top-buttons">
         <Col span={12}>
-          <Button block style={primaryBtnStyle}>
+          <Button block className="quick-primary-btn">
             Dpboss Bazar Starline
           </Button>
         </Col>
         <Col span={12}>
-          <Button block style={primaryBtnStyle}>
+          <Button block className="quick-primary-btn">
             How to Play
           </Button>
         </Col>
       </Row>
 
-      {/* Action Icons */}
-      <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
+      {/* Action Items */}
+      <div className="quick-action-row">
         {actionItems.map((item, index) => (
-          <div
-            key={index}
-            onClick={item.onClick}
-            style={{
-              flex: 1,
-              background: "var(--bg-primary)",
-              borderRadius: "20px",
-              display: "flex",
-              alignItems: "center",
-              padding: "6px 0px",
-              cursor: "pointer",
-              boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
-            }}
-          >
-            <div
-              style={{
-                width: "25px",
-                height: "25px",
-                background: "var(--bg-gray)",
-                borderRadius: "50%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginLeft: "5px",
-              }}
-            >
+          <div key={index} className="quick-action-item" onClick={item.onClick}>
+            <div className="quick-action-icon-wrap">
               <Icon icon={item.icon} width="12" style={{ color: "#333" }} />
             </div>
-            <span
-              style={{
-                marginLeft: "8px",
-                fontSize: "12px",
-              }}
-            >
-              {item.label}
-            </span>
+            <span className="quick-action-label">{item.label}</span>
           </div>
         ))}
       </div>

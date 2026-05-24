@@ -37,3 +37,20 @@
 .contact-admin-btn:hover {
   background-color: #fefefe;
 }
+
+/* ── Mobile responsive ── */
+@media (max-width: 480px) {
+  .contact-admin-btn {
+    height: 42px;
+    font-size: 0.875rem;
+  }
+
+  .support-section p {
+    font-size: 0.75rem;
+  }
+
+  .support-section {
+    margin-top: 20px;
+    gap: 10px;
+  }
+}

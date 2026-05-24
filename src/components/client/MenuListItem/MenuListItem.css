@@ -83,3 +83,35 @@
   border-radius: 20px;
   padding: 2px 7px;
 }
+
+/* ── Mobile responsive ── */
+@media (max-width: 480px) {
+  .mli-item {
+    padding: 10px 12px;
+    min-height: 44px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+  }
+
+  .mli-icon-wrap {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mli-icon {
+    font-size: 1rem;
+  }
+
+  .mli-label {
+    font-size: 0.8125rem;
+    letter-spacing: 0;
+  }
+
+  .mli-chevron {
+    font-size: 0.9rem;
+  }
+
+  .mli-left {
+    gap: 10px;
+  }
+}

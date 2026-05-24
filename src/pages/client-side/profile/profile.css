@@ -110,3 +110,51 @@
 .logout-icon {
   font-size: 20px;
 }
+
+/* ── Mobile responsive ── */
+@media (max-width: 480px) {
+  .profile-page {
+    padding: 12px;
+    gap: 14px;
+  }
+
+  .profile-header-card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .profile-avatar {
+    width: 46px;
+    height: 46px;
+  }
+
+  .avatar-icon {
+    font-size: 24px;
+  }
+
+  .profile-info h3 {
+    font-size: 1rem;
+  }
+
+  .profile-info p {
+    font-size: 0.78rem;
+  }
+
+  .wallet-label {
+    font-size: 0.78rem;
+  }
+
+  .wallet-balance {
+    font-size: 1.1rem;
+  }
+
+  .profile-logout-btn {
+    height: 42px;
+    font-size: 0.875rem;
+    border-radius: 10px;
+  }
+
+  .logout-icon {
+    font-size: 16px;
+  }
+}

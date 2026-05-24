@@ -95,5 +95,29 @@
 
   .amount-chip {
     min-width: calc(50% - 5px);
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+
+  .subtitle {
+    font-size: 0.8rem !important;
+  }
+
+  .form-label-red {
+    font-size: 0.875rem;
+    margin-bottom: 10px !important;
+  }
+
+  .note-text {
+    font-size: 0.7rem;
+  }
+
+  .contact-admin-help-btn {
+    height: 42px;
+    font-size: 0.875rem;
+  }
+
+  .add-fund-footer p {
+    font-size: 0.78rem;
   }
 }

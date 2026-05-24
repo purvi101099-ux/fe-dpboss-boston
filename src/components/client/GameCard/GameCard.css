@@ -130,6 +130,39 @@
   }
 }
 
+/* Mobile: compact tight layout */
+@media (max-width: 480px) {
+  .game-card {
+    margin-bottom: 6px;
+    border-radius: 10px;
+  }
+
+  .game-card :where(.ant-card-body) {
+    padding: 6px 10px !important;
+  }
+
+  .game-name {
+    font-size: 0.8rem;
+    letter-spacing: 0.3px;
+  }
+
+  .game-card-icon {
+    font-size: 1rem;
+  }
+
+  .game-card-label {
+    font-size: 0.5rem;
+  }
+
+  .game-status {
+    font-size: 0.6rem;
+  }
+
+  .game-numbers {
+    font-size: 1rem;
+  }
+}
+
 /* ── Game Time Modal Styles ── */
 .game-time-modal .ant-modal-content {
   padding: 0 !important;
