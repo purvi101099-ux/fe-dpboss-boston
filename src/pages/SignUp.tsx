@@ -49,7 +49,7 @@ const SignUp: React.FC = () => {
               </div>
 
               <h2 className="auth-title">Create Account</h2>
-              <p className="auth-subtitle">Welcome to dpboss international</p>
+              <p className="auth-subtitle">Welcome to Satta8055 international</p>
 
               <div className="form-group">
                 <label className="form-label">

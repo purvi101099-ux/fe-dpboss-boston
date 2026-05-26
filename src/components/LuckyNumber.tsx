@@ -1,10 +1,11 @@
 import { headlines } from "@/utils/constants";
+import NoticeMessage from "./NoticeMessage";
 
 export default function LuckyNumber() {
   return (
     <div className="lucky-container">
       <div className="common-border">
-        <div className="lucky-header">Today Lucky Number</div>
+        <h3 className="lucky-header">Today Lucky Number</h3>
         <section className="lucky-content">
           <div className="golden-ank">
             <div className="ank-title">Golden Ank</div>
@@ -24,11 +25,12 @@ export default function LuckyNumber() {
           </div>
         </section>
       </div>
+      <NoticeMessage />
 
       <section className="guessing-forum common-border">
         <p>🌎दुनिया को दिखाओ अपनी Guessing का जलवा</p>
         <p>🏆 बनो Guessing Champion और जीतों सबका दिल</p>
-        <p>🚀 Download DPBoss Forum App & Join the Winning Community</p>
+        <p>🚀 Download Satta8055 Forum App & Join the Winning Community</p>
         <button className="download-button">📥 Download App</button>
       </section>
     </div>

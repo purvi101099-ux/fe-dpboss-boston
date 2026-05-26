@@ -24,7 +24,10 @@ const PanelChartRecord = () => {
     if (!response) return [];
     return (response as any).data || [];
   }, [response]);
-
+  const gameData = React.useMemo(() => {
+      if (!response) return [];
+      return (response as any).game || {};
+    }, [response]);
   // Extract game info from the first record if available
   const gameInfo = React.useMemo(() => {
     // Priority 1: Data from fetched chart records (most up to date)
@@ -35,8 +38,7 @@ const PanelChartRecord = () => {
           first.bazar?.name ||
           first.bazar?.bazarName ||
           passedGame?.game ||
-          passedGame?.bazarName ||
-          "Game",
+          passedGame?.bazarName,
         value:
           first.value ||
           `${first.first_number}-${first.jodi_number}-${first.second_number}`,
@@ -60,43 +62,55 @@ const PanelChartRecord = () => {
     return { name: "GAME", value: "Loading..." };
   }, [chartData, passedGame]);
 
-  const keywords = `
-    Dpboss ${gameInfo.name} panel chart, ${gameInfo.name} patti chart,
-    old ${gameInfo.name} panel chart, dpboss ${gameInfo.name} chart,
-    ${gameInfo.name} panel record, ${gameInfo.name} panel chart 2015,
-    ${gameInfo.name} panel chart 2012 to 2023, ${gameInfo.name} final ank,
-    ${gameInfo.name} matka chart, satta ${gameInfo.name} chart panel,
-    डीपी बॉस, सट्टा चार्ट, ${gameInfo.name} पाना चार्ट
-  `;
+const gameName = gameInfo.name || gameData?.game_name;
+
+const keywords = `
+Satta8055 ${gameName} panel chart,
+${gameName} panel chart,
+${gameName} patti chart,
+${gameName} panel record,
+${gameName} old panel chart,
+${gameName} panel chart 2015,
+${gameName} panel chart 2012 to 2023,
+${gameName} final ank,
+${gameName} matka chart,
+satta ${gameName} panel chart,
+${gameName} panel guessing,
+${gameName} result,
+${gameName} live result,
+Satta8055 matka panel chart,
+सट्टा चार्ट,
+${gameName} पाना चार्ट
+`.replace(/\s+/g, ' ').trim();
 
   return (
     <div className="container">
       <TopHeader />
 
       <div className="section-header">
-        {gameInfo.name.toUpperCase()} PANEL CHART
+        {gameInfo.name || gameData?.game_name.toUpperCase()} PANEL CHART
       </div>
 
       <div className="keywords-container">
         <h2 className="info-title">
-          {gameInfo.name.toUpperCase()} PANEL RESULT CHART RECORDS
+          {gameInfo.name || gameData?.game_name.toUpperCase()} PANEL RESULT CHART RECORDS
         </h2>
         <p className="keywords-list">{keywords}</p>
       </div>
 
-      <div className="result-item common-border">
-        <h3 className="live-game-name">{gameInfo.name}</h3>
-        {/* <div className="live-game-value">{gameInfo.value}</div> */}
-      </div>
+      {/* <div className="result-item common-border">
+        <h3 className="live-game-name">{gameInfo.name || gameData?.game_name}</h3>
+        <div className="live-game-value">{gameInfo.value}</div>
+      </div> */}
 
       <PanelRecordTable
         data={chartData}
         loading={isLoading}
-        gameName={gameInfo.name}
+        gameName={gameInfo.name || gameData?.game_name}
         onRefresh={() => refetch()}
       />
 
-      <div
+      {/* <div
         style={{
           position: "fixed",
           bottom: "10px",
@@ -111,7 +125,7 @@ const PanelChartRecord = () => {
         >
           Matka Play
         </a>
-      </div>
+      </div> */}
     </div>
   );
 };

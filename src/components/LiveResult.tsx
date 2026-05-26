@@ -18,9 +18,9 @@ export default function LiveResult() {
 
   return (
     <div className="live-results-container common-border">
-      <div className="lucky-header">📢 LIVE RESULT 📢</div>
+      <h3 className="lucky-header shimmer-text">Fastest Results... Live & Accurate</h3>
 
-      <p className="live-tagline">Sabse Tezz Live Result Yahi Milega</p>
+      <p className="live-tagline">Fastest Live Result Yahi Milega</p>
 
       {isLoading && <div className="loading-text">Loading live results...</div>}
 
@@ -41,7 +41,7 @@ export default function LiveResult() {
               <div className="live-game-info">
                 <div className="live-game-name">{gameName}</div>
                 {(openTime || closeTime) && (
-                  <div className="live-game-time">
+                  <div className="live-game-time" style={{fontStyle:"italic"}}>
                     {openTime} - {closeTime}
                   </div>
                 )}

@@ -6,7 +6,7 @@ export default function WeeklyCharts() {
       {/* Weekly Patti Chart */}
       <div className="weekly-section">
         <div className="weekly-header-green">
-          DpBoss Net Weekly Patti Or Penal Chart From 23-02-2026 To 01-03-2026
+          Satta8055Net Weekly Patti Or Penal Chart From 23-02-2026 To 01-03-2026
           For Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar, Mumbai
           Royal Night, Kalyan Morning
         </div>
@@ -18,7 +18,7 @@ export default function WeeklyCharts() {
       {/* Weekly Line Chart */}
       <div className="weekly-section">
         <div className="weekly-header-green">
-          DpBoss Net Weekly Line Open Or Close From 23-02-2026 To 01-03-2026 For
+          Satta8055Net Weekly Line Open Or Close From 23-02-2026 To 01-03-2026 For
           Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar, Mumbai Royal
           Night, Kalyan Morning
         </div>
@@ -30,7 +30,7 @@ export default function WeeklyCharts() {
       {/* Weekly Jodi Chart */}
       <div className="weekly-section">
         <div className="weekly-header-green">
-          DpBoss Net Weekly Jodi Chart From 23-02-2026 To 01-03-2026 For Kalyan
+          Satta8055Net Weekly Jodi Chart From 23-02-2026 To 01-03-2026 For Kalyan
           Milan Kalyan Night, Rajdhani Time, Main Bazar, Mumbai Royal Night
           Market, Kalyan Morning
         </div>

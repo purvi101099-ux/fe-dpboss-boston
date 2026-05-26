@@ -62,8 +62,8 @@ const BazarResultForm: React.FC<BazarResultFormProps> = ({
           openNumber: initialData.first_number || parts[0] || "",
           closeNumber: initialData.second_number || parts[2] || "",
           jodiNumber: initialData.jodi_number || parts[1] || "",
-          date: initialData.created_at
-            ? new Date(initialData.created_at)
+          date: initialData.result_date
+            ? new Date(initialData.result_date)
             : null,
           isLucky: initialData.jodi_luck === 1 ? "yes" : "no",
         });
@@ -117,12 +117,13 @@ const BazarResultForm: React.FC<BazarResultFormProps> = ({
               name="name"
               options={bazarOptions}
               placeholder="Select Bazar"
+              disabled={initialData}
             />
           </div>
 
           <div style={{ marginBottom: 16 }}>
             <CommonLabel label="Result Date" required />
-            <CommonDatePicker name="date" placeholder="Select date" />
+            <CommonDatePicker name="date" placeholder="Select date" disabled={initialData} />
           </div>
 
           <div

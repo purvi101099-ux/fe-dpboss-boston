@@ -15,7 +15,7 @@ export const BAZAR_RESULT_MESSAGES = {
   PAGE_TITLE: "Bazar Result",
   CREATE_BUTTON: "Add Result",
   FORM_TITLE_ADD: "Add Bazar Result",
-  FORM_TITLE_EDIT: "Edit Bazar Result",
+  FORM_TITLE_EDIT: "Update Bazar Result",
   FORM_SUBMIT_ADD: "Submit",
   FORM_SUBMIT_UPDATE: "Update",
   REFRESH_SUCCESS: "Bazar result data refreshed",

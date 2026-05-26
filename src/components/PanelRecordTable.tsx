@@ -26,7 +26,8 @@ interface PanelRecordTableProps {
 }
 
 const RowCell = ({ data }: { data: DayData | undefined }) => {
-  if (!data || (data.jodi === "**" && data.left.every((d) => d === "*"))) {
+  //if (!data || (data.jodi === "**" && data.left.every((d) => d === "*"))) {
+  if (!data) {
     return (
       <td className="panel-cell">
         <div style={{ textAlign: "center", fontWeight: "900" }}>-</div>
@@ -162,8 +163,8 @@ export default function PanelRecordTable({
         className="jodi-footer-info"
         style={{ marginTop: "15px", padding: "0 10px" }}
       >
-        <p className="jodi-info-text">
-          Welcome to DPBoss Services, your trusted destination for comprehensive
+        {/* <p className="jodi-info-text">
+          Welcome to Satta8055 Services, your trusted destination for comprehensive
           and accurate {gameName || "this game"} Panel Chart Records. We take
           proud in offering a reliable platform that caters specifically to the
           needs of matka enthusiasts, providing in-depth insights into{" "}
@@ -178,7 +179,7 @@ export default function PanelRecordTable({
           meet the demands of both seasoned players and newcomers, our charts
           provide a detailed historical overview of gaming patterns and trends.
           Whether you're strategizing your next move or seeking to understand
-          the dynamics of {gameName || "this"} matka, DPBoss Services is your
+          the dynamics of {gameName || "this"} matka, Satta8055 Services is your
           go-to source for accurate and up-to-date information.
         </p>
 
@@ -190,11 +191,11 @@ export default function PanelRecordTable({
           <div className="faq-item">
             <h4 className="faq-q">
               Q1: How often are the {gameName || "this game"} Panel Chart
-              Records updated on DPBoss Services?
+              Records updated on Satta8055 Services?
             </h4>
             <p className="faq-a">
               We understand the importance of real-time information in the matka
-              world. At DPBoss Services, we are committed to regular updates of
+              world. At Satta8055 Services, we are committed to regular updates of
               our {gameName || "this game"} Panel Chart Records. Our dedicated
               team ensures that you have access to the latest gaming trends and
               patterns, empowering you with timely information to make informed
@@ -204,20 +205,20 @@ export default function PanelRecordTable({
           <div className="faq-item">
             <h4 className="faq-q">
               Q2: Is there a subscription fee for accessing{" "}
-              {gameName || "this game"} Panel Chart Records on DPBoss Services?
+              {gameName || "this game"} Panel Chart Records on Satta8055 Services?
             </h4>
             <p className="faq-a">
               No, accessing {gameName || "this game"} Panel Chart Records on
-              DPBoss Services is completely free of charge. We believe in making
+              Satta8055 Services is completely free of charge. We believe in making
               valuable information accessible to all enthusiasts without any
               subscription fees. Simply visit our user-friendly website,
               navigate to the section, and explore the latest charts at your
-              convenience. DPBoss Services is dedicated to democratizing
+              convenience. Satta8055 Services is dedicated to democratizing
               information and providing equal opportunities for all{" "}
               {gameName || "this"} matka enthusiasts.
             </p>
           </div>
-        </div>
+        </div> */}
 
         <div style={{ textAlign: "center", margin: "15px 0" }}>
           <button onClick={scrollToTop} className="go-bottom-btn">
@@ -227,19 +228,19 @@ export default function PanelRecordTable({
 
         <div
           className="jodi-custom-footer common-border"
-          style={{ border: "3px solid #3f51b5", padding: "10px" }}
+          style={{ padding: "10px", marginTop: "10px" }}
         >
-          <h2 className="jodi-footer-logo" style={{ color: "#007bff" }}>
-            DPBOSS.BOSTON
+          <h2 className="jodi-footer-logo" style={{ fontSize: "1.8rem" }}>
+            Satta8055 Services
           </h2>
-          <p className="jodi-footer-msg" style={{ color: "red" }}>
+          <p className="jodi-footer-msg" style={{ fontSize: "0.9rem" }}>
             All Rights Reserved®
           </p>
-          <p className="jodi-footer-msg" style={{ color: "red" }}>
+          {/* <p className="jodi-footer-msg" style={{ fontSize: "0.8rem" }}>
             (1998-2024)
-          </p>
-          <p className="jodi-footer-contact" style={{ color: "red" }}>
-            Contact (Astrologer-<span>Dpboss</span>)
+          </p> */}
+          <p className="jodi-footer-contact" style={{ fontSize: "1rem" }}>
+            Contact (Astrologer-<span>Satta8055</span>)
           </p>
         </div>
       </div>

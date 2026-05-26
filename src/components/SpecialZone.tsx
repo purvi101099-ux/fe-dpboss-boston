@@ -4,7 +4,7 @@ export default function SpecialZone() {
   return (
     <>
       <div className="special-zone">
-        <div className="zone-header">Dpboss Special Game Zone</div>
+        <div className="zone-header">Satta8055 Special Game Zone</div>
         <div className="zone-list">
           {specialGames.map((game, i) => (
             <a key={i} href="#" className="zone-item">

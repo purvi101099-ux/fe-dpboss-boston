@@ -26,21 +26,21 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
       width: 10,
       render: (_: any, record: any) => (
         <Space size="small">
-          <Tooltip title="Edit Result">
+          <Tooltip title="Update Result">
             <Button
               type="text"
-              icon={<EditOutlined style={{ color: "var(--blue-btn)" }} />}
+              icon={<EditOutlined style={{ color: "var(--blue-btn)",fontSize: "15px" }} />}
               onClick={() => onEdit(record)}
             />
           </Tooltip>
-          <Tooltip title="Delete Result">
+          {/* <Tooltip title="Delete Result">
             <Button
               type="text"
               danger
               icon={<DeleteOutlined />}
               onClick={() => onDelete(record)}
             />
-          </Tooltip>
+          </Tooltip> */}
         </Space>
       ),
     },
@@ -54,7 +54,7 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
         return nameA.localeCompare(nameB);
       },
       render: (text: string, record: any) => (
-        <span style={{ fontWeight: 600 }}>
+        <span style={{ fontWeight: 600 ,fontSize: "14px" }}>
           {text || record.bazar?.bazarName || "Unknown"}
         </span>
       ),
@@ -63,10 +63,20 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
       title: "Time",
       key: "time",
       render: (_: any, record: any) => (
-        <Space direction="vertical" size={0} style={{ fontSize: "12px" }}>
+        <Space direction="vertical" size={0} style={{ fontSize: "14px" }}>
           <span style={{ color: "#52c41a" }}>{record.timeOpen || "-"}</span>
           <span style={{ color: "#f5222d" }}>{record.timeClose || "-"}</span>
         </Space>
+      ),
+    },
+    {
+      title: "Result Date",
+      dataIndex: "result_date",
+      key: "result_date",
+      render: (text: string, record: any) => (
+        <span style={{ fontWeight: 600 ,fontSize: "14px" }}>
+          {text || record.bazar?.result_date || "Unknown"}
+        </span>
       ),
     },
     {
@@ -79,7 +89,7 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
         if (!val && record.value) {
           val = record.value.split("-")[0];
         }
-        return <Tag color="blue">{val || "-"}</Tag>;
+        return <Tag color="blue" style={{fontSize:"15px"}} >{val === 'loading' ? '-' : val}</Tag>;
       },
     },
     {
@@ -93,7 +103,7 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
           val = record.value.split("-")[2];
         }
         if (!val || val === "") return "-";
-        return <Tag color="orange">{val}</Tag>;
+        return <Tag color="orange" style={{fontSize:"15px"}}>{val}</Tag>;
       },
     },
     {
@@ -108,10 +118,10 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
         }
         if (!val || val === "") return "-";
         if (val === "0" || val === "00") {
-          return <span style={{ fontWeight: "bold" }}>{val}</span>;
+          return <span style={{ fontWeight: "bold" ,fontSize: "15px" }} >{val}</span>;
         }
         return (
-          <Tag color="purple" style={{ fontWeight: "bold" }}>
+          <Tag color="purple" style={{ fontWeight: "bold" ,fontSize: "15px" }}>
             {val}
           </Tag>
         );
@@ -127,11 +137,11 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
       render: (luck: number) => (
         <Space>
           {luck === 1 ? (
-            <Tag color="gold" icon={<StarFilled />}>
+            <Tag color="gold" icon={<StarFilled /> } style={{ fontSize: "14px" }}>
               Lucky
             </Tag>
           ) : (
-            <Tag color="default">No</Tag>
+            <Tag color="default" style={{ fontSize: "14px" }}>No</Tag>
           )}
         </Space>
       ),
@@ -144,9 +154,9 @@ const BazarResultTable: React.FC<BazarResultTableProps> = ({
       dataSource={data}
       rowKey="id"
       loading={loading}
-      tableTitle="Bazar Result List"
+      tableTitle="Today's Bazar Result List"
       onRefresh={onRefresh}
-      searchPlaceholder="Search by bazar name..."
+      searchPlaceholder="Search & Update by bazar result..."
       globalSearchKey={["game"]}
     />
   );
