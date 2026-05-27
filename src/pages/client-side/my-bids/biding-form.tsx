@@ -27,7 +27,11 @@ import { biddingSchema, BiddingFormSchema } from "@/utils/validation";
 
 import "./bidding.css";
 
-const BiddingForm: React.FC = () => {
+interface BiddingFormProps {
+  onAddBid: (bid: { bidType: string; digits: string; points: number }) => void;
+}
+
+const BiddingForm: React.FC<BiddingFormProps> = ({ onAddBid }) => {
   const methods = useForm<BiddingFormSchema>({
     resolver: yupResolver(biddingSchema as any),
     mode: "onChange",
@@ -69,7 +73,24 @@ const BiddingForm: React.FC = () => {
         : "panaSub";
 
   const onSubmit = (data: BiddingFormSchema) => {
-    console.log("Form Data:", data);
+    const bidType =
+      gameType === GameType.ANK
+        ? data.ankSub
+        : gameType === GameType.JODI
+          ? data.jodiSub
+          : data.panaSub;
+
+    onAddBid({
+      bidType: String(bidType || ""),
+      digits: data.digits,
+      points: Number(data.points),
+    });
+
+    // Reset only the digits field so the user can quickly place another bid
+    methods.reset({
+      ...methods.getValues(),
+      digits: "",
+    });
   };
 
   return (
@@ -88,6 +109,9 @@ const BiddingForm: React.FC = () => {
           />
         </div>
 
+        {gameType !== GameType.ANK && (
+          <div className="game-type-title">Select Game Sub Type</div>
+        )}
         {/* Jodi Sub Type */}
         {gameType === GameType.JODI && (
           <div className="sub-type-options">

@@ -105,15 +105,12 @@
 .client-content {
   flex: 1;
   margin-top: 0;
-  padding-bottom: 5rem;
   width: 100%;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px;
   background-color: unset !important;
-  padding: 16px;
+  padding: 16px 16px 5.5rem 16px; /* consolidated padding with generous bottom padding for bottom navbar */
   /* min-height: calc(100vh - 130px); */
   box-sizing: border-box;
 }

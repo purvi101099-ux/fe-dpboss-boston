@@ -186,45 +186,81 @@ export const addFundSchema = yup.object().shape({
 });
 
 /* ------------------ Bidding Schema ------------------ */
-
 export const biddingSchema = yup.object({
   gameType: yup
     .string()
     .required(VALIDATION_MESSAGES.REQUIRED("Game type"))
     .oneOf(Object.values(GameType)),
 
-  ankSub: yup.string().nullable(),
+  /* ------------------ Ank Sub ------------------ */
 
-  jodiSub: yup.string().nullable(),
+  ankSub: yup.string().when("gameType", {
+    is: GameType.ANK,
+    then: (schema) => schema.required(VALIDATION_MESSAGES.REQUIRED("Bid type")),
+    otherwise: (schema) => schema.nullable(),
+  }),
 
-  panaSub: yup.string().nullable(),
+  /* ------------------ Jodi Sub ------------------ */
+
+  jodiSub: yup.string().when("gameType", {
+    is: GameType.JODI,
+    then: (schema) => schema.required(VALIDATION_MESSAGES.REQUIRED("Bid type")),
+    otherwise: (schema) => schema.nullable(),
+  }),
+
+  /* ------------------ Pana Sub ------------------ */
+
+  panaSub: yup.string().when("gameType", {
+    is: GameType.PANA,
+    then: (schema) => schema.required(VALIDATION_MESSAGES.REQUIRED("Bid type")),
+    otherwise: (schema) => schema.nullable(),
+  }),
+
+  /* ------------------ Digits ------------------ */
 
   digits: yup
     .string()
     .required(VALIDATION_MESSAGES.REQUIRED("Digits"))
-    .test(
-      "digits-validation",
-      VALIDATION_MESSAGES.INVALID_DIGITS,
-      function (value) {
-        const { gameType } = this.parent;
+    .test("digits-validation", function (value) {
+      const { gameType } = this.parent;
 
-        if (!value) return false;
+      if (!value) {
+        return this.createError({
+          message: VALIDATION_MESSAGES.REQUIRED("Digits"),
+        });
+      }
 
-        switch (gameType) {
-          case GameType.ANK:
-            return REGEX.ANK_DIGIT.test(value);
+      switch (gameType) {
+        case GameType.ANK:
+          if (!REGEX.ANK_DIGIT.test(value)) {
+            return this.createError({
+              message: "Enter 1 digit only (Example: 5)",
+            });
+          }
+          return true;
 
-          case GameType.JODI:
-            return REGEX.JODI_DIGIT.test(value);
+        case GameType.JODI:
+          if (!REGEX.JODI_DIGIT.test(value)) {
+            return this.createError({
+              message: "Enter 2 digits only (Example: 12)",
+            });
+          }
+          return true;
 
-          case GameType.PANA:
-            return REGEX.PANA_DIGIT.test(value);
+        case GameType.PANA:
+          if (!REGEX.PANA_DIGIT.test(value)) {
+            return this.createError({
+              message: "Enter 3 digits only (Example: 123)",
+            });
+          }
+          return true;
 
-          default:
-            return false;
-        }
-      },
-    ),
+        default:
+          return false;
+      }
+    }),
+
+  /* ------------------ Points ------------------ */
 
   points: yup.string().required(VALIDATION_MESSAGES.REQUIRED("Points")),
 });

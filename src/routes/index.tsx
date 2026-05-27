@@ -15,7 +15,6 @@ import Support from "@/pages/client-side/support";
 import BankDetails from "@/pages/client-side/bank-details";
 import AddFund from "@/pages/client-side/add-fund";
 import WithdrawFund from "@/pages/client-side/withdraw-fund";
-import HistoryDetails from "@/pages/client-side/history-details";
 import Notification from "@/pages/client-side/notification";
 import GameRates from "@/pages/client-side/game-rates";
 

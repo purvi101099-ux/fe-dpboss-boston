@@ -1,5 +1,3 @@
-import React from "react";
-
 interface BidEntry {
   id: number;
   bidType: string;
@@ -9,9 +7,10 @@ interface BidEntry {
 
 interface Props {
   bids: BidEntry[];
+  onDelete: (id: number) => void;
 }
 
-const BidsTable: React.FC<Props> = ({ bids }) => {
+const BidsTable: React.FC<Props> = ({ bids, onDelete }) => {
   const totalPoints = bids.reduce((total, bid) => total + bid.points, 0);
 
   return (
@@ -24,13 +23,14 @@ const BidsTable: React.FC<Props> = ({ bids }) => {
               <th>Bid Type</th>
               <th>Digits</th>
               <th>Points</th>
+              <th>Action</th>
             </tr>
           </thead>
 
           <tbody>
             {bids.length === 0 ? (
               <tr>
-                <td colSpan={4}>No bids added yet</td>
+                <td colSpan={5}>No bids added yet</td>
               </tr>
             ) : (
               bids.map((bid, index) => (
@@ -39,6 +39,15 @@ const BidsTable: React.FC<Props> = ({ bids }) => {
                   <td>{bid.bidType}</td>
                   <td>{bid.digits}</td>
                   <td>{bid.points}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="bid-delete-btn"
+                      onClick={() => onDelete(bid.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               ))
             )}

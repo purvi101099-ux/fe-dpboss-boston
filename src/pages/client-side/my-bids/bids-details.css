@@ -1,0 +1,275 @@
+.bids-details-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  background-color: #000000;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+/* Book Game Header Button */
+.book-game-header-btn {
+  background: linear-gradient(180deg, #3a7bd5 0%, #3a6073 100%);
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 16px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #000000;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  box-sizing: border-box;
+}
+
+.book-game-header-btn:hover {
+  opacity: 0.9;
+}
+
+/* Clock / Time Bar */
+.bids-details-clock {
+  background-color: #0f172a;
+  color: #ffffff;
+  text-align: center;
+  padding: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-bottom: 1.5px solid #000000;
+  box-sizing: border-box;
+}
+
+/* Wrapper sections */
+.details-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Teal Headers */
+.details-section-header {
+  background-color: #00e5ff;
+  color: #000000;
+  text-align: center;
+  padding: 8px 12px;
+  border-bottom: 1.5px solid #000000;
+  box-sizing: border-box;
+}
+
+.details-section-header h2 {
+  font-size: 0.85rem;
+  font-weight: 900;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* Rates Table */
+.details-rates-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background-color: #ffcc99;
+  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
+  box-sizing: border-box;
+}
+
+.details-rates-table tr {
+  border-bottom: 1.5px solid #000000;
+}
+
+.details-rates-table tr:last-child {
+  border-bottom: 2px solid #000000;
+}
+
+.details-rates-table td {
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #000000;
+  box-sizing: border-box;
+}
+
+.details-rates-table td.rate-name {
+  text-align: left;
+  width: 50%;
+  border-right: 1.5px solid #000000;
+}
+
+.details-rates-table td.rate-val {
+  text-align: right;
+  width: 50%;
+}
+
+/* Offers Table */
+.details-offers-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background-color: #ffcc99;
+  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  box-sizing: border-box;
+}
+
+.details-offers-table th,
+.details-offers-table td {
+  border: 1.5px solid #000000;
+  padding: 8px 4px;
+  text-align: center;
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #000000;
+  box-sizing: border-box;
+}
+
+.details-offers-table th {
+  font-weight: 800;
+}
+
+.details-offers-table td.offer-highlight {
+  color: #e65100;
+}
+
+/* Notice Board */
+.details-notice-board {
+  background-color: #ffcc99;
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 2px solid #000000;
+  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.notice-line {
+  margin: 0;
+  text-align: center;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
+.blue-bold {
+  color: #000080;
+  font-weight: 800;
+}
+
+.font-medium {
+  font-size: 0.82rem;
+}
+
+.notice-number-highlight {
+  margin: 2px 0 0 0;
+  color: #000080;
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  box-sizing: border-box;
+}
+
+/* Black Banner description */
+.details-black-banner {
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 14px;
+  font-size: 0.7rem;
+  line-height: 1.45;
+  font-weight: 500;
+  border-bottom: 2px solid #000000;
+  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.details-black-banner p {
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Payment Footer Section */
+.details-payment-footer {
+  background-color: #121c24;
+  color: #ffffff;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.footer-notice-text {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  box-sizing: border-box;
+}
+
+.footer-notice-subtext {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #ff9800;
+  box-sizing: border-box;
+}
+
+.footer-payment-methods {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #3b82f6;
+  box-sizing: border-box;
+}
+
+.footer-payment-number {
+  margin: 2px 0 6px 0;
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 1px;
+  box-sizing: border-box;
+}
+
+.footer-whatsapp-action {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  margin-top: 4px;
+  box-sizing: border-box;
+}
+
+.footer-whatsapp-action:hover {
+  transform: scale(1.15);
+}
+
+.whatsapp-footer-icon {
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.4));
+  box-sizing: border-box;
+}

@@ -1,58 +1,45 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { BiddingFormSchema, biddingSchema } from "@/utils/validation";
-import "@/styles/client-forms.css";
-import "./bidding.css";
-
-import {
-  BidEntry,
-  GameType,
-  JODI_SUB_LIST,
-  PANA_SUB_LIST,
-  GAME_TYPE_LIST,
-  AnkSubType,
-  JodiSubType,
-  PanaSubType,
-} from "./types";
+import { BidEntry } from "./types";
 import BiddingForm from "./biding-form";
 import BidsTable from "./biding-table";
+import BidsDetails from "./bids-details";
+import "@/styles/client-forms.css";
+import "./bidding.css";
 
 const MyBids: React.FC = () => {
   const [bids, setBids] = useState<BidEntry[]>([]);
 
-  const buildBidType = (data: BiddingFormSchema) => {
-    switch (data.gameType) {
-      case GameType.ANK:
-        return `${GameType.ANK} - ${data.ankSub}`;
+  const handleAddBid = (bid: { bidType: string; digits: string; points: number }) => {
+    const newBid: BidEntry = {
+      id: Date.now(),
+      bidType: bid.bidType,
+      digits: bid.digits,
+      points: bid.points,
+    };
+    setBids((prevBids) => [...prevBids, newBid]);
+  };
 
-      case GameType.JODI:
-        return `${GameType.JODI} - ${data.jodiSub}`;
-
-      case GameType.PANA:
-        return `${GameType.PANA} - ${data.panaSub}`;
-
-      default:
-        return "";
-    }
+  const handleDeleteBid = (id: number) => {
+    setBids((prevBids) => prevBids.filter((item) => item.id !== id));
   };
 
   return (
-    <div className="bidding-page">
-      <div className="bidding-card">
+    <div className="client-form-page">
+      <div className="client-form-card">
         <div className="client-form-header">
           <h1>Add Bidding</h1>
           <p>Place your bids for the game</p>
         </div>
 
-        {/* Game Type */}
-
         {/* Form Component */}
-        <BiddingForm />
+        <BiddingForm onAddBid={handleAddBid} />
 
         {/* Table Component */}
-        <BidsTable bids={bids} />
+        <BidsTable bids={bids} onDelete={handleDeleteBid} />
       </div>
+
+      {/* Bids Details Section */}
+      <BidsDetails />
     </div>
   );
 };

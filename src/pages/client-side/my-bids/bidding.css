@@ -4,11 +4,9 @@
 
 .game-type-section {
   border-radius: 8px;
-  padding: 14px 16px;
 }
 
 .game-type-title {
-  text-align: center;
   font-size: 0.82rem;
   font-weight: 800;
   color: var(--black-color);
@@ -21,7 +19,6 @@
 
 .sub-type-options {
   display: flex;
-  justify-content: center;
   margin-bottom: 16px;
 }
 
