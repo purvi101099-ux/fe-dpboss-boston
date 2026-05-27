@@ -1,35 +1,35 @@
 import React from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+
 import CommonInput from "@/components/common/commonInput";
 import CommonButton from "@/components/common/commonButton";
 import CommonLabel from "@/components/common/CommonLabel";
-import { bankDetailsSchema } from "@/utils/validation";
-import { BANK_MESSAGES } from "@/utils/message-const";
+import { paymentDetailsSchema } from "@/utils/validation";
 
 interface IDefaultValues {
-  beneficiaryName: string;
-  accountNumber: string;
-  ifscCode: string;
-  bankName: string;
+  gpayNumber: string;
+  phonePeNumber: string;
+  paytmNumber: string;
+  upiId: string;
 }
 
 const defaultValues: IDefaultValues = {
-  beneficiaryName: "",
-  accountNumber: "",
-  ifscCode: "",
-  bankName: "",
+  gpayNumber: "",
+  phonePeNumber: "",
+  paytmNumber: "",
+  upiId: "",
 };
 
-const BankDetailsForm: React.FC = () => {
-  const methods = useForm({
-    resolver: yupResolver(bankDetailsSchema),
+const PaymentDetailsForm: React.FC = () => {
+  const methods = useForm<IDefaultValues>({
+    resolver: yupResolver(paymentDetailsSchema),
     defaultValues,
   });
 
   const { handleSubmit } = methods;
 
-  const onInternalSubmit = (data: any) => {
+  const onInternalSubmit = (data: IDefaultValues) => {
     console.log(data);
   };
 
@@ -37,8 +37,8 @@ const BankDetailsForm: React.FC = () => {
     <div className="client-form-page">
       <div className="client-form-card">
         <div className="client-form-header">
-          <h1>{BANK_MESSAGES.FORM_TITLE_ADD}</h1>
-          <p>Provide Valid Bank Details</p>
+          <h1>Add Payment Details</h1>
+          <p>Add your UPI and wallet payment details</p>
         </div>
 
         <FormProvider {...methods}>
@@ -46,31 +46,35 @@ const BankDetailsForm: React.FC = () => {
             className="client-form"
             onSubmit={handleSubmit(onInternalSubmit)}
           >
-            <CommonLabel label="A/c Holder Name" required />
+            <CommonLabel label="GPay Number" required />
             <CommonInput
-              name="beneficiaryName"
-              placeholder="Beneficiary name"
+              name="gpayNumber"
+              placeholder="Enter Google Pay number"
             />
-            <CommonLabel label="Bank Name" required />
-            <CommonInput
-              name="bankName"
-              placeholder="HDFC / SBI / Bank of India"
-            />
-            <CommonLabel label="Bank Account Number" required />
-            <CommonInput name="accountNumber" placeholder="950000124587" />
 
-            <CommonLabel label="IFSC Code" required />
-            <CommonInput name="ifscCode" placeholder="HDFC0000139" />
+            <CommonLabel label="PhonePe Number" required />
+            <CommonInput
+              name="phonePeNumber"
+              placeholder="Enter PhonePe number"
+            />
+
+            <CommonLabel label="Paytm Number" required />
+            <CommonInput name="paytmNumber" placeholder="Enter Paytm number" />
+
+            <CommonLabel label="UPI ID" required />
+            <CommonInput name="upiId" placeholder="example@upi" />
 
             <CommonButton
-              label={BANK_MESSAGES.FORM_SUBMIT_ADD}
+              label="Save Payment Details"
               htmlType="submit"
               block
               className="client-submit-btn"
             />
           </form>
         </FormProvider>
+
         <p className="client-update-text">Unable to update?</p>
+
         <CommonButton
           label="Contact Admin"
           className="client-contact-admin"
@@ -82,4 +86,4 @@ const BankDetailsForm: React.FC = () => {
   );
 };
 
-export default BankDetailsForm;
+export default PaymentDetailsForm;

@@ -32,6 +32,7 @@ import StarlineHistory from "@/pages/client-side/history/starline-history";
 import TransactionHistory from "@/pages/client-side/history/transaction-history";
 import BiddingHistory from "@/pages/client-side/history/bidding-histry";
 import TransactionHistoryPage from "@/pages/client-side/transaction-history";
+import PaymentDetailsForm from "@/pages/client-side/payment-details";
 
 export interface RouteConfig {
   path: string;
@@ -56,9 +57,11 @@ export const clientRoutes: RouteConfig = {
     { path: PATHS.HISTORY, element: <TransactionHistoryPage /> },
     { path: PATHS.PROFILE, element: <Profile /> },
     { path: PATHS.CHANGE_PASSWORD, element: <Password /> },
-    { path: PATHS.MY_BIDS, element: <MyBids /> },
+    { path: PATHS.MY_BIDS, element: <BiddingHistory /> },
     { path: PATHS.SUPPORT, element: <Support /> },
     { path: PATHS.BANK_DETAILS, element: <BankDetails /> },
+    { path: PATHS.PAYMENT_DETAILS, element: <PaymentDetailsForm /> },
+
     { path: PATHS.NOTIFICATION, element: <Notification /> },
     { path: PATHS.GAME_RATES, element: <GameRates /> },
     { path: PATHS.PASSBOOK, element: <TransactionHistory /> },
@@ -79,6 +82,10 @@ export const clientRoutes: RouteConfig = {
     {
       path: PATHS.TXN_HISTORY,
       element: <TransactionHistory />,
+    },
+    {
+      path: PATHS.PLAY_GAME,
+      element: <MyBids />,
     },
     { path: "*", element: <NotFound /> },
   ],

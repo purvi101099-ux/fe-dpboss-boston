@@ -18,6 +18,11 @@ const Profile: React.FC = () => {
         />
         <MenuListItem
           icon="fa-key"
+          label="UPI Payment Details"
+          onClick={() => navigate(PATHS.PAYMENT_DETAILS)}
+        />
+        <MenuListItem
+          icon="fa-key"
           label="Change Password"
           onClick={() => navigate(PATHS.CHANGE_PASSWORD)}
         />

@@ -3,6 +3,8 @@ import { Card } from "antd";
 import { Icon } from "@iconify/react";
 import useModal from "@/hooks/useModal";
 import GameTimeModal from "@/components/client/GameTimeModal/GameTimeModal";
+import { useNavigate } from "react-router-dom";
+import { PATHS } from "@/routes/paths";
 import "./GameCard.css";
 
 interface Game {
@@ -23,8 +25,12 @@ interface GameCardProps {
 }
 
 const GameCard: React.FC<GameCardProps> = ({ game }) => {
+  const navigate = useNavigate();
   const { isOpen, openModal, closeModal } = useModal();
 
+  const onPlayGame = () => {
+    navigate(PATHS.PLAY_GAME);
+  };
   return (
     <>
       <Card className="game-card">
@@ -44,7 +50,11 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
 
           <div className="game-numbers">{game.numbers}</div>
 
-          <div className="game-side-col game-play-col">
+          <div
+            className="game-side-col game-play-col"
+            style={{ cursor: "pointer" }}
+            onClick={() => onPlayGame()}
+          >
             <Icon icon="fa:play-circle" className="game-card-icon" />
             <div className="game-card-label">Play Game</div>
           </div>
