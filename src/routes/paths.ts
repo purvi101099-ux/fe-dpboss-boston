@@ -30,4 +30,5 @@ export const PATHS = {
   ADMIN_DASHBOARD: "dashboard", // Nested
   ADMIN_BAZAR: "bazar", // Nested
   ADMIN_BAZAR_RESULT: "bazar-result", // Nested
+  ADMIN_SITE_SETTINGS:"site-settings"
 };

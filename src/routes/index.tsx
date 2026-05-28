@@ -32,6 +32,7 @@ import TransactionHistory from "@/pages/client-side/history/transaction-history"
 import BiddingHistory from "@/pages/client-side/history/bidding-histry";
 import TransactionHistoryPage from "@/pages/client-side/transaction-history";
 import PaymentDetailsForm from "@/pages/client-side/payment-details";
+import SiteSettingsPage from "@/pages/admin/Site";
 
 export interface RouteConfig {
   path: string;
@@ -98,6 +99,7 @@ export const adminRoutes: RouteConfig = {
     { path: PATHS.ADMIN_DASHBOARD, element: <Dashboard /> },
     { path: PATHS.ADMIN_BAZAR, element: <Bazar /> },
     { path: PATHS.ADMIN_BAZAR_RESULT, element: <BazarResult /> },
+    { path: PATHS.ADMIN_SITE_SETTINGS, element: <SiteSettingsPage /> },
     { path: "*", element: <NotFound /> },
   ],
 };
