@@ -185,6 +185,15 @@ export const addFundSchema = yup.object().shape({
     .required(VALIDATION_MESSAGES.REQUIRED("Payment method")),
 });
 
+/* ------------------ Withdraw Fund Schema ------------------ */
+
+export const withdrawFundSchema = yup.object().shape({
+  amount: yup
+    .number()
+    .required(VALIDATION_MESSAGES.REQUIRED("Amount"))
+    .typeError(VALIDATION_MESSAGES.INVALID_AMOUNT),
+});
+
 /* ------------------ Bidding Schema ------------------ */
 export const biddingSchema = yup.object({
   gameType: yup

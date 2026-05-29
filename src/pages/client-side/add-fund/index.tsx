@@ -8,23 +8,18 @@ import CommonButton from "@/components/common/commonButton";
 import "@/styles/client-forms.css";
 import "./add-fund.css";
 
-interface AddFundForm {
-  amount: number | string;
-  paymentMethod: string;
-}
-
 const AddFund: React.FC = () => {
-  const methods = useForm<AddFundForm>({
+  const methods = useForm({
     resolver: yupResolver(addFundSchema),
     defaultValues: {
-      amount: "",
+      amount: "" as any,
       paymentMethod: "Direct UPI",
     },
   });
 
   const { setValue, control } = methods;
 
-  const onSubmit = (data: AddFundForm) => {
+  const onSubmit = (data: any) => {
     console.log("Add Fund Submitted:", data);
   };
 
