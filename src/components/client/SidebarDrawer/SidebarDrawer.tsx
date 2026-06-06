@@ -38,11 +38,11 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ open, onClose }) => {
     //   label: "Fund History",
     //   icon: "fa:money",
     // },
-    {
-      key: PATHS.NOTIFICATION,
-      label: "Notifications",
-      icon: "fa:bell",
-    },
+    // {
+    //   key: PATHS.NOTIFICATION,
+    //   label: "Notifications",
+    //   icon: "fa:bell",
+    // },
     // {
     //   key: "/winners",
     //   label: "Top Winners",

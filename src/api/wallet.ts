@@ -33,6 +33,40 @@ export const fetchUserWallet = async (userId: number): Promise<WalletData> => {
   return response.data.data[0];
 };
 
+export interface TransactionRecord {
+  txt_id: number;
+  points: number;
+  description: string;
+  created_at: string;
+  updated_at: string;
+  type_id: number;
+  wallet_type: string;
+  market_id: number;
+  market_name: string | null;
+  status_id: number;
+  status_name: string;
+}
+
+export interface TransactionHistoryResponse {
+  data: TransactionRecord[];
+  message?: string;
+}
+
+export const fetchWalletHistory = async (
+  userId: number,
+  type: string = "transaction"
+): Promise<TransactionRecord[]> => {
+  const response = await apiClient.get<TransactionHistoryResponse>(
+    `/wallet-history/${userId}`,
+    {
+      params: {
+        type,
+      },
+    }
+  );
+  return response.data.data;
+};
+
 
 
 

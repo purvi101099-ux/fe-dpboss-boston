@@ -1,13 +1,17 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
   ArrowDownOutlined,
   ArrowUpOutlined,
   SearchOutlined,
+  LoadingOutlined,
+  QuestionCircleOutlined,
+  QuestionOutlined,
 } from "@ant-design/icons";
-import { DatePicker, Select, Input, Empty, Tag } from "antd";
+import { DatePicker, Select, Input, Empty, Tag, Spin } from "antd";
 import CommonTable from "@/components/common/CommonTable";
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
+import { fetchWalletHistory, TransactionRecord } from "@/api/wallet";
 
 dayjs.extend(isBetween);
 
@@ -17,48 +21,84 @@ export enum TransactionFilter {
   ALL = "All Transactions",
   DEPOSIT = "Deposit",
   WITHDRAWAL = "Withdrawal",
+  BONUS = "Bonus",
 }
 
-// Generate ~20 records of dummy data for proper testing of pagination, sorting, and filtering
-const staticData = Array.from({ length: 22 }).map((_, index) => {
-  const isDeposit = index % 3 === 0;
-  // Group some transactions on the same day by dividing index by 2
-  const day = 25 - Math.floor(index / 2);
-  const dateStr = `2023-10-${day.toString().padStart(2, "0")}`;
+export enum StatusFilter {
+  ALL = "All Status",
+  COMPLETED = "Completed",
+  PENDING = "Pending",
+  FAILED = "Failed",
+}
 
-  return {
-    id: `#TXN0${891 - index}`,
-    date: dateStr,
-    displayDate: `Oct ${day.toString().padStart(2, "0")}, 2023`,
-    type: isDeposit ? "Deposit" : "Withdrawal",
-    description: isDeposit
-      ? index % 4 === 0
-        ? "Point Purchase (Debit Card)"
-        : "Monthly Bonus"
-      : "Points Redeemed (Shop)",
-    amountVal: isDeposit ? (index + 1) * 500 : -((index + 1) * 200),
-    amountStr: isDeposit
-      ? `+${(index + 1) * 500} pts`
-      : `-${(index + 1) * 200} pts`,
-    status: index === 0 ? "Pending" : "Completed",
-    isDeposit,
-    subtext:
-      isDeposit && index % 4 === 0 ? `Visa **** ${1000 + index}` : undefined,
-  };
-});
+// Transform API response to table data format
+const transformTransactionData = (apiData: TransactionRecord[]) => {
+  return apiData.map((record, index) => {
+    const isDeposit = (record.wallet_type === "Deposit" || record.type_id === 1 || record.type_id === 5) && record.points > 0;
+    
+    return {
+      id: `#TXN${record.txt_id.toString().padStart(5, "0")}`,
+      date: record.created_at,
+      displayDate: dayjs(record.created_at).format("MMM DD, YYYY"),
+      type: record.wallet_type,
+      description: record.description,
+      amountVal: isDeposit ? record.points : -record.points,
+      amountStr: isDeposit
+        ? `+${record.points} pts`
+        : `-${record.points} pts`,
+      status: record.status_name,
+      isDeposit,
+      subtext: record.market_name ? `Market: ${record.market_name}` : undefined,
+    };
+  });
+};
 
 const TransactionHistory: React.FC = () => {
   const [searchText, setSearchText] = useState("");
   const [filterType, setFilterType] = useState<TransactionFilter>(
     TransactionFilter.ALL,
   );
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>(
+    StatusFilter.ALL,
+  );
   const [dateRange, setDateRange] = useState<[dayjs.Dayjs, dayjs.Dayjs] | null>(
     null,
   );
+  const [loading, setLoading] = useState(true);
+  const [transactionData, setTransactionData] = useState<ReturnType<typeof transformTransactionData>>([]);
+  const [error, setError] = useState<string | null>(null);
+  const user = localStorage.getItem("user");
+  const userData = user ? JSON.parse(user) : {};
+  const userId = userData?.user_id;
+  // Fetch transaction data from API
+  useEffect(() => {
+    const loadTransactionHistory = async () => {
+      try {
+        setLoading(true);
+        setError(null);  
+        if (!userId) {
+          setError("User ID not found");
+          setLoading(false);
+          return;
+        }
+
+        const apiResponse = await fetchWalletHistory(parseInt(userId), "transaction");
+        const transformedData = transformTransactionData(apiResponse);
+        setTransactionData(transformedData);
+      } catch (err) {
+        console.error("Error fetching transaction history:", err);
+        setError(err instanceof Error ? err.message : "Failed to load transaction history");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadTransactionHistory();
+  }, []);
 
   // Filter Data
   const filteredData = useMemo(() => {
-    return staticData.filter((record) => {
+    return transactionData.filter((record) => {
       // 1. Text Search Filter
       const matchesSearch =
         record.id.toLowerCase().includes(searchText.toLowerCase()) ||
@@ -72,7 +112,12 @@ const TransactionHistory: React.FC = () => {
         if (record.type !== filterType) return false;
       }
 
-      // 3. Date Range Filter
+      // 3. Status Filter
+      if (statusFilter !== StatusFilter.ALL) {
+        if (record.status !== statusFilter) return false;
+      }
+
+      // 4. Date Range Filter
       if (dateRange && dateRange[0] && dateRange[1]) {
         const recordDate = dayjs(record.date);
         const start = dateRange[0].startOf("day");
@@ -82,7 +127,7 @@ const TransactionHistory: React.FC = () => {
 
       return true;
     });
-  }, [searchText, filterType, dateRange]);
+  }, [searchText, filterType, statusFilter, dateRange, transactionData]);
 
   // Antd Table Columns Configure
   const columns = [
@@ -173,7 +218,7 @@ const TransactionHistory: React.FC = () => {
 
       {/* Shared Global Filters */}
       <div className="global-filters">
-        <div className="search-wrapper">
+        {/* <div className="search-wrapper">
           <Input
             className="filter-search"
             placeholder="Search descriptions or IDs..."
@@ -181,7 +226,7 @@ const TransactionHistory: React.FC = () => {
             suffix={<SearchOutlined style={{ color: "#8e8e93" }} />}
             onChange={(e) => setSearchText(e.target.value)}
           />
-        </div>
+        </div> */}
 
         <Select
           className="filter-select"
@@ -191,33 +236,60 @@ const TransactionHistory: React.FC = () => {
             { value: TransactionFilter.ALL, label: "All Transactions" },
             { value: TransactionFilter.DEPOSIT, label: "Deposits" },
             { value: TransactionFilter.WITHDRAWAL, label: "Withdrawals" },
+            { value: TransactionFilter.BONUS, label: "Bonus" },
           ]}
         />
 
-        <RangePicker
+        <Select
+          className="filter-select"
+          value={statusFilter}
+          onChange={(value) => setStatusFilter(value as StatusFilter)}
+          options={[
+            { value: StatusFilter.ALL, label: "All Status" },
+            { value: StatusFilter.COMPLETED, label: "Completed" },
+            { value: StatusFilter.PENDING, label: "Pending" },
+            { value: StatusFilter.FAILED, label: "Failed" },
+          ]}
+        />
+
+        {/* <RangePicker
           className="filter-date"
           onChange={(dates: any) => setDateRange(dates)}
-        />
+        /> */}
       </div>
 
       {/* Desktop Table View Custom Component Injection */}
       <div className="desktop-table-view">
-        <CommonTable
-          columns={columns}
-          dataSource={filteredData}
-          rowKey="id"
-          searchable={
-            false
-          } /* Turned off inside CommonTable so we use our Global Filters */
-          tableTitle="History Data"
-          pagination={{ defaultPageSize: 10, showSizeChanger: true }}
-          scroll={{ y: "calc(100vh - 450px)", x: "max-content" }}
-        />
+        {loading ? (
+          <div style={{ display: "flex", justifyContent: "center", padding: "50px" }}>
+            <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
+          </div>
+        ) : error ? (
+          <Empty description={error} />
+        ) : (
+          <CommonTable
+            columns={columns}
+            dataSource={filteredData}
+            rowKey="id"
+            searchable={
+              false
+            } /* Turned off inside CommonTable so we use our Global Filters */
+            tableTitle="History Data"
+            pagination={{ defaultPageSize: 10, showSizeChanger: true }}
+            scroll={{ y: "calc(100vh - 450px)", x: "max-content" }}
+          />
+        )}
       </div>
 
       {/* Mobile Card View with the identical filtered array */}
       <div className="mobile-card-view">
-        {Object.keys(groupedData).length === 0 ? (
+        {loading ? (
+          <div style={{ display: "flex", justifyContent: "center", padding: "50px" }}>
+            <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
+          </div>
+        ) : error ? (
+          <Empty description={error} />
+        ) : Object.keys(groupedData).length === 0 ? (
           <Empty description="No Records Found" />
         ) : (
           Object.entries(groupedData).map(([date, records]) => (
@@ -228,32 +300,34 @@ const TransactionHistory: React.FC = () => {
                   <div className="txn-card-left">
                     <div
                       className={
-                        record.isDeposit
+                        record.isDeposit && record.status !== "Pending" && record.status !== "Failed"
                           ? "txn-icon deposit"
                           : "txn-icon withdrawal"
                       }
                     >
-                      {record.isDeposit ? (
+                      {record.isDeposit && record.status !== "Pending" && record.status !== "Failed" ? (
                         <ArrowUpOutlined />
                       ) : (
+                        (record.status === "Pending" || record.status === "Failed") ? (
+                        <QuestionOutlined />
+                      ) : (
                         <ArrowDownOutlined />
+                      )
                       )}
                     </div>
                     <div className="txn-details">
                       <div className="txn-desc-row">
                         <span className="txn-desc">{record.description}</span>
                         <span
-                          className={
-                            record.isDeposit
-                              ? "txn-amount-inline deposit"
-                              : "txn-amount-inline withdrawal"
-                          }
+                          className={`txn-amount-inline ${
+                                      record.isDeposit ? "deposit" : "withdrawal"
+                                    } ${["Pending", "Failed"].includes(record.status) ? "txn-amount-dotted" : ""}`}
                         >
                           {record.amountStr}
                         </span>
                       </div>
-                      {record.subtext && (
-                        <span className="txn-subtext">{record.subtext}</span>
+                      {record.status && (
+                        <span className="txn-subtext">{record.status}</span>
                       )}
                     </div>
                   </div>

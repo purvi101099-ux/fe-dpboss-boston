@@ -197,6 +197,11 @@
   flex-shrink: 0;
 }
 
+.txn-amount-dotted{
+    text-decoration-line: line-through;
+    text-decoration-style: dotted;
+}
+
 .txn-amount-inline.deposit {
   color: #25d366;
 }
