@@ -31,6 +31,7 @@ const SignUp: React.FC = () => {
   const onSubmit = (data: any) => {
     const payload = {
       name: data.username,
+      email: data.email,
       mobile: data.mobile,
       password: data.password,
     };
@@ -56,6 +57,13 @@ const SignUp: React.FC = () => {
                   Username <span>*</span>
                 </label>
                 <CommonInput name="username" placeholder="Enter username" />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">
+                  Email <span>*</span>
+                </label>
+                <CommonInput name="email" type="email" placeholder="Enter email" />
               </div>
 
               <div className="form-group">

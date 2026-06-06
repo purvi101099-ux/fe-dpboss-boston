@@ -13,6 +13,7 @@ export const REGEX = {
   JODI_DIGIT: /^[0-9]{2}$/,
   PANA_DIGIT: /^[0-9]{3}$/,
   UPI_ID: /^[a-zA-Z0-9._-]+@[a-zA-Z]+$/,
+  EMAIL: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
 };
 
 /* ------------------ VALIDATION MESSAGES ------------------ */
@@ -30,6 +31,8 @@ export const VALIDATION_MESSAGES = {
     `Enter valid ${field} (Example: HDFC0001234)`,
 
   INVALID_UPI: (field: string) => `Enter valid ${field} (Example: test@paytm)`,
+
+  INVALID_EMAIL: "Enter valid email (Example: test@example.com)",
 
   INVALID_OPEN_NUMBER: (field: string) =>
     `${field} must be 1-3 digits (Example: 123)`,
@@ -68,6 +71,11 @@ export const signInSchema = yup.object({
 
 export const signUpSchema = yup.object({
   username: yup.string().required(VALIDATION_MESSAGES.REQUIRED("Username")),
+
+  email: yup
+    .string()
+    .required(VALIDATION_MESSAGES.REQUIRED("Email"))
+    .matches(REGEX.EMAIL, VALIDATION_MESSAGES.INVALID_EMAIL),
 
   mobile: yup
     .string()

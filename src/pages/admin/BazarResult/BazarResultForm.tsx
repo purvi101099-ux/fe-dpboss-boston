@@ -52,6 +52,8 @@ const BazarResultForm: React.FC<BazarResultFormProps> = ({
     defaultValues,
   });
 
+  console.log("BazarResultForm rendered with initialData:", initialData);
+
   const { handleSubmit, reset } = methods;
   useEffect(() => {
     if (open) {
