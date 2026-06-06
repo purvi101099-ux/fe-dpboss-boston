@@ -16,11 +16,11 @@ const TransactionHistoryPage: React.FC = () => {
       icon: "fa:list-alt",
       navigatePath: PATHS.BIDDING_HISTORY,
     },
-    {
-      label: "Starline Bidding History",
-      icon: "fa:list-alt",
-      navigatePath: PATHS.STARLINE_HISTORY,
-    },
+    // {
+    //   label: "Starline Bidding History",
+    //   icon: "fa:list-alt",
+    //   navigatePath: PATHS.STARLINE_HISTORY,
+    // },
     {
       label: "Transaction History",
       icon: "fa:list",

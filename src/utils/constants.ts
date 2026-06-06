@@ -1469,7 +1469,7 @@ export const specialGames = [
   "All market free fix game",
   "Ratan Khatri Fix Panel Chart",
   "Matka Final Number Trick Chart",
-  "EverGreen Trick Zone And Matka Tricks By DpBoss",
+  "EverGreen Trick Zone And Matka Tricks By Satta8055",
 ];
 
 export const jodiLists = [

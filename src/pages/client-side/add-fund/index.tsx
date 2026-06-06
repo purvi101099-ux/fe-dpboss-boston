@@ -37,7 +37,7 @@ const AddFund: React.FC = () => {
               ho jayenge.
             </p>
             <p>Dont worry Wait kriye.</p>
-            <p>Your money is always safe with Dpboss Play</p>
+            <p>Your money is always safe with Satta8055 Play</p>
           </div>
         </div>
 

@@ -44,16 +44,16 @@ const SignIn: React.FC = () => {
           <div className="auth-right">
             <div className="auth-card">
               <div className="auth-logo">
-                <img src="src/assets/logoApp.png" alt="Logo" />
-              </div>
-
-              <h2 className="auth-title">Welcome Back</h2>
-              <p className="auth-subtitle">Login to manage your CRM</p>
+                <img src="logo.png" alt="Logo" />
+              </div> 
+ 
+              <h2 className="auth-title">Welcome</h2>
+              <p className="auth-subtitle">Sign In to your account</p>
               <div className="form-group">
                 <label className="form-label">
                   Mobile No <span>*</span>
                 </label>
-                <CommonInput name="mobile" placeholder="Enter username" />
+                <CommonInput name="mobile" placeholder="Enter mobile number" />
               </div>
 
               <div className="form-group">
@@ -68,7 +68,7 @@ const SignIn: React.FC = () => {
               </div>
 
               <CommonButton
-                label="Sign In"
+                label="LOGIN"
                 htmlType="submit"
                 className="auth-btn"
                 block

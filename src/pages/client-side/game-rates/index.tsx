@@ -40,7 +40,7 @@ const GameRates: React.FC = () => {
           </div>
         </div>
 
-        <div className="rates-box">
+        {/* <div className="rates-box">
           <h2 className="box-title">Starline Games Win Ratio</h2>
           <div className="rates-list">
             {starlineGames.map((item, idx) => (
@@ -50,7 +50,7 @@ const GameRates: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

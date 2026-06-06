@@ -46,11 +46,11 @@ const SignUp: React.FC = () => {
           <div className="auth-right">
             <div className="auth-card">
               <div className="auth-logo">
-                <img src="src/assets/logoApp.png" alt="Logo" />
+                <img src="logo.png" alt="Logo" />
               </div>
 
               <h2 className="auth-title">Create Account</h2>
-              <p className="auth-subtitle">Welcome to Satta8055 international</p>
+              <p className="auth-subtitle">Satta 8055</p>
 
               <div className="form-group">
                 <label className="form-label">
@@ -59,12 +59,12 @@ const SignUp: React.FC = () => {
                 <CommonInput name="username" placeholder="Enter username" />
               </div>
 
-              <div className="form-group">
+              {/* <div className="form-group">
                 <label className="form-label">
                   Email <span>*</span>
                 </label>
                 <CommonInput name="email" type="email" placeholder="Enter email" />
-              </div>
+              </div> */}
 
               <div className="form-group">
                 <label className="form-label">

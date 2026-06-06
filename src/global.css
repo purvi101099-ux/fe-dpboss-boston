@@ -37,6 +37,7 @@
   --gc-accent: #f39c12;
   --gc-number-color: #ff9800;
   --gc-text-muted: #444;
+  --bg-btn:linear-gradient(#FCE38A 0%, #F38181 100%);
 }
 
 * {
@@ -1731,7 +1732,7 @@ body {
 .auth-wrapper {
   min-height: 100vh;
   display: flex;
-  background: var(--bg-primary);
+  
 }
 
 /* ===============================
@@ -1756,8 +1757,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-primary);
-  padding: 20px;
+  padding: 10px;
+  background-color: #ffffff;
 }
 
 /* Center container */
@@ -1777,7 +1778,7 @@ body {
   border-radius: 8px;
 
   /* RED BORDER */
-  border: 2px solid var(--charry-red-color);
+  /* border: 2px solid var(--charry-red-color); */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
@@ -1795,7 +1796,7 @@ body {
   text-align: center;
   font-size: var(--fs-1-6);
   font-weight: var(--fw-600);
-  color: var(--blue-text);
+  color: var(--bg-btn);
   margin-bottom: 5px;
 }
 
@@ -1857,15 +1858,12 @@ body {
 
 .auth-btn {
   height: 42px !important;
-  background: var(--blue-btn) !important;
-  border-color: var(--blue-btn) !important;
+  background: var(--bg-btn) !important;
+  border-color: var(--black-color) !important;
   border-radius: 6px !important;
   font-weight: var(--fw-600);
   margin-top: 10px;
-}
-.auth-btn:hover {
-  background: var(--pink-primary) !important;
-  border-color: var(--pink-primary) !important;
+  color: var(--black-color) !important;
 }
 
 /* ===============================
@@ -1983,9 +1981,19 @@ body {
 
 @keyframes shimmer {
   0% {
-    background-position: -200% center;
+    background-position: 200% center;
   }
   100% {
-    background-position: 200% center;
+    background-position: -200% center;
+  }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .shimmer-text {
+    font-size: 1.2rem;
+    background-size: 300% auto;
+    text-align: center;
+    line-height: 1.4;
   }
 }

@@ -32,7 +32,7 @@ const QuickActions: React.FC = () => {
       <Row gutter={[8, 8]} className="quick-top-buttons">
         <Col span={12}>
           <Button block className="quick-primary-btn">
-            Dpboss Bazar Starline
+            Play Now
           </Button>
         </Col>
         <Col span={12}>

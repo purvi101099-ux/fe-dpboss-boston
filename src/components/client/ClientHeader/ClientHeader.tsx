@@ -23,7 +23,7 @@ const ClientHeader: React.FC<ClientHeaderProps> = ({ onMenuClick }) => {
             className="menu-trigger-icon"
             onClick={onMenuClick}
           />
-          <span className="brand-name">Dpboss Play</span>
+          <span className="brand-name">Satta8055 Play</span>
         </div>
 
         {!isLoggedIn ? (

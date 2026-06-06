@@ -5,7 +5,7 @@ const NewsMarquee: React.FC = () => {
   return (
     <div className="news-marquee-container">
       <div className="marquee-content">
-        <span>Dpboss Name Is A Brand </span>
+        <span>Satta8055 Trusted Platform</span>
       </div>
     </div>
   );

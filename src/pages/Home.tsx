@@ -70,7 +70,7 @@ const Home = () => {
       <MatkaCharts />
       <InfoSections />
       <FooterSections footer={siteSettings.advertise2} />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

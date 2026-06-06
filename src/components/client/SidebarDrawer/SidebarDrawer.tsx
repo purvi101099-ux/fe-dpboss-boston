@@ -26,11 +26,11 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ open, onClose }) => {
       label: "Bidding History",
       icon: "fa:list-alt",
     },
-    {
-      key: PATHS.STARLINE_HISTORY,
-      label: "Starline Bid History",
-      icon: "fa:list-alt",
-    },
+    // {
+    //   key: PATHS.STARLINE_HISTORY,
+    //   label: "Starline Bid History",
+    //   icon: "fa:list-alt",
+    // },
     {
       key: PATHS.FUND_HISTORY,
       label: "Fund History",
@@ -41,16 +41,16 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ open, onClose }) => {
       label: "Notifications",
       icon: "fa:bell",
     },
-    {
-      key: "/winners",
-      label: "Top Winners",
-      icon: "fa:trophy",
-    },
-    {
-      key: "/starline-winners",
-      label: "Starline Winners",
-      icon: "fa:trophy",
-    },
+    // {
+    //   key: "/winners",
+    //   label: "Top Winners",
+    //   icon: "fa:trophy",
+    // },
+    // {
+    //   key: "/starline-winners",
+    //   label: "Starline Winners",
+    //   icon: "fa:trophy",
+    // },
     {
       key: PATHS.GAME_RATES,
       label: "Game Rates",
