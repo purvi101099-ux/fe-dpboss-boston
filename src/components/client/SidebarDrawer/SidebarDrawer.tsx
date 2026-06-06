@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { PATHS } from "@/routes/paths";
 import "./SidebarDrawer.css";
+import { TOKEN } from "@/utils/constants";
 
 interface SidebarDrawerProps {
   open: boolean;
@@ -13,7 +14,8 @@ interface SidebarDrawerProps {
 const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ open, onClose }) => {
   const navigate = useNavigate();
   const location = useLocation();
-
+  const user = localStorage.getItem("user");
+  const userData = user ? JSON.parse(user) : {};
   const menuItems = [
     { key: PATHS.CLIENT_HOME, label: "Home", icon: "fa:home" },
     {
@@ -22,8 +24,8 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ open, onClose }) => {
       icon: "fa:list",
     },
     {
-      key: PATHS.BIDDING_HISTORY,
-      label: "Bidding History",
+      key: PATHS.MAIN_BIDDING_HISTORY,
+      label: "Main Bidding History",
       icon: "fa:list-alt",
     },
     // {
@@ -31,11 +33,11 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ open, onClose }) => {
     //   label: "Starline Bid History",
     //   icon: "fa:list-alt",
     // },
-    {
-      key: PATHS.FUND_HISTORY,
-      label: "Fund History",
-      icon: "fa:money",
-    },
+    // {
+    //   key: PATHS.FUND_HISTORY,
+    //   label: "Fund History",
+    //   icon: "fa:money",
+    // },
     {
       key: PATHS.NOTIFICATION,
       label: "Notifications",
@@ -76,7 +78,7 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ open, onClose }) => {
       {/* Header */}
       <div className="sidebar-header">
         <div className="user-info">
-          <h2>Hello User</h2>
+          <h2>Hello {userData.name || "User"}</h2>
           <p>Welcome Back</p>
         </div>
         <div className="close-sidebar-btn" onClick={onClose}>
@@ -119,6 +121,8 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ open, onClose }) => {
         <button
           className="sidebar-btn btn-logout"
           onClick={() => {
+            localStorage.removeItem(TOKEN);
+            localStorage.removeItem("user");
             navigate(PATHS.SIGN_IN);
             onClose();
           }}

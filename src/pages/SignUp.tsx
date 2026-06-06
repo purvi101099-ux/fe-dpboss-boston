@@ -15,6 +15,7 @@ const SignUp: React.FC = () => {
     mutationFn: (credentials: any) => signupUser(credentials),
     onSuccess: () => {
       message.success(COMMON_MESSAGES.SIGNUP_SUCCESS);
+      message.success("100 bonus points awarded for signing up!");
       navigate("/sign-in");
     },
     onError: (error: any) => {

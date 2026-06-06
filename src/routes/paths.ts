@@ -9,6 +9,7 @@ export const PATHS = {
   CLIENT_HOME: "/client/home",
   HISTORY: "/history",
   FUND_HISTORY: "/history/fund",
+  MAIN_BIDDING_HISTORY: "/history/mainbidding",
   BIDDING_HISTORY: "/history/bidding",
   STARLINE_HISTORY: "/history/starline",
   TXN_HISTORY: "/history/transaction",

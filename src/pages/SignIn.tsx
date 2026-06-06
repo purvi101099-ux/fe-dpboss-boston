@@ -17,8 +17,9 @@ const SignIn: React.FC = () => {
     mutationFn: (credentials: any) => loginUser(credentials),
     onSuccess: (data: any) => {
       localStorage.setItem(TOKEN, data?.token);
+      localStorage.setItem("user", JSON.stringify(data?.user));
       message.success(COMMON_MESSAGES.LOGIN_SUCCESS);
-      navigate("/admin/dashboard");
+      navigate("/client/home");
     },
     onError: (error: any) => {
       message.error(error.response.data.message || COMMON_MESSAGES.LOGIN_ERROR);

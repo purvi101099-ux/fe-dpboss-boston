@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -6,32 +6,105 @@ import CommonInput from "@/components/common/commonInput";
 import CommonButton from "@/components/common/commonButton";
 import CommonLabel from "@/components/common/CommonLabel";
 import { paymentDetailsSchema } from "@/utils/validation";
+import { updatePaymentDetails, fetchPaymentDetails } from "@/api/payment";
 
 interface IDefaultValues {
-  gpayNumber: string;
-  phonePeNumber: string;
-  paytmNumber: string;
-  upiId: string;
+  gpayNumber: string | null;
+  phonePeNumber: string | null;
+  paytmNumber: string | null;
+  upiId: string | null;
 }
 
 const defaultValues: IDefaultValues = {
-  gpayNumber: "",
-  phonePeNumber: "",
-  paytmNumber: "",
-  upiId: "",
+  gpayNumber: null,
+  phonePeNumber: null,
+  paytmNumber: null,
+  upiId: null,
 };
 
 const PaymentDetailsForm: React.FC = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [submitMessage, setSubmitMessage] = useState<{ type: string; text: string } | null>(null);
+
   const methods = useForm<IDefaultValues>({
     resolver: yupResolver(paymentDetailsSchema),
     defaultValues,
   });
 
-  const { handleSubmit } = methods;
+  const { handleSubmit, setValue } = methods;
 
-  const onInternalSubmit = (data: IDefaultValues) => {
-    console.log(data);
+  // Load payment details on mount
+  useEffect(() => {
+    const loadPaymentDetails = async () => {
+      try {
+        const user = localStorage.getItem("user");
+        const userData = user ? JSON.parse(user) : {};
+        const userId = userData?.user_id;
+
+        if (!userId) {
+          setIsLoading(false);
+          return;
+        }
+
+        const paymentData = await fetchPaymentDetails(userId);
+
+        if (paymentData) {
+          setValue("gpayNumber", paymentData.google_pay_number);
+          setValue("phonePeNumber", paymentData.phone_pe_number);
+          setValue("paytmNumber", paymentData.paytm_number);
+          setValue("upiId", paymentData.upi_id);
+        }
+      } catch (error) {
+        console.error("Failed to load payment details:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadPaymentDetails();
+  }, [setValue]);
+
+  const onInternalSubmit = async (data: IDefaultValues) => {
+    try {
+      setIsSubmitting(true);
+      setSubmitMessage(null);
+
+      const user = localStorage.getItem("user");
+      const userData = user ? JSON.parse(user) : {};
+      const userId = userData?.user_id;
+
+      if (!userId) {
+        setSubmitMessage({ type: "error", text: "User ID not found" });
+        return;
+      }
+
+      await updatePaymentDetails({
+        user_id: userId,
+        google_pay_number: data.gpayNumber ?? null,
+        phone_pe_number: data.phonePeNumber ?? null,
+        paytm_number: data.paytmNumber ?? null,
+        upi_id: data.upiId ?? null,
+      });
+
+      setSubmitMessage({ type: "success", text: "Payment details updated successfully!" });
+    } catch (error: any) {
+      const errorMsg = error?.response?.data?.message || "Failed to update payment details";
+      setSubmitMessage({ type: "error", text: errorMsg });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  if (isLoading) {
+    return (
+      <div className="client-form-page">
+        <div className="client-form-card">
+          <p>Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="client-form-page">
@@ -40,6 +113,21 @@ const PaymentDetailsForm: React.FC = () => {
           <h1>Add Payment Details</h1>
           <p>Add your UPI and wallet payment details</p>
         </div>
+
+        {submitMessage && (
+          <div
+            style={{
+              padding: "12px",
+              marginBottom: "16px",
+              borderRadius: "4px",
+              backgroundColor: submitMessage.type === "success" ? "#d4edda" : "#f8d7da",
+              color: submitMessage.type === "success" ? "#155724" : "#721c24",
+              border: `1px solid ${submitMessage.type === "success" ? "#c3e6cb" : "#f5c6cb"}`,
+            }}
+          >
+            {submitMessage.text}
+          </div>
+        )}
 
         <FormProvider {...methods}>
           <form
@@ -65,10 +153,11 @@ const PaymentDetailsForm: React.FC = () => {
             <CommonInput name="upiId" placeholder="example@upi" />
 
             <CommonButton
-              label="Save Payment Details"
+              label={isSubmitting ? "Updating..." : "Save Payment Details"}
               htmlType="submit"
               block
               className="client-submit-btn"
+              disabled={isSubmitting}
             />
           </form>
         </FormProvider>

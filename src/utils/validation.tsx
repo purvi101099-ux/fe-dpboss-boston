@@ -40,9 +40,9 @@ export const VALIDATION_MESSAGES = {
   INVALID_JODI_NUMBER: (field: string) =>
     `${field} must be 1-2 digits (Example: 12)`,
 
-  PASSWORD_MIN: "Password must be at least 6 characters",
+  PASSWORD_MIN: "Password must be at least 4 characters",
 
-  MIN_6_CHAR: "Minimum 6 characters",
+  MIN_6_CHAR: "Minimum 4 characters",
 
   PASSWORD_MATCH: "Passwords must match",
 
@@ -64,19 +64,13 @@ export const signInSchema = yup.object({
   password: yup
     .string()
     .required(VALIDATION_MESSAGES.REQUIRED("Password"))
-    .min(6, VALIDATION_MESSAGES.PASSWORD_MIN),
+    .min(4, VALIDATION_MESSAGES.PASSWORD_MIN),
 });
 
 /* ------------------ Sign Up Schema ------------------ */
 
 export const signUpSchema = yup.object({
   username: yup.string().required(VALIDATION_MESSAGES.REQUIRED("Username")),
-
-  email: yup
-    .string()
-    .required(VALIDATION_MESSAGES.REQUIRED("Email"))
-    .matches(REGEX.EMAIL, VALIDATION_MESSAGES.INVALID_EMAIL),
-
   mobile: yup
     .string()
     .required(VALIDATION_MESSAGES.REQUIRED("Mobile number"))
@@ -85,7 +79,7 @@ export const signUpSchema = yup.object({
   password: yup
     .string()
     .required(VALIDATION_MESSAGES.REQUIRED("Password"))
-    .min(6, VALIDATION_MESSAGES.MIN_6_CHAR),
+    .min(4, VALIDATION_MESSAGES.MIN_6_CHAR),
 });
 
 /* ------------------ Bazar Schema ------------------ */
@@ -287,21 +281,30 @@ export const biddingSchema = yup.object({
 export const paymentDetailsSchema = yup.object().shape({
   gpayNumber: yup
     .string()
-    .required(VALIDATION_MESSAGES.REQUIRED("GPay number"))
-    .matches(REGEX.MOBILE, VALIDATION_MESSAGES.INVALID_MOBILE("GPay number")),
+    .notRequired()
+    .test(
+      "gpay-number",
+      VALIDATION_MESSAGES.INVALID_MOBILE("GPay number"),
+      (value) => !value || REGEX.MOBILE.test(value)
+    ),
 
   phonePeNumber: yup
     .string()
-    .required(VALIDATION_MESSAGES.REQUIRED("PhonePe number"))
-    .matches(
-      REGEX.MOBILE,
+    .notRequired()
+    .test(
+      "phonepe-number",
       VALIDATION_MESSAGES.INVALID_MOBILE("PhonePe number"),
+      (value) => !value || REGEX.MOBILE.test(value)
     ),
 
   paytmNumber: yup
     .string()
-    .required(VALIDATION_MESSAGES.REQUIRED("Paytm number"))
-    .matches(REGEX.MOBILE, VALIDATION_MESSAGES.INVALID_MOBILE("Paytm number")),
+    .notRequired()
+    .test(
+      "paytm-number",
+      VALIDATION_MESSAGES.INVALID_MOBILE("Paytm number"),
+      (value) => !value || REGEX.MOBILE.test(value)
+    ),
 
   upiId: yup
     .string()

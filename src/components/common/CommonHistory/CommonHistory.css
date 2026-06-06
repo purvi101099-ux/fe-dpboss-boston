@@ -214,7 +214,7 @@
 /* Desktop overrides */
 @media (min-width: 768px) {
   .txn-history-container {
-    height: calc(100vh - 80px); /* accounting for bottom navigation overlap */
+    height: calc(100vh - 150px); /* accounting for bottom navigation overlap */
     padding: 20px 30px 40px 30px; /* added bottom padding */
     background-color: var(--bg-gray, #fafafa);
     overflow: hidden;

@@ -142,6 +142,7 @@ const AdminLayout: React.FC = () => {
       ),
       onClick: () => {
         localStorage.removeItem(TOKEN);
+        localStorage.removeItem("user");
         message.success(COMMON_MESSAGES.LOGOUT_SUCCESS);
         navigate("/sign-in");
       },

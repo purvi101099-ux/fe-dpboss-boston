@@ -1,5 +1,6 @@
 export const API_URL = import.meta.env.VITE_API_URL;
-export const TOKEN="token"
+export const TOKEN='token';
+export const USER_ID='user_id';
 export const bombayBazarData = [
   { time1: "11:00 AM", result1: "580-3", time2: "11:15 AM", result2: "130-4" },
   { time1: "11:30 AM", result1: "255-2", time2: "11:45 AM", result2: "139-3" },

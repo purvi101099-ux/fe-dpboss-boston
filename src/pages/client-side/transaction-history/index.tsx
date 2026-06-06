@@ -6,15 +6,15 @@ import { PATHS } from "@/routes/paths";
 const TransactionHistoryPage: React.FC = () => {
   const navigate = useNavigate();
   const historyOptions = [
-    {
-      label: "Fund History",
-      icon: "fa:money",
-      navigatePath: PATHS.FUND_HISTORY,
-    },
+    // {
+    //   label: "Fund History",
+    //   icon: "fa:money",
+    //   navigatePath: PATHS.FUND_HISTORY,
+    // },
     {
       label: "Main Bidding History",
       icon: "fa:list-alt",
-      navigatePath: PATHS.BIDDING_HISTORY,
+      navigatePath: PATHS.MAIN_BIDDING_HISTORY,
     },
     // {
     //   label: "Starline Bidding History",

@@ -37,7 +37,7 @@
 .brand-name {
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--blue-text);
+  color: var(--bg-btn);
   margin-top: -2px;
 }
 

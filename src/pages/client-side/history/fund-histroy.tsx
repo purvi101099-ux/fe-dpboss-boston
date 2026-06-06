@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ArrowDownOutlined, ArrowUpOutlined } from "@ant-design/icons";
 import { Tag } from "antd";
 import dayjs from "dayjs";
 import { CommonHistory } from "@/components/common/CommonHistory/CommonHistory";
+import { useWallet } from "@/hooks/useWallet";
 
 export enum FundFilter {
   ALL = "All Funds",
@@ -87,6 +88,12 @@ const columns = [
 ];
 
 const FundHistory: React.FC = () => {
+
+    const { data: wallet, isLoading, refetch } = useWallet();
+  
+    useEffect(() => {
+      refetch();
+    }, []);
   return (
     <CommonHistory
       title="Fund History"

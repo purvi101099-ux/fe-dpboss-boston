@@ -33,6 +33,7 @@ import BiddingHistory from "@/pages/client-side/history/bidding-histry";
 import TransactionHistoryPage from "@/pages/client-side/transaction-history";
 import PaymentDetailsForm from "@/pages/client-side/payment-details";
 import SiteSettingsPage from "@/pages/admin/Site";
+import MainBiddingHistory from "@/pages/client-side/history/main-bidding-histry";
 
 export interface RouteConfig {
   path: string;
@@ -74,6 +75,10 @@ export const clientRoutes: RouteConfig = {
     {
       path: PATHS.BIDDING_HISTORY,
       element: <BiddingHistory />,
+    },
+    {
+      path: PATHS.MAIN_BIDDING_HISTORY,
+      element: <MainBiddingHistory />,
     },
     {
       path: PATHS.STARLINE_HISTORY,
