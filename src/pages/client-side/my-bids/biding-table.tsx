@@ -1,9 +1,6 @@
-interface BidEntry {
-  id: number;
-  bidType: string;
-  digits: string;
-  points: number;
-}
+import CommonButton from "@/components/common/commonButton";
+import { BidEntry } from "./types";
+import { DeleteOutlined } from "@ant-design/icons";
 
 interface Props {
   bids: BidEntry[];
@@ -11,7 +8,7 @@ interface Props {
 }
 
 const BidsTable: React.FC<Props> = ({ bids, onDelete }) => {
-  const totalPoints = bids.reduce((total, bid) => total + bid.points, 0);
+  const totalPoints = bids.reduce((total, bid) => total + bid.bid_point, 0);
 
   return (
     <>
@@ -20,9 +17,10 @@ const BidsTable: React.FC<Props> = ({ bids, onDelete }) => {
           <thead>
             <tr>
               <th>Bid No</th>
-              <th>Bid Type</th>
-              <th>Digits</th>
-              <th>Points</th>
+              <th>Game</th>
+              <th>Bid</th>
+              <th>Digit</th>
+              <th>Point</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -30,24 +28,17 @@ const BidsTable: React.FC<Props> = ({ bids, onDelete }) => {
           <tbody>
             {bids.length === 0 ? (
               <tr>
-                <td colSpan={5}>No bids added yet</td>
+                <td colSpan={6}>Add your first bid!</td>
               </tr>
             ) : (
               bids.map((bid, index) => (
                 <tr key={bid.id}>
                   <td>{index + 1}</td>
-                  <td>{bid.bidType}</td>
-                  <td>{bid.digits}</td>
-                  <td>{bid.points}</td>
-                  <td>
-                    <button
-                      type="button"
-                      className="bid-delete-btn"
-                      onClick={() => onDelete(bid.id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
+                  <td>{bid.bid_game_name}</td>
+                  <td>{bid.bid_session}</td>
+                  <td>{bid.bid_digit}</td>
+                  <td>{bid.bid_point}</td>
+                  <td><CommonButton label="" icon={<DeleteOutlined />} onClick={() => onDelete(bid.id)} style={{ background:"none",border:"none",color:"red",fontSize:"18px" }} /></td>
                 </tr>
               ))
             )}
@@ -62,9 +53,7 @@ const BidsTable: React.FC<Props> = ({ bids, onDelete }) => {
             <span>Total Points: {totalPoints}</span>
           </div>
 
-          <button type="button" className="submit-all-btn">
-            Submit All Bids
-          </button>
+          <CommonButton htmlType="submit" label="Place All Bids" className="submit-all-btn"  style={{width:"100%"}}/>
         </>
       )}
     </>

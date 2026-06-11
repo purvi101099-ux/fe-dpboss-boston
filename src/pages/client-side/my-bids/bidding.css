@@ -147,11 +147,23 @@
 
   .add-bid-btn {
     width: 100%;
+    background-color: var(--dark-red) !important;
+    color: var(--white-color) !important;
+  }
+
+  .submit-all-btn {
+    background-color: var(--dark-red) !important;
+    color: var(--white-color) !important;
   }
 
   .bid-table th,
   .bid-table td {
     padding: 8px 10px;
     font-size: 0.72rem;
+  }
+
+  .common-input-wrapper .ant-radio-wrapper .ant-radio-checked {
+    background-color: var(--dark-red) !important;
+    border-color: var(--white-color) !important;
   }
 }

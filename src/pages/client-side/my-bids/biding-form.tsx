@@ -10,17 +10,13 @@ import CommonRadioGroup from "@/components/common/CommonRadioGroup";
 
 import {
   GameType,
-  AnkSubType,
-  JodiSubType,
   PanaSubType,
   GAME_TYPE_LIST,
-  JODI_SUB_LIST,
   PANA_SUB_LIST,
-  ANK_SELECT_OPTIONS,
-  JODI_SELECT_OPTIONS,
-  PANA_SELECT_OPTIONS,
-  POINTS_OPTIONS,
-  INPUT_PLACEHOLDERS,
+  generateAnkDigits,
+  generateJodiDigitPairs,
+  generatePanaDigits,
+  BID_TYPE_OPTIONS,
 } from "./types";
 
 import { biddingSchema, BiddingFormSchema } from "@/utils/validation";
@@ -28,7 +24,7 @@ import { biddingSchema, BiddingFormSchema } from "@/utils/validation";
 import "./bidding.css";
 
 interface BiddingFormProps {
-  onAddBid: (bid: { bidType: string; digits: string; points: number }) => void;
+  onAddBid: (bid: { bidType?: string | null; digits: string; points: number , gameType: string}) => void;
 }
 
 const BiddingForm: React.FC<BiddingFormProps> = ({ onAddBid }) => {
@@ -37,53 +33,37 @@ const BiddingForm: React.FC<BiddingFormProps> = ({ onAddBid }) => {
     mode: "onChange",
     defaultValues: {
       gameType: GameType.ANK,
-      ankSub: AnkSubType.OPEN,
-      jodiSub: JodiSubType.JODI,
       panaSub: PanaSubType.SPANA,
       digits: "",
-      points: "",
+      bidType: "",
+      points: undefined,
     },
   });
 
   const { handleSubmit, watch } = methods;
 
   const gameType = watch("gameType");
+  const panaSub = watch("panaSub");
 
-  const getBidTypeOptions = () => {
+  const getDigitOptions = () => {
     switch (gameType) {
       case GameType.ANK:
-        return ANK_SELECT_OPTIONS;
-
+        return generateAnkDigits();
       case GameType.JODI:
-        return JODI_SELECT_OPTIONS;
-
+        return generateJodiDigitPairs();
       case GameType.PANA:
-        return PANA_SELECT_OPTIONS;
-
+        return generatePanaDigits(panaSub);
       default:
         return [];
     }
   };
 
-  const bidTypeFieldName: "ankSub" | "jodiSub" | "panaSub" =
-    gameType === GameType.ANK
-      ? "ankSub"
-      : gameType === GameType.JODI
-        ? "jodiSub"
-        : "panaSub";
-
   const onSubmit = (data: BiddingFormSchema) => {
-    const bidType =
-      gameType === GameType.ANK
-        ? data.ankSub
-        : gameType === GameType.JODI
-          ? data.jodiSub
-          : data.panaSub;
-
     onAddBid({
-      bidType: String(bidType || ""),
+      gameType: data.gameType !== GameType.PANA ? data?.gameType :(data?.panaSub || data.gameType),
+      bidType: data.gameType !== GameType.JODI ? data.bidType : null,
       digits: data.digits,
-      points: Number(data.points),
+      points: data.points as number,
     });
 
     // Reset only the digits field so the user can quickly place another bid
@@ -109,71 +89,61 @@ const BiddingForm: React.FC<BiddingFormProps> = ({ onAddBid }) => {
           />
         </div>
 
-        {gameType !== GameType.ANK && (
-          <div className="game-type-title">Select Game Sub Type</div>
-        )}
-        {/* Jodi Sub Type */}
-        {gameType === GameType.JODI && (
-          <div className="sub-type-options">
-            <CommonRadioGroup
-              name="jodiSub"
-              options={JODI_SUB_LIST.map((item) => ({
-                label: item,
-                value: item,
-              }))}
-            />
-          </div>
-        )}
-
-        {/* Pana Sub Type */}
+        {/* Pana Sub Type - Only show for PANA */}
         {gameType === GameType.PANA && (
-          <div className="sub-type-options">
-            <CommonRadioGroup
-              name="panaSub"
-              options={PANA_SUB_LIST.map((item) => ({
-                label: item,
-                value: item,
-              }))}
-            />
-          </div>
+          <>
+            <div className="game-type-title">Select Game Sub Type</div>
+            <div className="sub-type-options">
+              <CommonRadioGroup
+                name="panaSub"
+                options={PANA_SUB_LIST.map((item) => ({
+                  label: item,
+                  value: item,
+                }))}
+              />
+            </div>
+          </>
         )}
 
         <div className="bidding-form-row">
-          {/* Digits */}
+          {/* Digits Dropdown */}
           <div className="bid-field">
             <CommonLabel label="Digits" required />
 
-            <CommonInput
-              name="digits"
-              placeholder={INPUT_PLACEHOLDERS[gameType]}
-            />
-          </div>
-
-          {/* Bid Type */}
-          <div className="bid-field">
-            <CommonLabel label="Bid Type" required />
-
             <CommonSelect
-              name={bidTypeFieldName}
-              placeholder="Select Bid Type"
-              options={getBidTypeOptions().map((item) => ({
+              name="digits"
+              placeholder="Select Digit"
+              options={getDigitOptions().map((item) => ({
                 label: item,
                 value: item,
               }))}
             />
           </div>
 
-          {/* Points */}
+          {/* Bid Type Dropdown - Only show for ANK and PANA */}
+          {(gameType === GameType.ANK || gameType === GameType.PANA) && (
+            <div className="bid-field">
+              <CommonLabel label="Bid Type" required />
+
+              <CommonSelect
+                name="bidType"
+                placeholder="Select Bid Type"
+                options={BID_TYPE_OPTIONS.map((item) => ({
+                  label: item,
+                  value: item,
+                }))}
+              />
+            </div>
+          )}
+
+          {/* Points - Manual Entry */}
           <div className="bid-field">
             <CommonLabel label="Points" required />
 
-            <CommonSelect
+            <CommonInput
               name="points"
-              placeholder="Select Points"
-              options={POINTS_OPTIONS.map((item) => ({
-                label: String(item),
-                value: String(item),
-              }))}
+              type="number"
+              placeholder="Enter Points (positive number)"
             />
           </div>
         </div>

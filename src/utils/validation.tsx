@@ -203,77 +203,42 @@ export const biddingSchema = yup.object({
     .required(VALIDATION_MESSAGES.REQUIRED("Game type"))
     .oneOf(Object.values(GameType)),
 
-  /* ------------------ Ank Sub ------------------ */
-
-  ankSub: yup.string().when("gameType", {
-    is: GameType.ANK,
-    then: (schema) => schema.required(VALIDATION_MESSAGES.REQUIRED("Bid type")),
-    otherwise: (schema) => schema.nullable(),
-  }),
-
-  /* ------------------ Jodi Sub ------------------ */
-
-  jodiSub: yup.string().when("gameType", {
-    is: GameType.JODI,
-    then: (schema) => schema.required(VALIDATION_MESSAGES.REQUIRED("Bid type")),
-    otherwise: (schema) => schema.nullable(),
-  }),
-
-  /* ------------------ Pana Sub ------------------ */
+  /* ------------------ Pana Sub Type (only for PANA) ------------------ */
 
   panaSub: yup.string().when("gameType", {
     is: GameType.PANA,
+    then: (schema) => schema.required(VALIDATION_MESSAGES.REQUIRED("Game sub type")),
+    otherwise: (schema) => schema.nullable(),
+  }),
+
+  /* ------------------ Bid Type (for ANK and PANA) ------------------ */
+
+  bidType: yup.string().when("gameType", {
+    is: function(value) {
+      return value === GameType.ANK || value === GameType.PANA;
+    },
     then: (schema) => schema.required(VALIDATION_MESSAGES.REQUIRED("Bid type")),
     otherwise: (schema) => schema.nullable(),
   }),
 
-  /* ------------------ Digits ------------------ */
+  /* ------------------ Digits (removed manual validation, will use dropdown) ------------------ */
 
   digits: yup
     .string()
-    .required(VALIDATION_MESSAGES.REQUIRED("Digits"))
-    .test("digits-validation", function (value) {
-      const { gameType } = this.parent;
+    .required(VALIDATION_MESSAGES.REQUIRED("Digits")),
 
-      if (!value) {
-        return this.createError({
-          message: VALIDATION_MESSAGES.REQUIRED("Digits"),
-        });
-      }
+  /* ------------------ Points (now as manual positive number entry) ------------------ */
 
-      switch (gameType) {
-        case GameType.ANK:
-          if (!REGEX.ANK_DIGIT.test(value)) {
-            return this.createError({
-              message: "Enter 1 digit only (Example: 5)",
-            });
-          }
-          return true;
+  points: yup
+    .number()
+    .required(VALIDATION_MESSAGES.REQUIRED("Points"))
+    .typeError(VALIDATION_MESSAGES.REQUIRED("Points"))
+    .positive("Points must be a positive number")
+    .integer("Points must be a whole number"),
 
-        case GameType.JODI:
-          if (!REGEX.JODI_DIGIT.test(value)) {
-            return this.createError({
-              message: "Enter 2 digits only (Example: 12)",
-            });
-          }
-          return true;
-
-        case GameType.PANA:
-          if (!REGEX.PANA_DIGIT.test(value)) {
-            return this.createError({
-              message: "Enter 3 digits only (Example: 123)",
-            });
-          }
-          return true;
-
-        default:
-          return false;
-      }
-    }),
-
-  /* ------------------ Points ------------------ */
-
-  points: yup.string().required(VALIDATION_MESSAGES.REQUIRED("Points")),
+  /* Deprecated fields - kept for backward compatibility, not used */
+  ankSub: yup.string().nullable(),
+  jodiSub: yup.string().nullable(),
 });
 
 /* ------------------ Payment Details Schema ------------------ */

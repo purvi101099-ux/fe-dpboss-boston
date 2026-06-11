@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import GameCard from "@/components/client/GameCard";
 import QuickActions from "@/components/client/QuickActions/QuickActions";
 import { getGameNumbers } from "@/api/gameNumber";
+import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const ClientHome: React.FC = () => {
   const { data, isLoading } = useQuery({
@@ -15,9 +17,9 @@ const ClientHome: React.FC = () => {
   const games = React.useMemo(() => {
     if (!data) return [];
     const rawData = (data as any).data || data;
-    
+
     if (!Array.isArray(rawData)) return [];
-    
+
     // Transform API data to match GameCard expected format
     return rawData.map((item: any) => ({
       name: item.game,
@@ -45,8 +47,10 @@ const ClientHome: React.FC = () => {
         <QuickActions />
 
         {/* Game Cards */}
-        {isLoading && <div className="loading-text">Loading games...</div>}
-        
+        {isLoading && <div style={{ display: "flex", justifyContent: "center", padding: "50px" }}>
+          <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
+        </div>}
+
         {!isLoading && games.length === 0 && (
           <div className="no-data-text">No games available</div>
         )}
