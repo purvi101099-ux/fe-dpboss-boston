@@ -5,10 +5,14 @@ export default function Footer() {
         <a href="#" className="footer-small-btn">
           Matka Play
         </a>
-        <a href="#" className="footer-small-btn">
+        {/* <a href="#" className="footer-small-btn">
           Fix open
-        </a>
-        <a href="#" className="footer-small-btn">
+        </a> */}
+        <a href="" className="footer-small-btn"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.reload();
+          }}>
           REFRESH
         </a>
       </div>

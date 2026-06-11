@@ -91,7 +91,7 @@ export interface GameNumberResponse {
 }
 
 export interface GameNumberListParams {
-  type?: "all" | "live";
+  type?: "all" | "live" | "bid";
   page?: number;
   limit?: number;
 }

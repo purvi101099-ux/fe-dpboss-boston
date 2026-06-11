@@ -1,190 +1,38 @@
 import React from "react";
+import { useQuery } from "@tanstack/react-query";
 import GameCard from "@/components/client/GameCard";
 import QuickActions from "@/components/client/QuickActions/QuickActions";
+import { getGameNumbers } from "@/api/gameNumber";
 
 const ClientHome: React.FC = () => {
-  const games = [
-    {
-      name: "TIME BAZAR",
-      status: "Betting is Closed for Today",
-      numbers: "557-71-399",
-      color: "red",
+  const { data, isLoading } = useQuery({
+    queryKey: ["game-numbers", "bid"],
+    queryFn: () => getGameNumbers({ type: "bid", page: 1, limit: 10 }),
+    refetchInterval: 120000, // Auto refresh every 2 minutes
+  });
+
+  // Extract and transform data array safely
+  const games = React.useMemo(() => {
+    if (!data) return [];
+    const rawData = (data as any).data || data;
+    
+    if (!Array.isArray(rawData)) return [];
+    
+    // Transform API data to match GameCard expected format
+    return rawData.map((item: any) => ({
+      name: item.game,
+      status: item.betting_status,
+      numbers: item.value,
+      color: item.betting_status.toLowerCase().includes("running") ? "green" : "red",
       times: {
-        openBidEnds: "01:00 PM",
-        closeBidEnds: "02:00 PM",
-        openResult: "01:10 PM",
-        closeResult: "02:10 PM",
+        openBidEnds: item.bdtimeOpen,
+        closeBidEnds: item.bdtimeClose,
+        openResult: item.timeOpen,
+        closeResult: item.timeClose,
       },
-    },
-    {
-      name: "KALYAN",
-      status: "Betting is Closed for Today",
-      numbers: "678-13-238",
-      color: "red",
-      times: {
-        openBidEnds: "09:00 PM",
-        closeBidEnds: "11:00 PM",
-        openResult: "09:10 PM",
-        closeResult: "11:10 PM",
-      },
-    },
-    {
-      name: "MILAN DAY",
-      status: "Betting is Closed for Today",
-      numbers: "378-86-150",
-      color: "red",
-      times: {
-        openBidEnds: "03:00 PM",
-        closeBidEnds: "05:00 PM",
-        openResult: "03:10 PM",
-        closeResult: "05:10 PM",
-      },
-    },
-    {
-      name: "MILAN NIGHT",
-      status: "Betting is Running For Close",
-      numbers: "136-1-***",
-      color: "green",
-      times: {
-        openBidEnds: "08:00 PM",
-        closeBidEnds: "10:00 PM",
-        openResult: "08:10 PM",
-        closeResult: "10:10 PM",
-      },
-    },
-    {
-      name: "KALYAN",
-      status: "Betting is Closed for Today",
-      numbers: "678-13-238",
-      color: "red",
-    },
-    {
-      name: "MILAN DAY",
-      status: "Betting is Closed for Today",
-      numbers: "378-86-150",
-      color: "red",
-    },
-    {
-      name: "MILAN NIGHT",
-      status: "Betting is Running For Close",
-      numbers: "136-1-***",
-      color: "green",
-    },
-
-    {
-      name: "KALYAN",
-      status: "Betting is Closed for Today",
-      numbers: "678-13-238",
-      color: "red",
-    },
-    {
-      name: "MILAN DAY",
-      status: "Betting is Closed for Today",
-      numbers: "378-86-150",
-      color: "red",
-    },
-    {
-      name: "MILAN NIGHT",
-      status: "Betting is Running For Close",
-      numbers: "136-1-***",
-      color: "green",
-    },
-
-    {
-      name: "KALYAN",
-      status: "Betting is Closed for Today",
-      numbers: "678-13-238",
-      color: "red",
-    },
-    {
-      name: "MILAN DAY",
-      status: "Betting is Closed for Today",
-      numbers: "378-86-150",
-      color: "red",
-    },
-    {
-      name: "MILAN NIGHT",
-      status: "Betting is Running For Close",
-      numbers: "136-1-***",
-      color: "green",
-    },
-
-    {
-      name: "KALYAN",
-      status: "Betting is Closed for Today",
-      numbers: "678-13-238",
-      color: "red",
-    },
-    {
-      name: "MILAN DAY",
-      status: "Betting is Closed for Today",
-      numbers: "378-86-150",
-      color: "red",
-    },
-    {
-      name: "MILAN NIGHT",
-      status: "Betting is Running For Close",
-      numbers: "136-1-***",
-      color: "green",
-    },
-
-    {
-      name: "KALYAN",
-      status: "Betting is Closed for Today",
-      numbers: "678-13-238",
-      color: "red",
-    },
-    {
-      name: "MILAN DAY",
-      status: "Betting is Closed for Today",
-      numbers: "378-86-150",
-      color: "red",
-    },
-    {
-      name: "MILAN NIGHT",
-      status: "Betting is Running For Close",
-      numbers: "136-1-***",
-      color: "green",
-    },
-
-    {
-      name: "KALYAN",
-      status: "Betting is Closed for Today",
-      numbers: "678-13-238",
-      color: "red",
-    },
-    {
-      name: "MILAN DAY",
-      status: "Betting is Closed for Today",
-      numbers: "378-86-150",
-      color: "red",
-    },
-    {
-      name: "MILAN NIGHT",
-      status: "Betting is Running For Close",
-      numbers: "136-1-***",
-      color: "green",
-    },
-
-    {
-      name: "KALYAN",
-      status: "Betting is Closed for Today",
-      numbers: "678-13-238",
-      color: "red",
-    },
-    {
-      name: "MILAN DAY",
-      status: "Betting is Closed for Today",
-      numbers: "378-86-150",
-      color: "red",
-    },
-    {
-      name: "MILAN NIGHT",
-      status: "Betting is Running For Close",
-      numbers: "136-1-***",
-      color: "green",
-    },
-  ];
+      ...item, // Keep original data as fallback
+    }));
+  }, [data]);
 
   return (
     <>
@@ -197,6 +45,12 @@ const ClientHome: React.FC = () => {
         <QuickActions />
 
         {/* Game Cards */}
+        {isLoading && <div className="loading-text">Loading games...</div>}
+        
+        {!isLoading && games.length === 0 && (
+          <div className="no-data-text">No games available</div>
+        )}
+
         {games.map((game, index) => (
           <GameCard key={index} game={game} />
         ))}

@@ -25,13 +25,13 @@
 .game-name {
   grid-area: name;
   font-weight: 700;
-  font-size: 0.95rem; /* Further reduced from 1.15rem */
+  font-size: 1.15rem; /* Further reduced from 1.15rem */
   color: var(--gc-name-color);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-style: italic;
   line-height: 1.2;
-  word-spacing: 100vw;
+  /* word-spacing: 100vw; */
 }
 
 .game-side-col {
@@ -142,24 +142,24 @@
   }
 
   .game-name {
-    font-size: 0.8rem;
+    font-size: 1rem;
     letter-spacing: 0.3px;
   }
 
   .game-card-icon {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 
   .game-card-label {
-    font-size: 0.5rem;
-  }
-
-  .game-status {
     font-size: 0.6rem;
   }
 
+  .game-status {
+    font-size: 0.7rem;
+  }
+
   .game-numbers {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
 

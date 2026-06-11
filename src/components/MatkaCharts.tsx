@@ -2,15 +2,16 @@ import { getBazar } from "@/api/game";
 import { jodiCharts, panelCharts } from "@/utils/constants";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
+import { Link } from "react-router-dom";
 
 const ChartSection = ({ title, items, section }: { title: string; items: any[]; section: string }) => (
   <div className="matka-chart-section">
     <div className="matka-chart-header">{title}</div>
     <div className="matka-chart-list">
       {items.map((item, index) => (
-        <a key={index} href={`${section === 'Chart' ? 'jodi-chart-record' : 'panel-chart-record'}/${item?.bazarId}`} className="matka-chart-item">
+        <Link key={index} to={`${section === 'Chart' ? '/jodi-chart-record' : '/panel-chart-record'}/${item?.bazarId}`} className="matka-chart-item">
           {item?.bazarName} {section}
-        </a>
+        </Link>
       ))}
     </div>
   </div>

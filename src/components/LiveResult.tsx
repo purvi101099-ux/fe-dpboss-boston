@@ -6,7 +6,7 @@ export default function LiveResult() {
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["game-numbers", "live"],
     queryFn: () => getGameNumbers({ type: "live", page: 1, limit: 10 }),
-    refetchInterval: 60000, // Auto refresh every minute
+    refetchInterval: 120000, // Auto refresh every 2 minutes
   });
 
   // Extract data array safely

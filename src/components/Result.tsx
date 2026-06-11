@@ -9,9 +9,10 @@ export default function Results() {
   const { data, isLoading } = useQuery({
     queryKey: ["game-numbers", "all"],
     queryFn: () => getGameNumbers({ type: "all", page: 1, limit: 100 }),
+    refetchInterval: 300000, // Auto refresh every 5 minutes
   });
 
-  const resultsData = useMemo(() => {
+  const resultsData = useMemo(() => { 
     if (!data) return [];
     const rawData = (data as any).data || data;
     return Array.isArray(rawData) ? rawData : [];
